@@ -1,0 +1,1572 @@
+root@Blue3:~# ssh root@192.168.1.45
+root@192.168.1.45's password:
+Welcome to Ubuntu 18.04 LTS (GNU/Linux 4.15.0-112-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+
+ * Canonical Livepatch is available for installation.
+   - Reduce system reboots and improve kernel security. Activate at:
+     https://ubuntu.com/livepatch
+
+400 packages can be updated.
+111 updates are security updates.
+
+Last login: Mon Aug  3 14:41:04 2020 from 172.16.4.112
+*** | *** | *** | root@ubu02:~#
+*** | *** | *** | root@ubu02:~#
+*** | *** | *** | root@ubu02:~#
+*** | *** | *** | root@ubu02:~# htop
+
+Command 'htop' not found, but can be installed with:
+
+snap install htop  # version 2.2.0, or
+apt  install htop
+
+See 'snap info htop' for additional versions.
+
+*** | *** | *** | root@ubu02:~# nano /etc/resolv.conf
+*** | *** | *** | root@ubu02:~# service resolvconf restart
+Failed to restart resolvconf.service: Unit resolvconf.service not found.
+*** | *** | *** | root@ubu02:~# systemctl restart resolvconf
+Failed to restart resolvconf.service: Unit resolvconf.service not found.
+*** | *** | *** | root@ubu02:~# apt-get install -y resolvconf
+resolvconf        resolvconf-admin
+*** | *** | *** | root@ubu02:~# apt-get install -y resolvconf
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following NEW packages will be installed:
+  resolvconf
+0 upgraded, 1 newly installed, 0 to remove and 397 not upgraded.
+Need to get 48,0 kB of archives.
+After this operation, 187 kB of additional disk space will be used.
+Get:1 http://vn.archive.ubuntu.com/ubuntu bionic-updates/universe amd64 resolvconf all 1.79ubuntu10.18.04.3 [48,0 kB]
+Fetched 48,0 kB in 5s (9.901 B/s)
+Preconfiguring packages ...
+Selecting previously unselected package resolvconf.
+(Reading database ... 164234 files and directories currently installed.)
+Preparing to unpack .../resolvconf_1.79ubuntu10.18.04.3_all.deb ...
+Unpacking resolvconf (1.79ubuntu10.18.04.3) ...
+Processing triggers for ureadahead (0.100.0-20) ...
+Processing triggers for systemd (237-3ubuntu10) ...
+Processing triggers for man-db (2.8.3-2) ...
+Setting up resolvconf (1.79ubuntu10.18.04.3) ...
+Created symlink /etc/systemd/system/sysinit.target.wants/resolvconf.service → /lib/systemd/system/resolvconf.service.
+Created symlink /etc/systemd/system/systemd-resolved.service.wants/resolvconf-pull-resolved.path → /lib/systemd/system/resolvconf-pull-resolved.path.
+resolvconf-pull-resolved.service is a disabled or a static unit, not starting it.
+resolvconf-pull-resolved.service is a disabled or a static unit, not starting it.
+Processing triggers for ureadahead (0.100.0-20) ...
+Processing triggers for systemd (237-3ubuntu10) ...
+Processing triggers for resolvconf (1.79ubuntu10.18.04.3) ...
+*** | *** | *** | root@ubu02:~# nano /etc/resolv
+resolvconf/  resolv.conf
+*** | *** | *** | root@ubu02:~# nano /etc/resolvconf/
+interface-order  resolv.conf.d/   update.d/        update-libc.d/
+*** | *** | *** | root@ubu02:~# nano /etc/resolvconf/
+interface-order  resolv.conf.d/   update.d/        update-libc.d/
+*** | *** | *** | root@ubu02:~# nano /etc/resolvconf/resolv.conf.d/
+base      head      original  tail
+*** | *** | *** | root@ubu02:~# nano /etc/resolvconf/resolv.conf.d/head
+*** | *** | *** | root@ubu02:~# service resolvconf
+Usage: /etc/init.d/resolvconf {start|stop|restart|reload|force-reload|enable-updates|disable-updates|status}
+*** | *** | *** | root@ubu02:~# service resolvconf restart
+*** | *** | *** | root@ubu02:~# systemctl enable resolvconf
+Synchronizing state of resolvconf.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable resolvconf
+*** | *** | *** | root@ubu02:~# dig -t SRV _ldap._tcp.ntq-solution.com.vn | grep -A2 "ANSWER SECTION"
+;; ANSWER SECTION:
+_ldap._tcp.ntq-solution.com.vn.	600 IN	SRV	0 100 389 DC-AD01.ntq-solution.com.vn.
+
+*** | *** | *** | root@ubu02:~# echo "nameserver 192.168.1.55 # Thuc te la 10.0.64.2 & 10.0.64.3"
+nameserver 192.168.1.55 # Thuc te la 10.0.64.2 & 10.0.64.3
+*** | *** | *** | root@ubu02:~# echo "NTQ-SOLUTION.COM.VN" | apt-get install -y krb5-
+krb5-admin-server  krb5-doc           krb5-kdc           krb5-locales       krb5-pkinit        krb5-sync-tools
+krb5-auth-dialog   krb5-gss-samples   krb5-kdc-ldap      krb5-multidev      krb5-strength      krb5-user
+krb5-config        krb5-k5tls         krb5-kpropd        krb5-otp           krb5-sync-plugin
+*** | *** | *** | root@ubu02:~# echo "NTQ-SOLUTION.COM.VN" | apt-get install -y krb5-
+krb5-admin-server  krb5-doc           krb5-kdc           krb5-locales       krb5-pkinit        krb5-sync-tools
+krb5-auth-dialog   krb5-gss-samples   krb5-kdc-ldap      krb5-multidev      krb5-strength      krb5-user
+krb5-config        krb5-k5tls         krb5-kpropd        krb5-otp           krb5-sync-plugin
+*** | *** | *** | root@ubu02:~# echo "NTQ-SOLUTION.COM.VN" | apt-get install -y krb5-user
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following additional packages will be installed:
+  krb5-config libgssrpc4 libkadm5clnt-mit11 libkadm5srv-mit11 libkdb5-9
+Suggested packages:
+  krb5-doc
+The following NEW packages will be installed:
+  krb5-config krb5-user libgssrpc4 libkadm5clnt-mit11 libkadm5srv-mit11 libkdb5-9
+0 upgraded, 6 newly installed, 0 to remove and 397 not upgraded.
+Need to get 307 kB of archives.
+After this operation, 1.305 kB of additional disk space will be used.
+Get:1 http://vn.archive.ubuntu.com/ubuntu bionic/main amd64 krb5-config all 2.6 [22,6 kB]
+Get:2 http://vn.archive.ubuntu.com/ubuntu bionic-updates/main amd64 libgssrpc4 amd64 1.16-2ubuntu0.1 [54,2 kB]
+Get:3 http://vn.archive.ubuntu.com/ubuntu bionic-updates/main amd64 libkadm5clnt-mit11 amd64 1.16-2ubuntu0.1 [38,2 kB]
+Get:4 http://vn.archive.ubuntu.com/ubuntu bionic-updates/main amd64 libkdb5-9 amd64 1.16-2ubuntu0.1 [37,2 kB]
+Get:5 http://vn.archive.ubuntu.com/ubuntu bionic-updates/main amd64 libkadm5srv-mit11 amd64 1.16-2ubuntu0.1 [49,7 kB]
+Get:6 http://vn.archive.ubuntu.com/ubuntu bionic-updates/universe amd64 krb5-user amd64 1.16-2ubuntu0.1 [105 kB]
+Fetched 307 kB in 7s (44,4 kB/s)
+Preconfiguring packages ...
+Selecting previously unselected package krb5-config.
+(Reading database ... 164264 files and directories currently installed.)
+Preparing to unpack .../0-krb5-config_2.6_all.deb ...
+Unpacking krb5-config (2.6) ...
+Selecting previously unselected package libgssrpc4:amd64.
+Preparing to unpack .../1-libgssrpc4_1.16-2ubuntu0.1_amd64.deb ...
+Unpacking libgssrpc4:amd64 (1.16-2ubuntu0.1) ...
+Selecting previously unselected package libkadm5clnt-mit11:amd64.
+Preparing to unpack .../2-libkadm5clnt-mit11_1.16-2ubuntu0.1_amd64.deb ...
+Unpacking libkadm5clnt-mit11:amd64 (1.16-2ubuntu0.1) ...
+Selecting previously unselected package libkdb5-9:amd64.
+Preparing to unpack .../3-libkdb5-9_1.16-2ubuntu0.1_amd64.deb ...
+Unpacking libkdb5-9:amd64 (1.16-2ubuntu0.1) ...
+Selecting previously unselected package libkadm5srv-mit11:amd64.
+Preparing to unpack .../4-libkadm5srv-mit11_1.16-2ubuntu0.1_amd64.deb ...
+Unpacking libkadm5srv-mit11:amd64 (1.16-2ubuntu0.1) ...
+Selecting previously unselected package krb5-user.
+Preparing to unpack .../5-krb5-user_1.16-2ubuntu0.1_amd64.deb ...
+Unpacking krb5-user (1.16-2ubuntu0.1) ...
+Setting up libgssrpc4:amd64 (1.16-2ubuntu0.1) ...
+Setting up libkdb5-9:amd64 (1.16-2ubuntu0.1) ...
+Processing triggers for libc-bin (2.27-3ubuntu1.2) ...
+Setting up libkadm5srv-mit11:amd64 (1.16-2ubuntu0.1) ...
+Processing triggers for man-db (2.8.3-2) ...
+Setting up libkadm5clnt-mit11:amd64 (1.16-2ubuntu0.1) ...
+Setting up krb5-config (2.6) ...
+Setting up krb5-user (1.16-2ubuntu0.1) ...
+Processing triggers for libc-bin (2.27-3ubuntu1.2) ...
+*** | *** | *** | root@ubu02:~# apt-get -y install realmd sssd sssd-tools samba-common krb5-user packagekit samba-common-bin samba-libs adcli ntp
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+samba-libs is already the newest version (2:4.7.6+dfsg~ubuntu-0ubuntu2.17).
+krb5-user is already the newest version (1.16-2ubuntu0.1).
+The following additional packages will be installed:
+  gstreamer1.0-packagekit ldap-utils libbasicobjects0 libc-ares2 libcollection4 libdhash1 libhttp-parser2.7.1 libini-config5 libipa-hbac0
+  libldap-2.4-2 libldap-common libnfsidmap2 libnl-route-3-200 libnss-sss libopts25 libpam-pwquality libpam-sss libpath-utils1 libpython-stdlib
+  libref-array1 libsasl2-modules-gssapi-mit libsss-certmap0 libsss-idmap0 libsss-nss-idmap0 libsss-simpleifp0 libsss-sudo packagekit-tools python
+  python-crypto python-ldb python-minimal python-samba python-sss python-tdb python2.7 python2.7-minimal python3-sss sntp sssd-ad sssd-ad-common
+  sssd-common sssd-dbus sssd-ipa sssd-krb5 sssd-krb5-common sssd-ldap sssd-proxy
+Suggested packages:
+  ntp-doc python-doc python-tk python-crypto-doc python-gpgme python2.7-doc binfmt-support heimdal-clients libsasl2-modules-ldap
+The following NEW packages will be installed:
+  adcli ldap-utils libbasicobjects0 libc-ares2 libcollection4 libdhash1 libhttp-parser2.7.1 libini-config5 libipa-hbac0 libnfsidmap2
+  libnl-route-3-200 libnss-sss libopts25 libpam-pwquality libpam-sss libpath-utils1 libpython-stdlib libref-array1 libsasl2-modules-gssapi-mit
+  libsss-certmap0 libsss-idmap0 libsss-nss-idmap0 libsss-simpleifp0 libsss-sudo ntp python python-crypto python-ldb python-minimal python-samba
+  python-sss python-tdb python2.7 python2.7-minimal python3-sss realmd samba-common samba-common-bin sntp sssd sssd-ad sssd-ad-common sssd-common
+  sssd-dbus sssd-ipa sssd-krb5 sssd-krb5-common sssd-ldap sssd-proxy sssd-tools
+The following packages will be upgraded:
+  gstreamer1.0-packagekit libldap-2.4-2 libldap-common packagekit packagekit-tools
+5 upgraded, 50 newly installed, 0 to remove and 392 not upgraded.
+Need to get 8.048 kB/8.662 kB of archives.
+After this operation, 37,2 MB of additional disk space will be used.
+Get:1 http://vn.archive.ubuntu.com/ubuntu bionic/universe amd64 libopts25 amd64 1:5.18.12-4 [58,2 kB]
+Get:2 http://vn.archive.ubuntu.com/ubuntu bionic-updates/universe amd64 ntp amd64 1:4.2.8p10+dfsg-5ubuntu7.1 [640 kB]
+Get:3 http://vn.archive.ubuntu.com/ubuntu bionic-updates/main amd64 python2.7-minimal amd64 2.7.17-1~18.04ubuntu1.1 [1.303 kB]
+Get:4 http://vn.archive.ubuntu.com/ubuntu bionic/main amd64 python-minimal amd64 2.7.15~rc1-1 [28,1 kB]
+Get:5 http://vn.archive.ubuntu.com/ubuntu bionic-updates/main amd64 python2.7 amd64 2.7.17-1~18.04ubuntu1.1 [248 kB]
+Get:6 http://vn.archive.ubuntu.com/ubuntu bionic/main amd64 libpython-stdlib amd64 2.7.15~rc1-1 [7.620 B]
+Get:7 http://vn.archive.ubuntu.com/ubuntu bionic/main amd64 python amd64 2.7.15~rc1-1 [140 kB]
+Get:8 http://vn.archive.ubuntu.com/ubuntu bionic-updates/main amd64 samba-common all 2:4.7.6+dfsg~ubuntu-0ubuntu2.17 [72,3 kB]
+Get:9 http://vn.archive.ubuntu.com/ubuntu bionic-updates/main amd64 libsasl2-modules-gssapi-mit amd64 2.1.27~101-g0780600+dfsg-3ubuntu2.1 [35,5 kB]
+Get:10 http://vn.archive.ubuntu.com/ubuntu bionic/universe amd64 adcli amd64 0.8.2-1 [64,9 kB]
+Get:11 http://vn.archive.ubuntu.com/ubuntu bionic-updates/main amd64 ldap-utils amd64 2.4.45+dfsg-1ubuntu1.6 [124 kB]
+Get:12 http://vn.archive.ubuntu.com/ubuntu bionic/main amd64 libnfsidmap2 amd64 0.25-5.1 [27,2 kB]
+Get:13 http://vn.archive.ubuntu.com/ubuntu bionic/main amd64 libnl-route-3-200 amd64 3.2.29-0ubuntu3 [146 kB]
+Get:14 http://vn.archive.ubuntu.com/ubuntu bionic/main amd64 libpam-pwquality amd64 1.4.0-2 [11,2 kB]
+Get:15 http://vn.archive.ubuntu.com/ubuntu bionic/main amd64 python-crypto amd64 2.6.1-8ubuntu2 [244 kB]
+Get:16 http://vn.archive.ubuntu.com/ubuntu bionic-updates/main amd64 python-ldb amd64 2:1.2.3-1ubuntu0.1 [30,9 kB]
+Get:17 http://vn.archive.ubuntu.com/ubuntu bionic/main amd64 python-tdb amd64 1.3.15-2 [11,1 kB]
+Get:18 http://vn.archive.ubuntu.com/ubuntu bionic-updates/main amd64 python-samba amd64 2:4.7.6+dfsg~ubuntu-0ubuntu2.17 [1.925 kB]
+Get:19 http://vn.archive.ubuntu.com/ubuntu bionic/universe amd64 realmd amd64 0.16.3-1 [191 kB]
+Get:20 http://vn.archive.ubuntu.com/ubuntu bionic-updates/main amd64 samba-common-bin amd64 2:4.7.6+dfsg~ubuntu-0ubuntu2.17 [521 kB]
+Get:21 http://vn.archive.ubuntu.com/ubuntu bionic-updates/universe amd64 sntp amd64 1:4.2.8p10+dfsg-5ubuntu7.1 [86,9 kB]
+Get:22 http://vn.archive.ubuntu.com/ubuntu bionic/main amd64 libbasicobjects0 amd64 0.6.1-1 [5.940 B]
+Get:23 http://vn.archive.ubuntu.com/ubuntu bionic/main amd64 libc-ares2 amd64 1.14.0-1 [37,1 kB]
+Get:24 http://vn.archive.ubuntu.com/ubuntu bionic/main amd64 libcollection4 amd64 0.6.1-1 [21,8 kB]
+Get:25 http://vn.archive.ubuntu.com/ubuntu bionic/main amd64 libdhash1 amd64 0.6.1-1 [8.756 B]
+Get:26 http://vn.archive.ubuntu.com/ubuntu bionic/main amd64 libhttp-parser2.7.1 amd64 2.7.1-2 [20,6 kB]
+Get:27 http://vn.archive.ubuntu.com/ubuntu bionic/main amd64 libpath-utils1 amd64 0.6.1-1 [8.860 B]
+Get:28 http://vn.archive.ubuntu.com/ubuntu bionic/main amd64 libref-array1 amd64 0.6.1-1 [7.260 B]
+Get:29 http://vn.archive.ubuntu.com/ubuntu bionic/main amd64 libini-config5 amd64 0.6.1-1 [40,8 kB]
+Get:30 http://vn.archive.ubuntu.com/ubuntu bionic-updates/main amd64 libipa-hbac0 amd64 1.16.1-1ubuntu1.6 [10,7 kB]
+Get:31 http://vn.archive.ubuntu.com/ubuntu bionic-updates/main amd64 libnss-sss amd64 1.16.1-1ubuntu1.6 [19,7 kB]
+Get:32 http://vn.archive.ubuntu.com/ubuntu bionic-updates/main amd64 libpam-sss amd64 1.16.1-1ubuntu1.6 [27,1 kB]
+Get:33 http://vn.archive.ubuntu.com/ubuntu bionic-updates/main amd64 libsss-certmap0 amd64 1.16.1-1ubuntu1.6 [32,2 kB]
+Get:34 http://vn.archive.ubuntu.com/ubuntu bionic-updates/main amd64 libsss-idmap0 amd64 1.16.1-1ubuntu1.6 [15,1 kB]
+Get:35 http://vn.archive.ubuntu.com/ubuntu bionic-updates/main amd64 libsss-nss-idmap0 amd64 1.16.1-1ubuntu1.6 [20,1 kB]
+Get:36 http://vn.archive.ubuntu.com/ubuntu bionic-updates/main amd64 python3-sss amd64 1.16.1-1ubuntu1.6 [49,0 kB]
+Get:37 http://vn.archive.ubuntu.com/ubuntu bionic-updates/main amd64 sssd-common amd64 1.16.1-1ubuntu1.6 [948 kB]
+Get:38 http://vn.archive.ubuntu.com/ubuntu bionic-updates/main amd64 sssd-dbus amd64 1.16.1-1ubuntu1.6 [96,5 kB]
+Get:39 http://vn.archive.ubuntu.com/ubuntu bionic-updates/main amd64 libsss-simpleifp0 amd64 1.16.1-1ubuntu1.6 [13,4 kB]
+Get:40 http://vn.archive.ubuntu.com/ubuntu bionic-updates/main amd64 libsss-sudo amd64 1.16.1-1ubuntu1.6 [13,5 kB]
+Get:41 http://vn.archive.ubuntu.com/ubuntu bionic-updates/main amd64 python-sss amd64 1.16.1-1ubuntu1.6 [48,8 kB]
+Get:42 http://vn.archive.ubuntu.com/ubuntu bionic-updates/main amd64 sssd-ad-common amd64 1.16.1-1ubuntu1.6 [68,8 kB]
+Get:43 http://vn.archive.ubuntu.com/ubuntu bionic-updates/main amd64 sssd-krb5-common amd64 1.16.1-1ubuntu1.6 [73,8 kB]
+Get:44 http://vn.archive.ubuntu.com/ubuntu bionic-updates/main amd64 sssd-ad amd64 1.16.1-1ubuntu1.6 [108 kB]
+Get:45 http://vn.archive.ubuntu.com/ubuntu bionic-updates/main amd64 sssd-ipa amd64 1.16.1-1ubuntu1.6 [199 kB]
+Get:46 http://vn.archive.ubuntu.com/ubuntu bionic-updates/main amd64 sssd-krb5 amd64 1.16.1-1ubuntu1.6 [13,5 kB]
+Get:47 http://vn.archive.ubuntu.com/ubuntu bionic-updates/main amd64 sssd-ldap amd64 1.16.1-1ubuntu1.6 [28,9 kB]
+Get:48 http://vn.archive.ubuntu.com/ubuntu bionic-updates/main amd64 sssd-proxy amd64 1.16.1-1ubuntu1.6 [35,2 kB]
+Get:49 http://vn.archive.ubuntu.com/ubuntu bionic-updates/main amd64 sssd amd64 1.16.1-1ubuntu1.6 [4.396 B]
+Get:50 http://vn.archive.ubuntu.com/ubuntu bionic-updates/main amd64 sssd-tools amd64 1.16.1-1ubuntu1.6 [155 kB]
+Fetched 8.048 kB in 10s (818 kB/s)
+Extracting templates from packages: 100%
+Preconfiguring packages ...
+Selecting previously unselected package libopts25:amd64.
+(Reading database ... 164323 files and directories currently installed.)
+Preparing to unpack .../0-libopts25_1%3a5.18.12-4_amd64.deb ...
+Unpacking libopts25:amd64 (1:5.18.12-4) ...
+Selecting previously unselected package ntp.
+Preparing to unpack .../1-ntp_1%3a4.2.8p10+dfsg-5ubuntu7.1_amd64.deb ...
+Unpacking ntp (1:4.2.8p10+dfsg-5ubuntu7.1) ...
+Selecting previously unselected package python2.7-minimal.
+Preparing to unpack .../2-python2.7-minimal_2.7.17-1~18.04ubuntu1.1_amd64.deb ...
+Unpacking python2.7-minimal (2.7.17-1~18.04ubuntu1.1) ...
+Selecting previously unselected package python-minimal.
+Preparing to unpack .../3-python-minimal_2.7.15~rc1-1_amd64.deb ...
+Unpacking python-minimal (2.7.15~rc1-1) ...
+Selecting previously unselected package python2.7.
+Preparing to unpack .../4-python2.7_2.7.17-1~18.04ubuntu1.1_amd64.deb ...
+Unpacking python2.7 (2.7.17-1~18.04ubuntu1.1) ...
+Selecting previously unselected package libpython-stdlib:amd64.
+Preparing to unpack .../5-libpython-stdlib_2.7.15~rc1-1_amd64.deb ...
+Unpacking libpython-stdlib:amd64 (2.7.15~rc1-1) ...
+Setting up python2.7-minimal (2.7.17-1~18.04ubuntu1.1) ...
+Linking and byte-compiling packages for runtime python2.7...
+Setting up python-minimal (2.7.15~rc1-1) ...
+Selecting previously unselected package python.
+(Reading database ... 164447 files and directories currently installed.)
+Preparing to unpack .../00-python_2.7.15~rc1-1_amd64.deb ...
+Unpacking python (2.7.15~rc1-1) ...
+Selecting previously unselected package samba-common.
+Preparing to unpack .../01-samba-common_2%3a4.7.6+dfsg~ubuntu-0ubuntu2.17_all.deb ...
+Unpacking samba-common (2:4.7.6+dfsg~ubuntu-0ubuntu2.17) ...
+Selecting previously unselected package libsasl2-modules-gssapi-mit:amd64.
+Preparing to unpack .../02-libsasl2-modules-gssapi-mit_2.1.27~101-g0780600+dfsg-3ubuntu2.1_amd64.deb ...
+Unpacking libsasl2-modules-gssapi-mit:amd64 (2.1.27~101-g0780600+dfsg-3ubuntu2.1) ...
+Preparing to unpack .../03-libldap-common_2.4.45+dfsg-1ubuntu1.6_all.deb ...
+Unpacking libldap-common (2.4.45+dfsg-1ubuntu1.6) over (2.4.45+dfsg-1ubuntu1) ...
+Preparing to unpack .../04-libldap-2.4-2_2.4.45+dfsg-1ubuntu1.6_amd64.deb ...
+Unpacking libldap-2.4-2:amd64 (2.4.45+dfsg-1ubuntu1.6) over (2.4.45+dfsg-1ubuntu1) ...
+Selecting previously unselected package adcli.
+Preparing to unpack .../05-adcli_0.8.2-1_amd64.deb ...
+Unpacking adcli (0.8.2-1) ...
+Preparing to unpack .../06-packagekit-tools_1.1.9-1ubuntu2.18.04.5_amd64.deb ...
+Unpacking packagekit-tools (1.1.9-1ubuntu2.18.04.5) over (1.1.9-1ubuntu2) ...
+Preparing to unpack .../07-gstreamer1.0-packagekit_1.1.9-1ubuntu2.18.04.5_amd64.deb ...
+Unpacking gstreamer1.0-packagekit (1.1.9-1ubuntu2.18.04.5) over (1.1.9-1ubuntu2) ...
+Preparing to unpack .../08-packagekit_1.1.9-1ubuntu2.18.04.5_amd64.deb ...
+Unpacking packagekit (1.1.9-1ubuntu2.18.04.5) over (1.1.9-1ubuntu2) ...
+Selecting previously unselected package ldap-utils.
+Preparing to unpack .../09-ldap-utils_2.4.45+dfsg-1ubuntu1.6_amd64.deb ...
+Unpacking ldap-utils (2.4.45+dfsg-1ubuntu1.6) ...
+Selecting previously unselected package libnfsidmap2:amd64.
+Preparing to unpack .../10-libnfsidmap2_0.25-5.1_amd64.deb ...
+Unpacking libnfsidmap2:amd64 (0.25-5.1) ...
+Selecting previously unselected package libnl-route-3-200:amd64.
+Preparing to unpack .../11-libnl-route-3-200_3.2.29-0ubuntu3_amd64.deb ...
+Unpacking libnl-route-3-200:amd64 (3.2.29-0ubuntu3) ...
+Selecting previously unselected package libpam-pwquality:amd64.
+Preparing to unpack .../12-libpam-pwquality_1.4.0-2_amd64.deb ...
+Unpacking libpam-pwquality:amd64 (1.4.0-2) ...
+Selecting previously unselected package python-crypto.
+Preparing to unpack .../13-python-crypto_2.6.1-8ubuntu2_amd64.deb ...
+Unpacking python-crypto (2.6.1-8ubuntu2) ...
+Selecting previously unselected package python-ldb:amd64.
+Preparing to unpack .../14-python-ldb_2%3a1.2.3-1ubuntu0.1_amd64.deb ...
+Unpacking python-ldb:amd64 (2:1.2.3-1ubuntu0.1) ...
+Selecting previously unselected package python-tdb.
+Preparing to unpack .../15-python-tdb_1.3.15-2_amd64.deb ...
+Unpacking python-tdb (1.3.15-2) ...
+Selecting previously unselected package python-samba.
+Preparing to unpack .../16-python-samba_2%3a4.7.6+dfsg~ubuntu-0ubuntu2.17_amd64.deb ...
+Unpacking python-samba (2:4.7.6+dfsg~ubuntu-0ubuntu2.17) ...
+Selecting previously unselected package realmd.
+Preparing to unpack .../17-realmd_0.16.3-1_amd64.deb ...
+Unpacking realmd (0.16.3-1) ...
+Selecting previously unselected package samba-common-bin.
+Preparing to unpack .../18-samba-common-bin_2%3a4.7.6+dfsg~ubuntu-0ubuntu2.17_amd64.deb ...
+Unpacking samba-common-bin (2:4.7.6+dfsg~ubuntu-0ubuntu2.17) ...
+Selecting previously unselected package sntp.
+Preparing to unpack .../19-sntp_1%3a4.2.8p10+dfsg-5ubuntu7.1_amd64.deb ...
+Unpacking sntp (1:4.2.8p10+dfsg-5ubuntu7.1) ...
+Selecting previously unselected package libbasicobjects0:amd64.
+Preparing to unpack .../20-libbasicobjects0_0.6.1-1_amd64.deb ...
+Unpacking libbasicobjects0:amd64 (0.6.1-1) ...
+Selecting previously unselected package libc-ares2:amd64.
+Preparing to unpack .../21-libc-ares2_1.14.0-1_amd64.deb ...
+Unpacking libc-ares2:amd64 (1.14.0-1) ...
+Selecting previously unselected package libcollection4:amd64.
+Preparing to unpack .../22-libcollection4_0.6.1-1_amd64.deb ...
+Unpacking libcollection4:amd64 (0.6.1-1) ...
+Selecting previously unselected package libdhash1:amd64.
+Preparing to unpack .../23-libdhash1_0.6.1-1_amd64.deb ...
+Unpacking libdhash1:amd64 (0.6.1-1) ...
+Selecting previously unselected package libhttp-parser2.7.1:amd64.
+Preparing to unpack .../24-libhttp-parser2.7.1_2.7.1-2_amd64.deb ...
+Unpacking libhttp-parser2.7.1:amd64 (2.7.1-2) ...
+Selecting previously unselected package libpath-utils1:amd64.
+Preparing to unpack .../25-libpath-utils1_0.6.1-1_amd64.deb ...
+Unpacking libpath-utils1:amd64 (0.6.1-1) ...
+Selecting previously unselected package libref-array1:amd64.
+Preparing to unpack .../26-libref-array1_0.6.1-1_amd64.deb ...
+Unpacking libref-array1:amd64 (0.6.1-1) ...
+Selecting previously unselected package libini-config5:amd64.
+Preparing to unpack .../27-libini-config5_0.6.1-1_amd64.deb ...
+Unpacking libini-config5:amd64 (0.6.1-1) ...
+Selecting previously unselected package libipa-hbac0.
+Preparing to unpack .../28-libipa-hbac0_1.16.1-1ubuntu1.6_amd64.deb ...
+Unpacking libipa-hbac0 (1.16.1-1ubuntu1.6) ...
+Selecting previously unselected package libnss-sss:amd64.
+Preparing to unpack .../29-libnss-sss_1.16.1-1ubuntu1.6_amd64.deb ...
+Unpacking libnss-sss:amd64 (1.16.1-1ubuntu1.6) ...
+Selecting previously unselected package libpam-sss:amd64.
+Preparing to unpack .../30-libpam-sss_1.16.1-1ubuntu1.6_amd64.deb ...
+Unpacking libpam-sss:amd64 (1.16.1-1ubuntu1.6) ...
+Selecting previously unselected package libsss-certmap0.
+Preparing to unpack .../31-libsss-certmap0_1.16.1-1ubuntu1.6_amd64.deb ...
+Unpacking libsss-certmap0 (1.16.1-1ubuntu1.6) ...
+Selecting previously unselected package libsss-idmap0.
+Preparing to unpack .../32-libsss-idmap0_1.16.1-1ubuntu1.6_amd64.deb ...
+Unpacking libsss-idmap0 (1.16.1-1ubuntu1.6) ...
+Selecting previously unselected package libsss-nss-idmap0.
+Preparing to unpack .../33-libsss-nss-idmap0_1.16.1-1ubuntu1.6_amd64.deb ...
+Unpacking libsss-nss-idmap0 (1.16.1-1ubuntu1.6) ...
+Selecting previously unselected package python3-sss.
+Preparing to unpack .../34-python3-sss_1.16.1-1ubuntu1.6_amd64.deb ...
+Unpacking python3-sss (1.16.1-1ubuntu1.6) ...
+Selecting previously unselected package sssd-common.
+Preparing to unpack .../35-sssd-common_1.16.1-1ubuntu1.6_amd64.deb ...
+Unpacking sssd-common (1.16.1-1ubuntu1.6) ...
+Selecting previously unselected package sssd-dbus.
+Preparing to unpack .../36-sssd-dbus_1.16.1-1ubuntu1.6_amd64.deb ...
+Unpacking sssd-dbus (1.16.1-1ubuntu1.6) ...
+Selecting previously unselected package libsss-simpleifp0.
+Preparing to unpack .../37-libsss-simpleifp0_1.16.1-1ubuntu1.6_amd64.deb ...
+Unpacking libsss-simpleifp0 (1.16.1-1ubuntu1.6) ...
+Selecting previously unselected package libsss-sudo.
+Preparing to unpack .../38-libsss-sudo_1.16.1-1ubuntu1.6_amd64.deb ...
+Unpacking libsss-sudo (1.16.1-1ubuntu1.6) ...
+Selecting previously unselected package python-sss.
+Preparing to unpack .../39-python-sss_1.16.1-1ubuntu1.6_amd64.deb ...
+Unpacking python-sss (1.16.1-1ubuntu1.6) ...
+Selecting previously unselected package sssd-ad-common.
+Preparing to unpack .../40-sssd-ad-common_1.16.1-1ubuntu1.6_amd64.deb ...
+Unpacking sssd-ad-common (1.16.1-1ubuntu1.6) ...
+Selecting previously unselected package sssd-krb5-common.
+Preparing to unpack .../41-sssd-krb5-common_1.16.1-1ubuntu1.6_amd64.deb ...
+Unpacking sssd-krb5-common (1.16.1-1ubuntu1.6) ...
+Selecting previously unselected package sssd-ad.
+Preparing to unpack .../42-sssd-ad_1.16.1-1ubuntu1.6_amd64.deb ...
+Unpacking sssd-ad (1.16.1-1ubuntu1.6) ...
+Selecting previously unselected package sssd-ipa.
+Preparing to unpack .../43-sssd-ipa_1.16.1-1ubuntu1.6_amd64.deb ...
+Unpacking sssd-ipa (1.16.1-1ubuntu1.6) ...
+Selecting previously unselected package sssd-krb5.
+Preparing to unpack .../44-sssd-krb5_1.16.1-1ubuntu1.6_amd64.deb ...
+Unpacking sssd-krb5 (1.16.1-1ubuntu1.6) ...
+Selecting previously unselected package sssd-ldap.
+Preparing to unpack .../45-sssd-ldap_1.16.1-1ubuntu1.6_amd64.deb ...
+Unpacking sssd-ldap (1.16.1-1ubuntu1.6) ...
+Selecting previously unselected package sssd-proxy.
+Preparing to unpack .../46-sssd-proxy_1.16.1-1ubuntu1.6_amd64.deb ...
+Unpacking sssd-proxy (1.16.1-1ubuntu1.6) ...
+Selecting previously unselected package sssd.
+Preparing to unpack .../47-sssd_1.16.1-1ubuntu1.6_amd64.deb ...
+Unpacking sssd (1.16.1-1ubuntu1.6) ...
+Selecting previously unselected package sssd-tools.
+Preparing to unpack .../48-sssd-tools_1.16.1-1ubuntu1.6_amd64.deb ...
+Unpacking sssd-tools (1.16.1-1ubuntu1.6) ...
+Setting up libsss-idmap0 (1.16.1-1ubuntu1.6) ...
+Setting up libhttp-parser2.7.1:amd64 (2.7.1-2) ...
+Setting up libpath-utils1:amd64 (0.6.1-1) ...
+Setting up libsss-nss-idmap0 (1.16.1-1ubuntu1.6) ...
+Processing triggers for mime-support (3.60ubuntu1) ...
+Processing triggers for ureadahead (0.100.0-20) ...
+Processing triggers for desktop-file-utils (0.23-1ubuntu3) ...
+Setting up libpam-pwquality:amd64 (1.4.0-2) ...
+Setting up libldap-common (2.4.45+dfsg-1ubuntu1.6) ...
+Setting up libsss-certmap0 (1.16.1-1ubuntu1.6) ...
+Setting up libipa-hbac0 (1.16.1-1ubuntu1.6) ...
+Setting up python2.7 (2.7.17-1~18.04ubuntu1.1) ...
+Setting up samba-common (2:4.7.6+dfsg~ubuntu-0ubuntu2.17) ...
+
+Creating config file /etc/samba/smb.conf with new version
+Setting up libnl-route-3-200:amd64 (3.2.29-0ubuntu3) ...
+Setting up libpam-sss:amd64 (1.16.1-1ubuntu1.6) ...
+Setting up libdhash1:amd64 (0.6.1-1) ...
+Setting up libcollection4:amd64 (0.6.1-1) ...
+Setting up libpython-stdlib:amd64 (2.7.15~rc1-1) ...
+Setting up libnss-sss:amd64 (1.16.1-1ubuntu1.6) ...
+First installation detected...
+Checking NSS setup...
+Setting up python3-sss (1.16.1-1ubuntu1.6) ...
+Processing triggers for libc-bin (2.27-3ubuntu1.2) ...
+Setting up libldap-2.4-2:amd64 (2.4.45+dfsg-1ubuntu1.6) ...
+Processing triggers for systemd (237-3ubuntu10) ...
+Setting up libopts25:amd64 (1:5.18.12-4) ...
+Processing triggers for man-db (2.8.3-2) ...
+Setting up libbasicobjects0:amd64 (0.6.1-1) ...
+Setting up libref-array1:amd64 (0.6.1-1) ...
+Setting up libsasl2-modules-gssapi-mit:amd64 (2.1.27~101-g0780600+dfsg-3ubuntu2.1) ...
+Processing triggers for gnome-menus (3.13.3-11ubuntu1) ...
+Processing triggers for dbus (1.12.2-1ubuntu1.2) ...
+Setting up adcli (0.8.2-1) ...
+Setting up libc-ares2:amd64 (1.14.0-1) ...
+Setting up python (2.7.15~rc1-1) ...
+Setting up libsss-sudo (1.16.1-1ubuntu1.6) ...
+Checking NSS setup...
+Setting up libini-config5:amd64 (0.6.1-1) ...
+Setting up packagekit (1.1.9-1ubuntu2.18.04.5) ...
+Setting up python-ldb:amd64 (2:1.2.3-1ubuntu0.1) ...
+Setting up realmd (0.16.3-1) ...
+Setting up python-crypto (2.6.1-8ubuntu2) ...
+Setting up libnfsidmap2:amd64 (0.25-5.1) ...
+Setting up sntp (1:4.2.8p10+dfsg-5ubuntu7.1) ...
+Setting up python-tdb (1.3.15-2) ...
+Setting up gstreamer1.0-packagekit (1.1.9-1ubuntu2.18.04.5) ...
+Setting up python-samba (2:4.7.6+dfsg~ubuntu-0ubuntu2.17) ...
+Setting up ntp (1:4.2.8p10+dfsg-5ubuntu7.1) ...
+Created symlink /etc/systemd/system/network-pre.target.wants/ntp-systemd-netif.path → /lib/systemd/system/ntp-systemd-netif.path.
+Created symlink /etc/systemd/system/multi-user.target.wants/ntp.service → /lib/systemd/system/ntp.service.
+ntp-systemd-netif.service is a disabled or a static unit, not starting it.
+Setting up python-sss (1.16.1-1ubuntu1.6) ...
+Setting up ldap-utils (2.4.45+dfsg-1ubuntu1.6) ...
+Setting up packagekit-tools (1.1.9-1ubuntu2.18.04.5) ...
+Setting up samba-common-bin (2:4.7.6+dfsg~ubuntu-0ubuntu2.17) ...
+Setting up sssd-common (1.16.1-1ubuntu1.6) ...
+Creating SSSD system user & group...
+adduser: Warning: The home directory `/var/lib/sss' does not belong to the user you are currently creating.
+Created symlink /etc/systemd/system/sockets.target.wants/sssd-secrets.socket → /lib/systemd/system/sssd-secrets.socket.
+Created symlink /etc/systemd/system/multi-user.target.wants/sssd.service → /lib/systemd/system/sssd.service.
+Warning: found usr.sbin.sssd in /etc/apparmor.d/force-complain, forcing complain mode
+Warning failed to create cache: usr.sbin.sssd
+sssd-secrets.service is a disabled or a static unit, not starting it.
+Setting up sssd-krb5-common (1.16.1-1ubuntu1.6) ...
+Setting up sssd-ad-common (1.16.1-1ubuntu1.6) ...
+Setting up sssd-krb5 (1.16.1-1ubuntu1.6) ...
+Setting up sssd-ldap (1.16.1-1ubuntu1.6) ...
+Setting up sssd-proxy (1.16.1-1ubuntu1.6) ...
+Setting up sssd-dbus (1.16.1-1ubuntu1.6) ...
+Setting up libsss-simpleifp0 (1.16.1-1ubuntu1.6) ...
+Setting up sssd-ad (1.16.1-1ubuntu1.6) ...
+Setting up sssd-tools (1.16.1-1ubuntu1.6) ...
+Setting up sssd-ipa (1.16.1-1ubuntu1.6) ...
+Setting up sssd (1.16.1-1ubuntu1.6) ...
+Processing triggers for libc-bin (2.27-3ubuntu1.2) ...
+Processing triggers for dbus (1.12.2-1ubuntu1.2) ...
+Processing triggers for ureadahead (0.100.0-20) ...
+Processing triggers for systemd (237-3ubuntu10) ...
+*** | *** | *** | root@ubu02:~# nano /etc/ntp.conf
+*** | *** | *** | root@ubu02:~# nano /etc/ntp.conf
+*** | *** | *** | root@ubu02:~# echo "DC-AD01.ntq-solution.com.vn" > /etc/ntp.conf
+*** | *** | *** | root@ubu02:~# cat /etc/ntp.conf
+DC-AD01.ntq-solution.com.vn
+*** | *** | *** | root@ubu02:~# apt-get install --reinstall ntp
+ntp             ntpdate         ntp-doc         ntpsec          ntpsec-doc      ntpsec-ntpdate  ntpsec-ntpviz   ntpstat
+*** | *** | *** | root@ubu02:~# apt-get install --reinstall ntp
+ntp             ntpdate         ntp-doc         ntpsec          ntpsec-doc      ntpsec-ntpdate  ntpsec-ntpviz   ntpstat
+*** | *** | *** | root@ubu02:~# apt-get install --reinstall ntp
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+0 upgraded, 0 newly installed, 1 reinstalled, 0 to remove and 392 not upgraded.
+Need to get 0 B/640 kB of archives.
+After this operation, 0 B of additional disk space will be used.
+(Reading database ... 165466 files and directories currently installed.)
+Preparing to unpack .../ntp_1%3a4.2.8p10+dfsg-5ubuntu7.1_amd64.deb ...
+Unpacking ntp (1:4.2.8p10+dfsg-5ubuntu7.1) over (1:4.2.8p10+dfsg-5ubuntu7.1) ...
+Processing triggers for ureadahead (0.100.0-20) ...
+Setting up ntp (1:4.2.8p10+dfsg-5ubuntu7.1) ...
+ntp-systemd-netif.service is a disabled or a static unit not running, not starting it.
+Processing triggers for systemd (237-3ubuntu10) ...
+Processing triggers for man-db (2.8.3-2) ...
+*** | *** | *** | root@ubu02:~# cat /etc/ntp.conf
+DC-AD01.ntq-solution.com.vn
+*** | *** | *** | root@ubu02:~# apt-get -o Dpkg::Options::="--force-confmiss" install --reinstall ntp
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+0 upgraded, 0 newly installed, 1 reinstalled, 0 to remove and 392 not upgraded.
+Need to get 0 B/640 kB of archives.
+After this operation, 0 B of additional disk space will be used.
+(Reading database ... 165466 files and directories currently installed.)
+Preparing to unpack .../ntp_1%3a4.2.8p10+dfsg-5ubuntu7.1_amd64.deb ...
+Unpacking ntp (1:4.2.8p10+dfsg-5ubuntu7.1) over (1:4.2.8p10+dfsg-5ubuntu7.1) ...
+Processing triggers for ureadahead (0.100.0-20) ...
+Setting up ntp (1:4.2.8p10+dfsg-5ubuntu7.1) ...
+ntp-systemd-netif.service is a disabled or a static unit not running, not starting it.
+Processing triggers for systemd (237-3ubuntu10) ...
+Processing triggers for man-db (2.8.3-2) ...
+*** | *** | *** | root@ubu02:~# cat /etc/ntp.conf
+DC-AD01.ntq-solution.com.vn
+*** | *** | *** | root@ubu02:~# rm /etc/ntp.conf
+*** | *** | *** | root@ubu02:~# apt-get -o Dpkg::Options::="--force-confmiss" install --reinstall ntp
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+0 upgraded, 0 newly installed, 1 reinstalled, 0 to remove and 392 not upgraded.
+Need to get 0 B/640 kB of archives.
+After this operation, 0 B of additional disk space will be used.
+(Reading database ... 165466 files and directories currently installed.)
+Preparing to unpack .../ntp_1%3a4.2.8p10+dfsg-5ubuntu7.1_amd64.deb ...
+Unpacking ntp (1:4.2.8p10+dfsg-5ubuntu7.1) over (1:4.2.8p10+dfsg-5ubuntu7.1) ...
+Processing triggers for ureadahead (0.100.0-20) ...
+Setting up ntp (1:4.2.8p10+dfsg-5ubuntu7.1) ...
+
+Configuration file '/etc/ntp.conf', does not exist on system.
+Installing new config file as you requested.
+ntp-systemd-netif.service is a disabled or a static unit not running, not starting it.
+Processing triggers for systemd (237-3ubuntu10) ...
+Processing triggers for man-db (2.8.3-2) ...
+*** | *** | *** | root@ubu02:~# cat /etc/ntp.conf
+# /etc/ntp.conf, configuration for ntpd; see ntp.conf(5) for help
+
+driftfile /var/lib/ntp/ntp.drift
+
+# Leap seconds definition provided by tzdata
+leapfile /usr/share/zoneinfo/leap-seconds.list
+
+# Enable this if you want statistics to be logged.
+#statsdir /var/log/ntpstats/
+
+statistics loopstats peerstats clockstats
+filegen loopstats file loopstats type day enable
+filegen peerstats file peerstats type day enable
+filegen clockstats file clockstats type day enable
+
+# Specify one or more NTP servers.
+
+# Use servers from the NTP Pool Project. Approved by Ubuntu Technical Board
+# on 2011-02-08 (LP: #104525). See http://www.pool.ntp.org/join.html for
+# more information.
+pool 0.ubuntu.pool.ntp.org iburst
+pool 1.ubuntu.pool.ntp.org iburst
+pool 2.ubuntu.pool.ntp.org iburst
+pool 3.ubuntu.pool.ntp.org iburst
+
+# Use Ubuntu's ntp server as a fallback.
+pool ntp.ubuntu.com
+
+# Access control configuration; see /usr/share/doc/ntp-doc/html/accopt.html for
+# details.  The web page <http://support.ntp.org/bin/view/Support/AccessRestrictions>
+# might also be helpful.
+#
+# Note that "restrict" applies to both servers and clients, so a configuration
+# that might be intended to block requests from certain clients could also end
+# up blocking replies from your own upstream servers.
+
+# By default, exchange time with everybody, but don't allow configuration.
+restrict -4 default kod notrap nomodify nopeer noquery limited
+restrict -6 default kod notrap nomodify nopeer noquery limited
+
+# Local users may interrogate the ntp server more closely.
+restrict 127.0.0.1
+restrict ::1
+
+# Needed for adding pool entries
+restrict source notrap nomodify noquery
+
+# Clients from this (example!) subnet have unlimited access, but only if
+# cryptographically authenticated.
+#restrict 192.168.123.0 mask 255.255.255.0 notrust
+
+
+# If you want to provide time to your local subnet, change the next line.
+# (Again, the address is an example only.)
+#broadcast 192.168.123.255
+
+# If you want to listen to time broadcasts on your local subnet, de-comment the
+# next lines.  Please do this only if you trust everybody on the network!
+#disable auth
+#broadcastclient
+
+#Changes recquired to use pps synchonisation as explained in documentation:
+#http://www.ntp.org/ntpfaq/NTP-s-config-adv.htm#AEN3918
+
+#server 127.127.8.1 mode 135 prefer    # Meinberg GPS167 with PPS
+#fudge 127.127.8.1 time1 0.0042        # relative to PPS for my hardware
+
+#server 127.127.22.1                   # ATOM(PPS)
+#fudge 127.127.22.1 flag3 1            # enable PPS API
+*** | *** | *** | root@ubu02:~# echo "DC-AD01.ntq-solution.com.vn" >> /etc/ntp.conf
+*** | *** | *** | root@ubu02:~# cat /etc/ntp.conf
+# /etc/ntp.conf, configuration for ntpd; see ntp.conf(5) for help
+
+driftfile /var/lib/ntp/ntp.drift
+
+# Leap seconds definition provided by tzdata
+leapfile /usr/share/zoneinfo/leap-seconds.list
+
+# Enable this if you want statistics to be logged.
+#statsdir /var/log/ntpstats/
+
+statistics loopstats peerstats clockstats
+filegen loopstats file loopstats type day enable
+filegen peerstats file peerstats type day enable
+filegen clockstats file clockstats type day enable
+
+# Specify one or more NTP servers.
+
+# Use servers from the NTP Pool Project. Approved by Ubuntu Technical Board
+# on 2011-02-08 (LP: #104525). See http://www.pool.ntp.org/join.html for
+# more information.
+pool 0.ubuntu.pool.ntp.org iburst
+pool 1.ubuntu.pool.ntp.org iburst
+pool 2.ubuntu.pool.ntp.org iburst
+pool 3.ubuntu.pool.ntp.org iburst
+
+# Use Ubuntu's ntp server as a fallback.
+pool ntp.ubuntu.com
+
+# Access control configuration; see /usr/share/doc/ntp-doc/html/accopt.html for
+# details.  The web page <http://support.ntp.org/bin/view/Support/AccessRestrictions>
+# might also be helpful.
+#
+# Note that "restrict" applies to both servers and clients, so a configuration
+# that might be intended to block requests from certain clients could also end
+# up blocking replies from your own upstream servers.
+
+# By default, exchange time with everybody, but don't allow configuration.
+restrict -4 default kod notrap nomodify nopeer noquery limited
+restrict -6 default kod notrap nomodify nopeer noquery limited
+
+# Local users may interrogate the ntp server more closely.
+restrict 127.0.0.1
+restrict ::1
+
+# Needed for adding pool entries
+restrict source notrap nomodify noquery
+
+# Clients from this (example!) subnet have unlimited access, but only if
+# cryptographically authenticated.
+#restrict 192.168.123.0 mask 255.255.255.0 notrust
+
+
+# If you want to provide time to your local subnet, change the next line.
+# (Again, the address is an example only.)
+#broadcast 192.168.123.255
+
+# If you want to listen to time broadcasts on your local subnet, de-comment the
+# next lines.  Please do this only if you trust everybody on the network!
+#disable auth
+#broadcastclient
+
+#Changes recquired to use pps synchonisation as explained in documentation:
+#http://www.ntp.org/ntpfaq/NTP-s-config-adv.htm#AEN3918
+
+#server 127.127.8.1 mode 135 prefer    # Meinberg GPS167 with PPS
+#fudge 127.127.8.1 time1 0.0042        # relative to PPS for my hardware
+
+#server 127.127.22.1                   # ATOM(PPS)
+#fudge 127.127.22.1 flag3 1            # enable PPS API
+DC-AD01.ntq-solution.com.vn
+*** | *** | *** | root@ubu02:~# echo "DC-AD02.ntq-solution.com.vn" >> /etc/ntp.conf
+*** | *** | *** | root@ubu02:~# cat /etc/ntp.conf
+# /etc/ntp.conf, configuration for ntpd; see ntp.conf(5) for help
+
+driftfile /var/lib/ntp/ntp.drift
+
+# Leap seconds definition provided by tzdata
+leapfile /usr/share/zoneinfo/leap-seconds.list
+
+# Enable this if you want statistics to be logged.
+#statsdir /var/log/ntpstats/
+
+statistics loopstats peerstats clockstats
+filegen loopstats file loopstats type day enable
+filegen peerstats file peerstats type day enable
+filegen clockstats file clockstats type day enable
+
+# Specify one or more NTP servers.
+
+# Use servers from the NTP Pool Project. Approved by Ubuntu Technical Board
+# on 2011-02-08 (LP: #104525). See http://www.pool.ntp.org/join.html for
+# more information.
+pool 0.ubuntu.pool.ntp.org iburst
+pool 1.ubuntu.pool.ntp.org iburst
+pool 2.ubuntu.pool.ntp.org iburst
+pool 3.ubuntu.pool.ntp.org iburst
+
+# Use Ubuntu's ntp server as a fallback.
+pool ntp.ubuntu.com
+
+# Access control configuration; see /usr/share/doc/ntp-doc/html/accopt.html for
+# details.  The web page <http://support.ntp.org/bin/view/Support/AccessRestrictions>
+# might also be helpful.
+#
+# Note that "restrict" applies to both servers and clients, so a configuration
+# that might be intended to block requests from certain clients could also end
+# up blocking replies from your own upstream servers.
+
+# By default, exchange time with everybody, but don't allow configuration.
+restrict -4 default kod notrap nomodify nopeer noquery limited
+restrict -6 default kod notrap nomodify nopeer noquery limited
+
+# Local users may interrogate the ntp server more closely.
+restrict 127.0.0.1
+restrict ::1
+
+# Needed for adding pool entries
+restrict source notrap nomodify noquery
+
+# Clients from this (example!) subnet have unlimited access, but only if
+# cryptographically authenticated.
+#restrict 192.168.123.0 mask 255.255.255.0 notrust
+
+
+# If you want to provide time to your local subnet, change the next line.
+# (Again, the address is an example only.)
+#broadcast 192.168.123.255
+
+# If you want to listen to time broadcasts on your local subnet, de-comment the
+# next lines.  Please do this only if you trust everybody on the network!
+#disable auth
+#broadcastclient
+
+#Changes recquired to use pps synchonisation as explained in documentation:
+#http://www.ntp.org/ntpfaq/NTP-s-config-adv.htm#AEN3918
+
+#server 127.127.8.1 mode 135 prefer    # Meinberg GPS167 with PPS
+#fudge 127.127.8.1 time1 0.0042        # relative to PPS for my hardware
+
+#server 127.127.22.1                   # ATOM(PPS)
+#fudge 127.127.22.1 flag3 1            # enable PPS API
+DC-AD01.ntq-solution.com.vn
+DC-AD02.ntq-solution.com.vn
+*** | *** | *** | root@ubu02:~# service ntp restart
+*** | *** | *** | root@ubu02:~# lsb_release
+No LSB modules are available.
+*** | *** | *** | root@ubu02:~# uname -a
+Linux ubu02 4.15.0-112-generic #113-Ubuntu SMP Thu Jul 9 23:41:39 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
+*** | *** | *** | root@ubu02:~# cat /etc/os-release
+NAME="Ubuntu"
+VERSION="18.04 LTS (Bionic Beaver)"
+ID=ubuntu
+ID_LIKE=debian
+PRETTY_NAME="Ubuntu 18.04 LTS"
+VERSION_ID="18.04"
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+VERSION_CODENAME=bionic
+UBUNTU_CODENAME=bionic
+*** | *** | *** | root@ubu02:~# real
+realm     realpath
+*** | *** | *** | root@ubu02:~# apt-get install realmd
+Display all 67584 possibilities? (y or n)
+*** | *** | *** | root@ubu02:~# apt-get install realmd
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+realmd is already the newest version (0.16.3-1).
+0 upgraded, 0 newly installed, 0 to remove and 392 not upgraded.
+*** | *** | *** | root@ubu02:~# nano /etc/realmd.conf
+*** | *** | *** | root@ubu02:~# nano /etc/realmd.conf
+*** | *** | *** | root@ubu02:~# cat /etc/realmd.conf
+[users]
+default-home = /home/%U
+default-shell = /bin/bash
+
+[active-directory]
+default-client = sssd
+os-name = Ubuntu Desktop Linux
+os-version = 18.04 LTS (Bionic Reaver)
+
+[service]
+automatic-install = no
+
+[ntq-solution.com.vn]
+fully-qualified-names = no
+automatic-id-mapping = yes
+user-principal = yes
+manage-system = no
+*** | *** | *** | root@ubu02:~# kinit join@NTQ-SOLUTION.COM.VN
+kinit: Client 'join@NTQ-SOLUTION.COM.VN' not found in Kerberos database while getting initial credentials
+*** | *** | *** | root@ubu02:~# kinit join@NTQ-SOLUTION.COM.VN
+Password for join@NTQ-SOLUTION.COM.VN:
+*** | *** | *** | root@ubu02:~#
+*** | *** | *** | root@ubu02:~#
+*** | *** | *** | root@ubu02:~# realm --verbose join ntq-solution.com.vn
+ * Resolving: _ldap._tcp.ntq-solution.com.vn
+ * Performing LDAP DSE lookup on: 192.168.1.55
+ * Successfully discovered: ntq-solution.com.vn
+ * Unconditionally checking packages
+ * Resolving required packages
+ * LANG=C /usr/sbin/adcli join --verbose --domain ntq-solution.com.vn --domain-realm NTQ-SOLUTION.COM.VN --domain-controller 192.168.1.55 --os-name Ubuntu Desktop Linux --os-version 18.04 LTS (Bionic Reaver) --login-type user --login-ccache=/var/cache/realmd/realm-ad-kerberos-1NDHO0 --user-principal
+ * Using domain name: ntq-solution.com.vn
+ * Calculated computer account name from fqdn: UBU02
+ * Using domain realm: ntq-solution.com.vn
+ * Sending netlogon pings to domain controller: cldap://192.168.1.55
+ * Received NetLogon info from: DC-AD01.ntq-solution.com.vn
+ * Wrote out krb5.conf snippet to /var/cache/realmd/adcli-krb5-mQoRBD/krb5.d/adcli-krb5-conf-lg18I1
+ * Looked up short domain name: NTQ-SOLUTION
+ * Using fully qualified name: ubu02
+ * Using domain name: ntq-solution.com.vn
+ * Using computer account name: UBU02
+ * Using domain realm: ntq-solution.com.vn
+ * Calculated computer account name from fqdn: UBU02
+ * With user principal: host/ubu02@NTQ-SOLUTION.COM.VN
+ * Generated 120 character computer password
+ * Using keytab: FILE:/etc/krb5.keytab
+ * Computer account for UBU02$ does not exist
+ * Found well known computer container at: CN=Computers,DC=ntq-solution,DC=com,DC=vn
+ * Calculated computer account: CN=UBU02,CN=Computers,DC=ntq-solution,DC=com,DC=vn
+ * Created computer account: CN=UBU02,CN=Computers,DC=ntq-solution,DC=com,DC=vn
+ * Set computer password
+ * Retrieved kvno '2' for computer account in directory: CN=UBU02,CN=Computers,DC=ntq-solution,DC=com,DC=vn
+ * Modifying computer account: dNSHostName
+ * Modifying computer account: userAccountControl
+ * Modifying computer account: operatingSystem, operatingSystemVersion, operatingSystemServicePack
+ * Modifying computer account: userPrincipalName
+ ! Couldn't set service principals on computer account CN=UBU02,CN=Computers,DC=ntq-solution,DC=com,DC=vn: 00002083: AtrErr: DSID-0315191D, #1:
+	0: 00002083: DSID-0315191D, problem 1006 (ATT_OR_VALUE_EXISTS), data 0, Att 90303 (servicePrincipalName)
+
+ * Discovered which keytab salt to use
+ * Added the entries to the keytab: UBU02$@NTQ-SOLUTION.COM.VN: FILE:/etc/krb5.keytab
+ * Added the entries to the keytab: host/ubu02@NTQ-SOLUTION.COM.VN: FILE:/etc/krb5.keytab
+ * Added the entries to the keytab: host/UBU02@NTQ-SOLUTION.COM.VN: FILE:/etc/krb5.keytab
+ * Cleared old entries from keytab: FILE:/etc/krb5.keytab
+ * Added the entries to the keytab: host/ubu02@NTQ-SOLUTION.COM.VN: FILE:/etc/krb5.keytab
+ * Added the entries to the keytab: RestrictedKrbHost/UBU02@NTQ-SOLUTION.COM.VN: FILE:/etc/krb5.keytab
+ * Added the entries to the keytab: RestrictedKrbHost/ubu02@NTQ-SOLUTION.COM.VN: FILE:/etc/krb5.keytab
+ * /usr/sbin/update-rc.d sssd enable
+ * /usr/sbin/service sssd restart
+ * Successfully enrolled machine in realm
+*** | *** | *** | root@ubu02:~# realm --verbose join ntq-solution.com.vn --user-principal=$hostname/administrator@NTQ-SOLUTION.COM.VN --unattended
+ * Resolving: _ldap._tcp.ntq-solution.com.vn
+ * Performing LDAP DSE lookup on: 192.168.1.55
+ * Successfully discovered: ntq-solution.com.vn
+realm: Already joined to this domain
+*** | *** | *** | root@ubu02:~# realm --verbose join ntq-solution.com.vn --user-principal=$hostname/join@NTQ-SOLUTION.COM.VN --unattended
+ * Resolving: _ldap._tcp.ntq-solution.com.vn
+ * Performing LDAP DSE lookup on: 192.168.1.55
+ * Successfully discovered: ntq-solution.com.vn
+realm: Already joined to this domain
+*** | *** | *** | root@ubu02:~# ls -ltra
+total 28
+-rw-r--r--  1 root root  148 Thg 8 17  2015 .profile
+-rw-r--r--  1 root root 3106 Thg 4  9  2018 .bashrc
+drwxr-xr-x  3 root root 4096 Thg 7  7 05:34 .local
+drwxr-xr-x 24 root root 4096 Thg 8  2 21:31 ..
+drwx------  3 root root 4096 Thg 8  3 14:41 .gnupg
+drwx------  5 root root 4096 Thg 8  3 14:41 .
+drwx------  2 root root 4096 Thg 8  3 14:41 .cache
+*** | *** | *** | root@ubu02:~# touch os.txt
+*** | *** | *** | root@ubu02:~# cat os.txt
+*** | *** | *** | root@ubu02:~# cat /etc/os-release
+NAME="Ubuntu"
+VERSION="18.04 LTS (Bionic Beaver)"
+ID=ubuntu
+ID_LIKE=debian
+PRETTY_NAME="Ubuntu 18.04 LTS"
+VERSION_ID="18.04"
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+VERSION_CODENAME=bionic
+UBUNTU_CODENAME=bionic
+*** | *** | *** | root@ubu02:~# ki
+kill      killall   killall5  kinit
+*** | *** | *** | root@ubu02:~# ki
+kill      killall   killall5  kinit
+*** | *** | *** | root@ubu02:~# kinit join
+Password for join@NTQ-SOLUTION.COM.VN:
+kinit: Password read interrupted while getting initial credentials
+*** | *** | *** | root@ubu02:~# id join
+uid=623402223(join) gid=623400513(domain users) groups=623400513(domain users),623400572(denied rodc password replication group),623400512(domain admins)
+*** | *** | *** | root@ubu02:~# cd /home/
+lost+found/ ubu02/
+*** | *** | *** | root@ubu02:~# cd /home/ubu02/
+*** | *** | *** | root@ubu02:/home/ubu02# dlist
+
+Command 'dlist' not found, did you mean:
+
+  command 'dlint' from snap dlint (0.10.2)
+  command 'fdlist' from deb fdutils
+  command 'klist' from deb heimdal-clients
+  command 'klist' from deb krb5-user
+  command 'dlint' from deb dlint
+  command 'dist' from deb mmh
+  command 'dist' from deb nmh
+  command 'flist' from deb mmh
+  command 'flist' from deb nmh
+  command 'mlist' from deb mblaze
+
+See 'snap info <snapname>' for additional versions.
+
+*** | *** | *** | root@ubu02:/home/ubu02# ls -ltra
+total 92
+drwxr-xr-x  4 root  root  4096 Thg 7  6 20:15 ..
+-rw-r--r--  1 ubu02 ubu02 8980 Thg 7  6 20:15 examples.desktop
+-rw-r--r--  1 ubu02 ubu02 3771 Thg 7  6 20:15 .bashrc
+-rw-r--r--  1 ubu02 ubu02  807 Thg 7  6 20:15 .profile
+-rw-r--r--  1 ubu02 ubu02  220 Thg 7  6 20:15 .bash_logout
+drwx------  3 ubu02 ubu02 4096 Thg 7  6 21:28 .local
+drwxr-xr-x  2 ubu02 ubu02 4096 Thg 7  6 21:28 Videos
+drwxr-xr-x  2 ubu02 ubu02 4096 Thg 7  6 21:28 Templates
+drwxr-xr-x  2 ubu02 ubu02 4096 Thg 7  6 21:28 Public
+drwxr-xr-x  2 ubu02 ubu02 4096 Thg 7  6 21:28 Pictures
+drwxr-xr-x  2 ubu02 ubu02 4096 Thg 7  6 21:28 Music
+drwxr-xr-x  2 ubu02 ubu02 4096 Thg 7  6 21:28 Downloads
+drwxr-xr-x  2 ubu02 ubu02 4096 Thg 7  6 21:28 Documents
+drwxr-xr-x  2 ubu02 ubu02 4096 Thg 7  6 21:28 Desktop
+drwx------  2 ubu02 ubu02 4096 Thg 7  6 21:41 .ssh
+drwx------  3 ubu02 ubu02 4096 Thg 7  6 21:41 .gnupg
+drwx------ 11 ubu02 ubu02 4096 Thg 7  7 05:31 .cache
+drwx------ 11 ubu02 ubu02 4096 Thg 7  7 05:33 .config
+-rw-r--r--  1 ubu02 ubu02    0 Thg 7  7 05:34 .sudo_as_admin_successful
+-rw-------  1 ubu02 ubu02  106 Thg 7  7 05:45 .bash_history
+-rw-------  1 ubu02 ubu02 1570 Thg 8  3 14:38 .ICEauthority
+drwxr-xr-x 15 ubu02 ubu02 4096 Thg 8  3 14:38 .
+*** | *** | *** | root@ubu02:/home/ubu02# cd ../
+*** | *** | *** | root@ubu02:/home# ls -ltra
+total 28
+drwx------  2 root  root  16384 Thg 7  6 20:08 lost+found
+drwxr-xr-x  4 root  root   4096 Thg 7  6 20:15 .
+drwxr-xr-x 24 root  root   4096 Thg 8  2 21:31 ..
+drwxr-xr-x 15 ubu02 ubu02  4096 Thg 8  3 14:38 ubu02
+*** | *** | *** | root@ubu02:/home# exit
+logout
+Connection to 192.168.1.45 closed.
+root@Blue3:~# ssh join@192.168.1.45
+join@192.168.1.45's password:
+Connection closed by 192.168.1.45 port 22
+root@Blue3:~# ssh root@192.168.1.45
+root@192.168.1.45's password:
+Permission denied, please try again.
+root@192.168.1.45's password:
+Permission denied, please try again.
+root@192.168.1.45's password:
+
+root@Blue3:~# ssh root@192.168.1.45
+root@192.168.1.45's password:
+Welcome to Ubuntu 18.04 LTS (GNU/Linux 4.15.0-112-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+
+ * Canonical Livepatch is available for installation.
+   - Reduce system reboots and improve kernel security. Activate at:
+     https://ubuntu.com/livepatch
+
+395 packages can be updated.
+109 updates are security updates.
+
+Last login: Mon Aug  3 14:42:14 2020 from 172.16.4.112
+*** | *** | *** | root@ubu02:~#
+*** | *** | *** | root@ubu02:~#
+*** | *** | *** | root@ubu02:~#
+*** | *** | *** | root@ubu02:~# nano /etc/sssd/
+conf.d/    sssd.conf
+*** | *** | *** | root@ubu02:~# nano /etc/sssd/sssd.conf
+*** | *** | *** | root@ubu02:~# cat $hostname
+^C
+*** | *** | *** | root@ubu02:~# cat hostname$
+cat: 'hostname$': No such file or directory
+*** | *** | *** | root@ubu02:~# nano /etc/sssd/sssd.conf
+*** | *** | *** | root@ubu02:~# service sssd restart
+*** | *** | *** | root@ubu02:~# echo "session required pam_unix.so
+> session optional pam_winbind.so
+> session optional pam_sss.so
+> session optional pam_systemd.so
+> session required pam_mkhomedir.so skel=/etc/skel/ umask=0077" >> /etc/pam.d/common-session
+*** | *** | *** | root@ubu02:~# cat /etc/pam.d/common-session
+#
+# /etc/pam.d/common-session - session-related modules common to all services
+#
+# This file is included from other service-specific PAM config files,
+# and should contain a list of modules that define tasks to be performed
+# at the start and end of sessions of *any* kind (both interactive and
+# non-interactive).
+#
+# As of pam 1.0.1-6, this file is managed by pam-auth-update by default.
+# To take advantage of this, it is recommended that you configure any
+# local modules either before or after the default block, and use
+# pam-auth-update to manage selection of other modules.  See
+# pam-auth-update(8) for details.
+
+# here are the per-package modules (the "Primary" block)
+session	[default=1]			pam_permit.so
+# here's the fallback if no module succeeds
+session	requisite			pam_deny.so
+# prime the stack with a positive return value if there isn't one already;
+# this avoids us returning an error just because nothing sets a success code
+# since the modules above will each just jump around
+session	required			pam_permit.so
+# The pam_umask module will set the umask according to the system default in
+# /etc/login.defs and user settings, solving the problem of different
+# umask settings with different shells, display managers, remote sessions etc.
+# See "man pam_umask".
+session optional			pam_umask.so
+# and here are more per-package modules (the "Additional" block)
+session	required	pam_unix.so
+session	optional			pam_sss.so
+session	optional	pam_systemd.so
+# end of pam-auth-update config
+session required pam_unix.so
+session optional pam_winbind.so
+session optional pam_sss.so
+session optional pam_systemd.so
+session required pam_mkhomedir.so skel=/etc/skel/ umask=0077
+*** | *** | *** | root@ubu02:~# id join
+uid=623402223(join) gid=623400513(domain users) groups=623400513(domain users),623400572(denied rodc password replication group),623400512(domain admins)
+*** | *** | *** | root@ubu02:~# cat /etc/group
+root:x:0:
+daemon:x:1:
+bin:x:2:
+sys:x:3:
+adm:x:4:syslog,ubu02
+tty:x:5:
+disk:x:6:
+lp:x:7:
+mail:x:8:
+news:x:9:
+uucp:x:10:
+man:x:12:
+proxy:x:13:
+kmem:x:15:
+dialout:x:20:
+fax:x:21:
+voice:x:22:
+cdrom:x:24:ubu02
+floppy:x:25:
+tape:x:26:
+sudo:x:27:ubu02
+audio:x:29:pulse
+dip:x:30:ubu02
+www-data:x:33:
+backup:x:34:
+operator:x:37:
+list:x:38:
+irc:x:39:
+src:x:40:
+gnats:x:41:
+shadow:x:42:
+utmp:x:43:
+video:x:44:
+sasl:x:45:
+plugdev:x:46:ubu02
+staff:x:50:
+games:x:60:
+users:x:100:
+nogroup:x:65534:
+systemd-journal:x:101:
+systemd-network:x:102:
+systemd-resolve:x:103:
+input:x:104:
+crontab:x:105:
+syslog:x:106:
+messagebus:x:107:
+netdev:x:108:
+mlocate:x:109:
+ssl-cert:x:110:
+uuidd:x:111:
+avahi-autoipd:x:112:
+bluetooth:x:113:
+rtkit:x:114:
+ssh:x:115:
+lpadmin:x:116:ubu02
+whoopsie:x:117:
+scanner:x:118:saned
+saned:x:119:
+pulse:x:120:
+pulse-access:x:121:
+avahi:x:122:
+colord:x:123:
+geoclue:x:124:
+gdm:x:125:
+ubu02:x:1000:
+sambashare:x:126:ubu02
+ntp:x:127:
+sssd:x:128:
+*** | *** | *** | root@ubu02:~# sudo usermod -aG adm join
+*** | *** | *** | root@ubu02:~# sudo usermod -aG sudo join
+*** | *** | *** | root@ubu02:~# sudo usermod -aG cdrom join
+*** | *** | *** | root@ubu02:~# sudo usermod -aG plugdev join
+*** | *** | *** | root@ubu02:~# sudo usermod -aG lpadmin join
+*** | *** | *** | root@ubu02:~# sudo usermod -aG sambashare join
+*** | *** | *** | root@ubu02:~# sudo usermod -aG dip join
+*** | *** | *** | root@ubu02:~# sudo usermod -aG hieu join
+usermod: group 'hieu' does not exist
+*** | *** | *** | root@ubu02:~# cat /home/
+join/       lost+found/ ubu02/
+*** | *** | *** | root@ubu02:~# cat /home/join/
+.bash_logout      .bashrc           .cache/           examples.desktop  .local/           .profile
+*** | *** | *** | root@ubu02:~# cd /home/join/
+*** | *** | *** | root@ubu02:/home/join# ls -ltra
+total 40
+drwxr-xr-x 5 root root         4096 Thg 8  3 15:15 ..
+-rw------- 1 join domain users 8980 Thg 8  3 15:15 examples.desktop
+-rw------- 1 join domain users 3771 Thg 8  3 15:15 .bashrc
+-rw------- 1 join domain users  807 Thg 8  3 15:15 .profile
+-rw------- 1 join domain users  220 Thg 8  3 15:15 .bash_logout
+drwx------ 3 join domain users 4096 Thg 8  3 15:15 .local
+drwx------ 4 join domain users 4096 Thg 8  3 15:15 .
+drwx------ 5 join domain users 4096 Thg 8  3 15:15 .cache
+*** | *** | *** | root@ubu02:/home/join# cat /etc/sssd/
+conf.d/    sssd.conf
+*** | *** | *** | root@ubu02:/home/join# cat /etc/sssd/
+conf.d/    sssd.conf
+*** | *** | *** | root@ubu02:/home/join# cat /etc/sssd/sssd.conf
+
+[sssd]
+domains = ntq-solution.com.vn
+config_file_version = 2
+services = nss, pam
+
+[domain/ntq-solution.com.vn]
+ad_domain = ntq-solution.com.vn
+krb5_realm = NTQ-SOLUTION.COM.VN
+realmd_tags = joined-with-adcli
+cache_credentials = True
+id_provider = ad
+krb5_store_password_if_offline = True
+default_shell = /bin/bash
+ldap_id_mapping = True
+use_fully_qualified_names = False
+fallback_homedir = /home/%u
+simple_allow_users = $
+access_provider = ad
+*** | *** | *** | root@ubu02:/home/join# nano /etc/sssd/sssd.conf
+*** | *** | *** | root@ubu02:/home/join# service sssd restart
+*** | *** | *** | root@ubu02:/home/join# Connection to 192.168.1.45 closed by remote host.
+Connection to 192.168.1.45 closed.
+root@Blue3:~# ssh root@192.168.1.45
+root@192.168.1.45's password:
+Welcome to Ubuntu 18.04 LTS (GNU/Linux 4.15.0-112-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+
+ * Canonical Livepatch is available for installation.
+   - Reduce system reboots and improve kernel security. Activate at:
+     https://ubuntu.com/livepatch
+
+395 packages can be updated.
+109 updates are security updates.
+
+Last login: Mon Aug  3 15:10:01 2020 from 172.16.4.112
+*** | *** | *** | root@ubu02:~# cat /etc/sssd/sssd.conf
+
+[sssd]
+domains = ntq-solution.com.vn
+config_file_version = 2
+services = nss, pam
+
+[domain/ntq-solution.com.vn]
+ad_domain = ntq-solution.com.vn
+krb5_realm = NTQ-SOLUTION.COM.VN
+realmd_tags = joined-with-adcli
+cache_credentials = True
+id_provider = ad
+krb5_store_password_if_offline = True
+default_shell = /bin/bash
+ldap_sasl_authid = ubu02
+ldap_id_mapping = True
+use_fully_qualified_names = False
+fallback_homedir = /home/%u
+simple_allow_users = $
+access_provider = ad
+*** | *** | *** | root@ubu02:~#
+
+*** | *** | root@ubu02:~# cp -a /home/ubu02/. /home/join -v
+'/home/ubu02/./examples.desktop' -> '/home/join/./examples.desktop'
+'/home/ubu02/./.bashrc' -> '/home/join/./.bashrc'
+'/home/ubu02/./.bash_logout' -> '/home/join/./.bash_logout'
+'/home/ubu02/./.profile' -> '/home/join/./.profile'
+'/home/ubu02/./.gnupg/pubring.kbx' -> '/home/join/./.gnupg/pubring.kbx'
+'/home/ubu02/./.gnupg/trustdb.gpg' -> '/home/join/./.gnupg/trustdb.gpg'
+'/home/ubu02/./.cache/ibus/bus/registry' -> '/home/join/./.cache/ibus/bus/registry'
+'/home/ubu02/./.cache/gnome-software/shell-extensions/gnome.json' -> '/home/join/./.cache/gnome-software/shell-extensions/gnome.json'
+'/home/ubu02/./.cache/gnome-software/fwupd' -> '/home/join/./.cache/gnome-software/fwupd'
+'/home/ubu02/./.cache/gnome-software/fwupd/remotes.d' -> '/home/join/./.cache/gnome-software/fwupd/remotes.d'
+'/home/ubu02/./.cache/gnome-software/fwupd/remotes.d/lvfs' -> '/home/join/./.cache/gnome-software/fwupd/remotes.d/lvfs'
+'/home/ubu02/./.cache/gnome-software/fwupd/remotes.d/lvfs/metadata.xml.gz.asc' -> '/home/join/./.cache/gnome-software/fwupd/remotes.d/lvfs/metadata.xml.gz.asc'
+'/home/ubu02/./.cache/gnome-software/fwupd/remotes.d/lvfs/metadata.xml.gz' -> '/home/join/./.cache/gnome-software/fwupd/remotes.d/lvfs/metadata.xml.gz'
+'/home/ubu02/./.cache/gnome-software/icons/9a8084e7776c84745fd6a565b51c0fd57ddce0de-512x512_XF6VNFl.png' -> '/home/join/./.cache/gnome-software/icons/9a8084e7776c84745fd6a565b51c0fd57ddce0de-512x512_XF6VNFl.png'
+'/home/ubu02/./.cache/gnome-software/icons/f6af97fd429f8bf44dfd9afefbac30ec7f7871fe-Zenkit_Todo_Icon_512.png' -> '/home/join/./.cache/gnome-software/icons/f6af97fd429f8bf44dfd9afefbac30ec7f7871fe-Zenkit_Todo_Icon_512.png'
+'/home/ubu02/./.cache/gnome-software/icons/c231dd718a0e5e282ca5a38df074a0483fa39a3b-accessories-calculator.png' -> '/home/join/./.cache/gnome-software/icons/c231dd718a0e5e282ca5a38df074a0483fa39a3b-accessories-calculator.png'
+'/home/ubu02/./.cache/gnome-software/icons/33e5c5c218865abc1e845f232631dbcc2bf38e04-wnweb.png' -> '/home/join/./.cache/gnome-software/icons/33e5c5c218865abc1e845f232631dbcc2bf38e04-wnweb.png'
+'/home/ubu02/./.cache/gnome-software/icons/d578175357d4abacc0cd892f16ab323ea536e0d2-minetest.png' -> '/home/join/./.cache/gnome-software/icons/d578175357d4abacc0cd892f16ab323ea536e0d2-minetest.png'
+'/home/ubu02/./.cache/gnome-software/icons/eb32a8f97b4317973f39dc73e75f19dd3fd0aa59-icon.png' -> '/home/join/./.cache/gnome-software/icons/eb32a8f97b4317973f39dc73e75f19dd3fd0aa59-icon.png'
+'/home/ubu02/./.cache/gnome-software/icons/1fcacb39f7555ac8cf94df5bd7b279fdb174bc03-icon256_f9302jP.png' -> '/home/join/./.cache/gnome-software/icons/1fcacb39f7555ac8cf94df5bd7b279fdb174bc03-icon256_f9302jP.png'
+'/home/ubu02/./.cache/gnome-software/icons/934d15b554644f1b204ddad21c7ed8a8195fd741-sdlpop.png' -> '/home/join/./.cache/gnome-software/icons/934d15b554644f1b204ddad21c7ed8a8195fd741-sdlpop.png'
+'/home/ubu02/./.cache/gnome-software/icons/9c20a5b19e23bbcde372312801683dfebc671c28-Blue-Rounded-512.png' -> '/home/join/./.cache/gnome-software/icons/9c20a5b19e23bbcde372312801683dfebc671c28-Blue-Rounded-512.png'
+'/home/ubu02/./.cache/gnome-software/icons/f64b67ad6e17f53cdbb8d82309b3cc34b6c59803-chromium-browser.png' -> '/home/join/./.cache/gnome-software/icons/f64b67ad6e17f53cdbb8d82309b3cc34b6c59803-chromium-browser.png'
+'/home/ubu02/./.cache/gnome-software/icons/f79d9d15d09d90f0d25818bdc3c34a3ac2fd93d6-Twist_pt7GNCq.png' -> '/home/join/./.cache/gnome-software/icons/f79d9d15d09d90f0d25818bdc3c34a3ac2fd93d6-Twist_pt7GNCq.png'
+'/home/ubu02/./.cache/gnome-software/icons/353cc2837b6eec9f1f2a0fdd71e7559dc3d4d70e-Zenkit_App_Icon_Full512.png' -> '/home/join/./.cache/gnome-software/icons/353cc2837b6eec9f1f2a0fdd71e7559dc3d4d70e-Zenkit_App_Icon_Full512.png'
+'/home/ubu02/./.cache/gnome-software/icons/895068db1063e82ec50be18cf63a9bd782415da0-dosbox-x.png' -> '/home/join/./.cache/gnome-software/icons/895068db1063e82ec50be18cf63a9bd782415da0-dosbox-x.png'
+'/home/ubu02/./.cache/gnome-software/icons/4d8c1fd87e2f5b4e6c6171cbfe2279fd744858b5-b8a85a31-MicroK8s_SnapStore_icon.png' -> '/home/join/./.cache/gnome-software/icons/4d8c1fd87e2f5b4e6c6171cbfe2279fd744858b5-b8a85a31-MicroK8s_SnapStore_icon.png'
+'/home/ubu02/./.cache/gnome-software/icons/5c022d3d84c2a3da90749effc2f5edd4acf357d2--NNP9RC0.png' -> '/home/join/./.cache/gnome-software/icons/5c022d3d84c2a3da90749effc2f5edd4acf357d2--NNP9RC0.png'
+'/home/ubu02/./.cache/gnome-software/icons/0904c77d45c89301293ba50309ad33ea4b8abfee-supertuxkart-256.png' -> '/home/join/./.cache/gnome-software/icons/0904c77d45c89301293ba50309ad33ea4b8abfee-supertuxkart-256.png'
+'/home/ubu02/./.cache/gnome-software/icons/d457edc5fe536a2029cdc4c9abdbbeccd6417f71-mattermost-desktop.png' -> '/home/join/./.cache/gnome-software/icons/d457edc5fe536a2029cdc4c9abdbbeccd6417f71-mattermost-desktop.png'
+'/home/ubu02/./.cache/gnome-software/icons/05df2e59b062932cbc01d41d30ebb51f50483ae7-icon_w5YGlFC.png' -> '/home/join/./.cache/gnome-software/icons/05df2e59b062932cbc01d41d30ebb51f50483ae7-icon_w5YGlFC.png'
+'/home/ubu02/./.cache/gnome-software/icons/9a2416be9513b0183e00ef958e0c8d38892b1109-mars-256_etORXwv.png' -> '/home/join/./.cache/gnome-software/icons/9a2416be9513b0183e00ef958e0c8d38892b1109-mars-256_etORXwv.png'
+'/home/ubu02/./.cache/gnome-software/icons/9461d5ce03dbad9bbf6821e5024dc462fd664d8d-icon.png' -> '/home/join/./.cache/gnome-software/icons/9461d5ce03dbad9bbf6821e5024dc462fd664d8d-icon.png'
+'/home/ubu02/./.cache/gnome-software/icons/cce3c494341bf36f5439cbdd344b24b196b58cd1-256.png' -> '/home/join/./.cache/gnome-software/icons/cce3c494341bf36f5439cbdd344b24b196b58cd1-256.png'
+'/home/ubu02/./.cache/gnome-software/icons/45793708ff0073e861e40099fa665aec365a898f-icon_app256_1.png' -> '/home/join/./.cache/gnome-software/icons/45793708ff0073e861e40099fa665aec365a898f-icon_app256_1.png'
+'/home/ubu02/./.cache/gnome-software/icons/a7f47d237fa33d66870c42f68143cbf136c27725-subtitld.png' -> '/home/join/./.cache/gnome-software/icons/a7f47d237fa33d66870c42f68143cbf136c27725-subtitld.png'
+'/home/ubu02/./.cache/gnome-software/icons/8f70ba7e918a61477b7d1f6b54349373141495a4-hiri-logo-256.png' -> '/home/join/./.cache/gnome-software/icons/8f70ba7e918a61477b7d1f6b54349373141495a4-hiri-logo-256.png'
+'/home/ubu02/./.cache/gnome-software/icons/c99f277e3dd19157483ddfc205b82d95021329b9-openra.png' -> '/home/join/./.cache/gnome-software/icons/c99f277e3dd19157483ddfc205b82d95021329b9-openra.png'
+'/home/ubu02/./.cache/gnome-software/icons/a7e8079764a8ede5f3e364fe8ca3b62afa460354-icon_EF4xFXa.png' -> '/home/join/./.cache/gnome-software/icons/a7e8079764a8ede5f3e364fe8ca3b62afa460354-icon_EF4xFXa.png'
+'/home/ubu02/./.cache/gnome-software/icons/61e7ecde9f33cf768bce16a5d7135865d793805a-opera_DrRnkh0.png' -> '/home/join/./.cache/gnome-software/icons/61e7ecde9f33cf768bce16a5d7135865d793805a-opera_DrRnkh0.png'
+'/home/ubu02/./.cache/gnome-software/icons/87b9161d12dcafb45a174744e27b481236d0e6ad-warzone2100.large.png' -> '/home/join/./.cache/gnome-software/icons/87b9161d12dcafb45a174744e27b481236d0e6ad-warzone2100.large.png'
+'/home/ubu02/./.cache/gnome-software/icons/6495eebc301f5c373d005a423eab05d966a71be2-notepad-plus-plus.png' -> '/home/join/./.cache/gnome-software/icons/6495eebc301f5c373d005a423eab05d966a71be2-notepad-plus-plus.png'
+'/home/ubu02/./.cache/gnome-software/icons/e1bb2cdfdb36efdc82ccdec09dfca06961e063f1-icon_IzCN8xA.png' -> '/home/join/./.cache/gnome-software/icons/e1bb2cdfdb36efdc82ccdec09dfca06961e063f1-icon_IzCN8xA.png'
+'/home/ubu02/./.cache/gnome-software/icons/e55e08cc0c673511e8027cf01b6078046e434b1a-icon_dark.ico.png' -> '/home/join/./.cache/gnome-software/icons/e55e08cc0c673511e8027cf01b6078046e434b1a-icon_dark.ico.png'
+'/home/ubu02/./.cache/gnome-software/icons/7172c35f9999131b024d7239ed874cbf2229bf79-shotcut-logo-256x256_1.png' -> '/home/join/./.cache/gnome-software/icons/7172c35f9999131b024d7239ed874cbf2229bf79-shotcut-logo-256x256_1.png'
+'/home/ubu02/./.cache/gnome-software/icons/1f25f4f30e71e8f78092a16b04634151356bfe0b-organize-my-files-icon-256x256.png' -> '/home/join/./.cache/gnome-software/icons/1f25f4f30e71e8f78092a16b04634151356bfe0b-organize-my-files-icon-256x256.png'
+'/home/ubu02/./.cache/gnome-software/icons/efefb4b7836a10162c7c5b9134beac5451a5c838-tmnationsforever.png' -> '/home/join/./.cache/gnome-software/icons/efefb4b7836a10162c7c5b9134beac5451a5c838-tmnationsforever.png'
+'/home/ubu02/./.cache/gnome-software/icons/6e1b49b8ab3d90d684268c9f9527725f2acd62b7-librepcb.png' -> '/home/join/./.cache/gnome-software/icons/6e1b49b8ab3d90d684268c9f9527725f2acd62b7-librepcb.png'
+'/home/ubu02/./.cache/gnome-software/icons/229bca367be22b55d61004772732725d216a83ab-QOwnNotes.png' -> '/home/join/./.cache/gnome-software/icons/229bca367be22b55d61004772732725d216a83ab-QOwnNotes.png'
+'/home/ubu02/./.cache/gnome-software/icons/dea56864b753381987084f5e028e8b73e9722716-xonotic_256x.png' -> '/home/join/./.cache/gnome-software/icons/dea56864b753381987084f5e028e8b73e9722716-xonotic_256x.png'
+'/home/ubu02/./.cache/gnome-software/icons/1fda18d20714a95e6f3f50b3d1e058b371b147fb-obs-studio.png' -> '/home/join/./.cache/gnome-software/icons/1fda18d20714a95e6f3f50b3d1e058b371b147fb-obs-studio.png'
+'/home/ubu02/./.cache/gnome-software/icons/1956bbffb67582609c583036d5329d529f4ce830-simplenote.png' -> '/home/join/./.cache/gnome-software/icons/1956bbffb67582609c583036d5329d529f4ce830-simplenote.png'
+'/home/ubu02/./.cache/gnome-software/icons/6152d2f7ea6415f0993eedb0c1d9673397a23466-boa.png' -> '/home/join/./.cache/gnome-software/icons/6152d2f7ea6415f0993eedb0c1d9673397a23466-boa.png'
+'/home/ubu02/./.cache/gnome-software/icons/babc259ea09975829015b4db2a18324be609caf7-icon_256.png' -> '/home/join/./.cache/gnome-software/icons/babc259ea09975829015b4db2a18324be609caf7-icon_256.png'
+'/home/ubu02/./.cache/gnome-software/icons/da4c8b3ebf770dd4c7c732e4bbca985c519b1999-Ghost-256px.png' -> '/home/join/./.cache/gnome-software/icons/da4c8b3ebf770dd4c7c732e4bbca985c519b1999-Ghost-256px.png'
+'/home/ubu02/./.cache/gnome-software/icons/6955575c4eabded3ab8183d40903a03a384083cc-mcinstaller.png' -> '/home/join/./.cache/gnome-software/icons/6955575c4eabded3ab8183d40903a03a384083cc-mcinstaller.png'
+'/home/ubu02/./.cache/gnome-software/icons/30b190ff6f0aff965681eb9f8e99641e543e311c-owl.png' -> '/home/join/./.cache/gnome-software/icons/30b190ff6f0aff965681eb9f8e99641e543e311c-owl.png'
+'/home/ubu02/./.cache/gnome-software/icons/3e8292eb4fbe7be80653936d923dffea0a098beb-Icon.ico.png' -> '/home/join/./.cache/gnome-software/icons/3e8292eb4fbe7be80653936d923dffea0a098beb-Icon.ico.png'
+'/home/ubu02/./.cache/gnome-software/icons/f53de11b2ed4541d9b5ebddbbd696756d588cfeb-oh-my-giraffe_256.png' -> '/home/join/./.cache/gnome-software/icons/f53de11b2ed4541d9b5ebddbbd696756d588cfeb-oh-my-giraffe_256.png'
+'/home/ubu02/./.cache/gnome-software/icons/81f7abab291c2779628e95241ef3651a0c8faf6f-icon.svg_evPQVPC.png' -> '/home/join/./.cache/gnome-software/icons/81f7abab291c2779628e95241ef3651a0c8faf6f-icon.svg_evPQVPC.png'
+'/home/ubu02/./.cache/gnome-software/icons/81e3cd771158e41cfa0969eaa3ae88646626f8fb-icon.ico.png' -> '/home/join/./.cache/gnome-software/icons/81e3cd771158e41cfa0969eaa3ae88646626f8fb-icon.ico.png'
+'/home/ubu02/./.cache/gnome-software/icons/7ac77d66878d76986ac510bd4c0fb93b4d1d3332-micropolis.png' -> '/home/join/./.cache/gnome-software/icons/7ac77d66878d76986ac510bd4c0fb93b4d1d3332-micropolis.png'
+'/home/ubu02/./.cache/gnome-software/icons/379f1f1dd667972de71fbc1e155e7877f33ac43e-mindustry.png' -> '/home/join/./.cache/gnome-software/icons/379f1f1dd667972de71fbc1e155e7877f33ac43e-mindustry.png'
+'/home/ubu02/./.cache/gnome-software/icons/b5db2ea08cf74878484306a87c59c77bf6cd14f1-256x256.png' -> '/home/join/./.cache/gnome-software/icons/b5db2ea08cf74878484306a87c59c77bf6cd14f1-256x256.png'
+'/home/ubu02/./.cache/gnome-software/icons/132ddc6dc4f8b457cc6b4967f834c833116d8232-quadrapassel.svg.png' -> '/home/join/./.cache/gnome-software/icons/132ddc6dc4f8b457cc6b4967f834c833116d8232-quadrapassel.svg.png'
+'/home/ubu02/./.cache/gnome-software/icons/770183b6e553071f05f5631b181f1dd15a4b91ab-icon.png' -> '/home/join/./.cache/gnome-software/icons/770183b6e553071f05f5631b181f1dd15a4b91ab-icon.png'
+'/home/ubu02/./.cache/gnome-software/icons/e4bb7fe3c845d8809bdbcb046a9ce71cbae332f3-openscad-256.png' -> '/home/join/./.cache/gnome-software/icons/e4bb7fe3c845d8809bdbcb046a9ce71cbae332f3-openscad-256.png'
+'/home/ubu02/./.cache/gnome-software/icons/830e5e1c9d02cee5b9d99dbf249466810e517fad-icon_app256_6.png' -> '/home/join/./.cache/gnome-software/icons/830e5e1c9d02cee5b9d99dbf249466810e517fad-icon_app256_6.png'
+'/home/ubu02/./.cache/gnome-software/icons/1454fd411f446435f0264dc80ea4dcd7a4fa4b00-evince.png' -> '/home/join/./.cache/gnome-software/icons/1454fd411f446435f0264dc80ea4dcd7a4fa4b00-evince.png'
+'/home/ubu02/./.cache/gnome-software/icons/460c65f7b9c3a41fd2c093b341d3fe29750b1a19-logo_gD0VBxD.png' -> '/home/join/./.cache/gnome-software/icons/460c65f7b9c3a41fd2c093b341d3fe29750b1a19-logo_gD0VBxD.png'
+'/home/ubu02/./.cache/gnome-software/icons/c23b17ab44a60e90ca1d3850ef6a7476799ae142-icon_24.png' -> '/home/join/./.cache/gnome-software/icons/c23b17ab44a60e90ca1d3850ef6a7476799ae142-icon_24.png'
+'/home/ubu02/./.cache/gnome-software/icons/6b96ae718dd1bb30451d50b4ee9b52184be62251-scummvm_icon_512.png' -> '/home/join/./.cache/gnome-software/icons/6b96ae718dd1bb30451d50b4ee9b52184be62251-scummvm_icon_512.png'
+'/home/ubu02/./.cache/gnome-software/icons/1b349316d6805e4f305e4e2d207dad6248bf5a93-LibreOffice-Initial-Artwork-Logo.png' -> '/home/join/./.cache/gnome-software/icons/1b349316d6805e4f305e4e2d207dad6248bf5a93-LibreOffice-Initial-Artwork-Logo.png'
+'/home/ubu02/./.cache/gnome-software/icons/c0cac08604a88607cc63b6dbf459dcc422c5c729-codebreakers.png' -> '/home/join/./.cache/gnome-software/icons/c0cac08604a88607cc63b6dbf459dcc422c5c729-codebreakers.png'
+'/home/ubu02/./.cache/gnome-software/icons/547b40172a110e061ce9c9838cabe9a1f0548522-containers.png' -> '/home/join/./.cache/gnome-software/icons/547b40172a110e061ce9c9838cabe9a1f0548522-containers.png'
+'/home/ubu02/./.cache/gnome-software/icons/6cc8007614a557fe7009ddb3d63327130069ac39-tome.png' -> '/home/join/./.cache/gnome-software/icons/6cc8007614a557fe7009ddb3d63327130069ac39-tome.png'
+'/home/ubu02/./.cache/gnome-software/icons/7a8133f078bf5350df0d56a8d7c53f03c0854d78-shattered-pixel-dungeon.png' -> '/home/join/./.cache/gnome-software/icons/7a8133f078bf5350df0d56a8d7c53f03c0854d78-shattered-pixel-dungeon.png'
+'/home/ubu02/./.cache/gnome-software/icons/c625b362c10bb49c7c86277bde7cdf79b70afc5e-book.png' -> '/home/join/./.cache/gnome-software/icons/c625b362c10bb49c7c86277bde7cdf79b70afc5e-book.png'
+'/home/ubu02/./.cache/gnome-software/icons/9d08d2edd2ff8ec1864fdf26ec59075c864000a4-banner-icon.png' -> '/home/join/./.cache/gnome-software/icons/9d08d2edd2ff8ec1864fdf26ec59075c864000a4-banner-icon.png'
+'/home/ubu02/./.cache/gnome-software/icons/1b238257460c15bcd8635d5dd4815221b106e696-whatami.png' -> '/home/join/./.cache/gnome-software/icons/1b238257460c15bcd8635d5dd4815221b106e696-whatami.png'
+'/home/ubu02/./.cache/gnome-software/icons/4a3f3f6f91edddd9587742307052eaa03b890003-icon.svg_4.png' -> '/home/join/./.cache/gnome-software/icons/4a3f3f6f91edddd9587742307052eaa03b890003-icon.svg_4.png'
+'/home/ubu02/./.cache/gnome-software/icons/f09a7f52046605cc09a7142fa711b2fb671ab1af-Scroll_ICON.png' -> '/home/join/./.cache/gnome-software/icons/f09a7f52046605cc09a7142fa711b2fb671ab1af-Scroll_ICON.png'
+'/home/ubu02/./.cache/gnome-software/icons/180e16b12c23fcc24fbc22ca808b3b54133eb07b-urban-terror_vKNyrRA.png' -> '/home/join/./.cache/gnome-software/icons/180e16b12c23fcc24fbc22ca808b3b54133eb07b-urban-terror_vKNyrRA.png'
+'/home/ubu02/./.cache/gnome-software/icons/4e4876e68dbb2defb4fdf002a034bca66a443920-tpad.png' -> '/home/join/./.cache/gnome-software/icons/4e4876e68dbb2defb4fdf002a034bca66a443920-tpad.png'
+'/home/ubu02/./.cache/gnome-software/icons/5aa032cb3117e58566939b70eb192552dc5b5a3d-tmx_1.png' -> '/home/join/./.cache/gnome-software/icons/5aa032cb3117e58566939b70eb192552dc5b5a3d-tmx_1.png'
+'/home/ubu02/./.cache/gnome-software/icons/01bf2c46b4684178bca1a1cbdf0ca00141071b6f-icon_6p3n6M7.png' -> '/home/join/./.cache/gnome-software/icons/01bf2c46b4684178bca1a1cbdf0ca00141071b6f-icon_6p3n6M7.png'
+'/home/ubu02/./.cache/gnome-software/icons/55634c59cfeb9a984315379903453fea99aae0b5-tizonia-logo-256.png' -> '/home/join/./.cache/gnome-software/icons/55634c59cfeb9a984315379903453fea99aae0b5-tizonia-logo-256.png'
+'/home/ubu02/./.cache/gnome-software/icons/c3fa42400a0fa6c34a9253f65e5d048ea740746e-tio-256x256.png' -> '/home/join/./.cache/gnome-software/icons/c3fa42400a0fa6c34a9253f65e5d048ea740746e-tio-256x256.png'
+'/home/ubu02/./.cache/gnome-software/icons/5ee70066e324b3597b00dcb58a93fdfc77409601-tidec.png' -> '/home/join/./.cache/gnome-software/icons/5ee70066e324b3597b00dcb58a93fdfc77409601-tidec.png'
+'/home/ubu02/./.cache/gnome-software/icons/10f3db35429eda68f7becd7ea3eb05d3177f18cf-icon_256_1.png' -> '/home/join/./.cache/gnome-software/icons/10f3db35429eda68f7becd7ea3eb05d3177f18cf-icon_256_1.png'
+'/home/ubu02/./.cache/gnome-software/icons/20e97c65422a8011ad53dd12929052bddf109e3b-icon_MZV58q1.png' -> '/home/join/./.cache/gnome-software/icons/20e97c65422a8011ad53dd12929052bddf109e3b-icon_MZV58q1.png'
+'/home/ubu02/./.cache/gnome-software/icons/12002366d274168a7c08b901b0bee7687968a1c8-mrrescue.png' -> '/home/join/./.cache/gnome-software/icons/12002366d274168a7c08b901b0bee7687968a1c8-mrrescue.png'
+'/home/ubu02/./.cache/gnome-software/icons/3c6246166ad4b05357169ba5ff70805d8046f92f-Freemind_Splash_Butterfly_Modern_256.png' -> '/home/join/./.cache/gnome-software/icons/3c6246166ad4b05357169ba5ff70805d8046f92f-Freemind_Splash_Butterfly_Modern_256.png'
+'/home/ubu02/./.cache/gnome-software/icons/f23ae18dca3cf4a51d97785fce734b24daf3cf28-duckmarines.png' -> '/home/join/./.cache/gnome-software/icons/f23ae18dca3cf4a51d97785fce734b24daf3cf28-duckmarines.png'
+'/home/ubu02/./.cache/gnome-software/icons/ae32388fff6a5c47f91176b502ca2e50112155a6-icon_256x256.png' -> '/home/join/./.cache/gnome-software/icons/ae32388fff6a5c47f91176b502ca2e50112155a6-icon_256x256.png'
+'/home/ubu02/./.cache/gnome-software/icons/a51773b4002aaa3f31e474ddc825c120402b1175-zzt_256a.png' -> '/home/join/./.cache/gnome-software/icons/a51773b4002aaa3f31e474ddc825c120402b1175-zzt_256a.png'
+'/home/ubu02/./.cache/gnome-software/icons/0e349a546e1d04095c0fd7c734edde2cad19dd19-mutt256.png' -> '/home/join/./.cache/gnome-software/icons/0e349a546e1d04095c0fd7c734edde2cad19dd19-mutt256.png'
+'/home/ubu02/./.cache/gnome-software/icons/e9bdadf077ea48bc123ee3272fd48428bdca3860-128-apps-kfourinline.png' -> '/home/join/./.cache/gnome-software/icons/e9bdadf077ea48bc123ee3272fd48428bdca3860-128-apps-kfourinline.png'
+'/home/ubu02/./.cache/gnome-software/icons/39c38c8a33ac407604b8810a2abde32b12667bcd-logo.png' -> '/home/join/./.cache/gnome-software/icons/39c38c8a33ac407604b8810a2abde32b12667bcd-logo.png'
+'/home/ubu02/./.cache/gnome-software/icons/a1bad5345f7d8ab427ad15f1c543b3457e2177cf-kapman.png' -> '/home/join/./.cache/gnome-software/icons/a1bad5345f7d8ab427ad15f1c543b3457e2177cf-kapman.png'
+'/home/ubu02/./.cache/gnome-software/icons/9ed198037912509bbfa4363c86c71da39fb98f58-android-chrome-512x512.png' -> '/home/join/./.cache/gnome-software/icons/9ed198037912509bbfa4363c86c71da39fb98f58-android-chrome-512x512.png'
+'/home/ubu02/./.cache/gnome-software/icons/40b254bbcd43964555d232c9b402f963d46ffb9a-klickety.png' -> '/home/join/./.cache/gnome-software/icons/40b254bbcd43964555d232c9b402f963d46ffb9a-klickety.png'
+'/home/ubu02/./.cache/gnome-software/icons/9befe665a9896df70e17c0b22431aed1e66f8c72-icon-256_sDZsivC.png' -> '/home/join/./.cache/gnome-software/icons/9befe665a9896df70e17c0b22431aed1e66f8c72-icon-256_sDZsivC.png'
+'/home/ubu02/./.cache/gnome-software/icons/0695116214c356dcd95b85372fc0eea2b183ea53-bomber.svg.png' -> '/home/join/./.cache/gnome-software/icons/0695116214c356dcd95b85372fc0eea2b183ea53-bomber.svg.png'
+'/home/ubu02/./.cache/gnome-software/icons/6158cea33e53356bc1b1d08970d81e794e6bb682-256x256_xkFQhde.png' -> '/home/join/./.cache/gnome-software/icons/6158cea33e53356bc1b1d08970d81e794e6bb682-256x256_xkFQhde.png'
+'/home/ubu02/./.cache/gnome-software/icons/4bcd0e69c25b64647575e1b127a8477b1d40feb3-kspaceduel.png' -> '/home/join/./.cache/gnome-software/icons/4bcd0e69c25b64647575e1b127a8477b1d40feb3-kspaceduel.png'
+'/home/ubu02/./.cache/gnome-software/icons/88de8c9fb4a19bf7979980f672d1867545063d51-icon_6lKgubE.png' -> '/home/join/./.cache/gnome-software/icons/88de8c9fb4a19bf7979980f672d1867545063d51-icon_6lKgubE.png'
+'/home/ubu02/./.cache/gnome-software/icons/319dfc7b8d6657e0bceb5d6cfa7dd56134e6b2ee-kanagramicon.png' -> '/home/join/./.cache/gnome-software/icons/319dfc7b8d6657e0bceb5d6cfa7dd56134e6b2ee-kanagramicon.png'
+'/home/ubu02/./.cache/gnome-software/icons/e869627a7b90632cc1c4b25b9bab047be148bc8e-Snapcraft_256x256.png' -> '/home/join/./.cache/gnome-software/icons/e869627a7b90632cc1c4b25b9bab047be148bc8e-Snapcraft_256x256.png'
+'/home/ubu02/./.cache/gnome-software/icons/a692076eb30220f3fa07ec1c02ea98aea89ac95f-granatier.svg.png' -> '/home/join/./.cache/gnome-software/icons/a692076eb30220f3fa07ec1c02ea98aea89ac95f-granatier.svg.png'
+'/home/ubu02/./.cache/gnome-software/icons/a0aa36f3b88f47afd1042b64fddb6fdc1943ddc3-org.gnome.Calendar.png' -> '/home/join/./.cache/gnome-software/icons/a0aa36f3b88f47afd1042b64fddb6fdc1943ddc3-org.gnome.Calendar.png'
+'/home/ubu02/./.cache/gnome-software/icons/b1907f91ef077f7f96f5eef1c25527c6fd366395-klines.png' -> '/home/join/./.cache/gnome-software/icons/b1907f91ef077f7f96f5eef1c25527c6fd366395-klines.png'
+'/home/ubu02/./.cache/gnome-software/icons/f18ea17f4b4ffa3d30e2101953bdef306b84e68f-256x256_sOCUiJv.png' -> '/home/join/./.cache/gnome-software/icons/f18ea17f4b4ffa3d30e2101953bdef306b84e68f-256x256_sOCUiJv.png'
+'/home/ubu02/./.cache/gnome-software/icons/dbf3bc9d1a83f1230a7c6ac361b2785f655ca075-ksnakeduel_Tm67e6C.png' -> '/home/join/./.cache/gnome-software/icons/dbf3bc9d1a83f1230a7c6ac361b2785f655ca075-ksnakeduel_Tm67e6C.png'
+'/home/ubu02/./.cache/gnome-software/icons/7ce1db1fd294423284f45bda543ebd9fef07614b-256x256.png' -> '/home/join/./.cache/gnome-software/icons/7ce1db1fd294423284f45bda543ebd9fef07614b-256x256.png'
+'/home/ubu02/./.cache/gnome-software/icons/4bb50967c9125609532903aa13b0b1b6c274c0dd-kubrick.png' -> '/home/join/./.cache/gnome-software/icons/4bb50967c9125609532903aa13b0b1b6c274c0dd-kubrick.png'
+'/home/ubu02/./.cache/gnome-software/icons/7bf7bb873a9ca16c57b576bde911d6fb0d8bc05d-Skype.png' -> '/home/join/./.cache/gnome-software/icons/7bf7bb873a9ca16c57b576bde911d6fb0d8bc05d-Skype.png'
+'/home/ubu02/./.cache/gnome-software/icons/55b802383834c6c766324926659fe71daedd169e-palapeli_9eQYMiV.png' -> '/home/join/./.cache/gnome-software/icons/55b802383834c6c766324926659fe71daedd169e-palapeli_9eQYMiV.png'
+'/home/ubu02/./.cache/gnome-software/icons/a58035177eaa46bf9c6ea492c8a31fd8cd1436ef-256x256_bLkzrbB.png' -> '/home/join/./.cache/gnome-software/icons/a58035177eaa46bf9c6ea492c8a31fd8cd1436ef-256x256_bLkzrbB.png'
+'/home/ubu02/./.cache/gnome-software/icons/482da79d0ef3e65f9cf69e13cdb69ae67a2e43f4-kblackbox.png' -> '/home/join/./.cache/gnome-software/icons/482da79d0ef3e65f9cf69e13cdb69ae67a2e43f4-kblackbox.png'
+'/home/ubu02/./.cache/gnome-software/icons/d8a88d7d1a9cc8829da44e6be0d501730dbb5717-speedy-duplicate-finder-icon-256.png' -> '/home/join/./.cache/gnome-software/icons/d8a88d7d1a9cc8829da44e6be0d501730dbb5717-speedy-duplicate-finder-icon-256.png'
+'/home/ubu02/./.cache/gnome-software/icons/5198e802c0ad6c531b3203ca3216fdb4a94966fb-killbots_3X2FBuM.png' -> '/home/join/./.cache/gnome-software/icons/5198e802c0ad6c531b3203ca3216fdb4a94966fb-killbots_3X2FBuM.png'
+'/home/ubu02/./.cache/gnome-software/icons/96b90347fc5d2047122de8f3034239b0d259ed66-org.remmina.Remmina.png' -> '/home/join/./.cache/gnome-software/icons/96b90347fc5d2047122de8f3034239b0d259ed66-org.remmina.Remmina.png'
+'/home/ubu02/./.cache/gnome-software/icons/6b6c1ecbee313326a78a1bc3114abe27643dca86-new_domotz_icon.png' -> '/home/join/./.cache/gnome-software/icons/6b6c1ecbee313326a78a1bc3114abe27643dca86-new_domotz_icon.png'
+'/home/ubu02/./.cache/gnome-software/icons/b5eefc8b90685e21fcbfd7110329fe70e7bee642-gedit.png' -> '/home/join/./.cache/gnome-software/icons/b5eefc8b90685e21fcbfd7110329fe70e7bee642-gedit.png'
+'/home/ubu02/./.cache/gnome-software/icons/e30f1348a8a0e4c73bbf152f927275c3801a7cbf-icon_l8OdzU6.png' -> '/home/join/./.cache/gnome-software/icons/e30f1348a8a0e4c73bbf152f927275c3801a7cbf-icon_l8OdzU6.png'
+'/home/ubu02/./.cache/gnome-software/icons/41330ce70a83f2ebcc14b0c58110f9b1ee58d783-icon_5EOhjry.png' -> '/home/join/./.cache/gnome-software/icons/41330ce70a83f2ebcc14b0c58110f9b1ee58d783-icon_5EOhjry.png'
+'/home/ubu02/./.cache/gnome-software/icons/9e3922242a79b58c9c2aaaad6b116422420f6d0f-Icon-512.png' -> '/home/join/./.cache/gnome-software/icons/9e3922242a79b58c9c2aaaad6b116422420f6d0f-Icon-512.png'
+'/home/ubu02/./.cache/gnome-software/icons/20c7d28ba9350deee56121cedb3b91da488d99cc-firefox256.png' -> '/home/join/./.cache/gnome-software/icons/20c7d28ba9350deee56121cedb3b91da488d99cc-firefox256.png'
+'/home/ubu02/./.cache/gnome-software/icons/4e32ce1f7b7ae457cccfaee47950343badffe128-512x512.png' -> '/home/join/./.cache/gnome-software/icons/4e32ce1f7b7ae457cccfaee47950343badffe128-512x512.png'
+'/home/ubu02/./.cache/gnome-software/icons/e154a8469d4f64b73660e9d679a4c33d4d638de0-unnamed.png' -> '/home/join/./.cache/gnome-software/icons/e154a8469d4f64b73660e9d679a4c33d4d638de0-unnamed.png'
+'/home/ubu02/./.cache/gnome-software/icons/d1ca6d7d4ab5db61af13a848cd8daf4c370b8722-ephemeral_0vk4L9j.png' -> '/home/join/./.cache/gnome-software/icons/d1ca6d7d4ab5db61af13a848cd8daf4c370b8722-ephemeral_0vk4L9j.png'
+'/home/ubu02/./.cache/gnome-software/icons/ce3e7dfa363c67a7255f90ac3d2b16e7461f389b-logo_dD2xVph.png' -> '/home/join/./.cache/gnome-software/icons/ce3e7dfa363c67a7255f90ac3d2b16e7461f389b-logo_dD2xVph.png'
+'/home/ubu02/./.cache/gnome-software/icons/56a7fe4a0819f942c28843cf0183354b133bab86-Powershell_black.ico.png' -> '/home/join/./.cache/gnome-software/icons/56a7fe4a0819f942c28843cf0183354b133bab86-Powershell_black.ico.png'
+'/home/ubu02/./.cache/gnome-software/icons/5da56aa38b77dfd73dfc7d122f02849db6ecb878-icon_YaX68vI.png' -> '/home/join/./.cache/gnome-software/icons/5da56aa38b77dfd73dfc7d122f02849db6ecb878-icon_YaX68vI.png'
+'/home/ubu02/./.cache/gnome-software/icons/bd1e13331b78ac2bdc1ac3986ea486402d24be50-rsz_android_studio_icon.png' -> '/home/join/./.cache/gnome-software/icons/bd1e13331b78ac2bdc1ac3986ea486402d24be50-rsz_android_studio_icon.png'
+'/home/ubu02/./.cache/gnome-software/icons/bb09826e06999e558434b7f8b0cc2f13ac0fc275-256-GTK_logo.png' -> '/home/join/./.cache/gnome-software/icons/bb09826e06999e558434b7f8b0cc2f13ac0fc275-256-GTK_logo.png'
+'/home/ubu02/./.cache/gnome-software/icons/1ac68c9d3e0b2ef711c217d7b9c81470e66522c4-icon_fvVGr52.png' -> '/home/join/./.cache/gnome-software/icons/1ac68c9d3e0b2ef711c217d7b9c81470e66522c4-icon_fvVGr52.png'
+'/home/ubu02/./.cache/gnome-software/icons/0d1fefba5305851af4f8106615196c8d093eb7b4-multipass.png' -> '/home/join/./.cache/gnome-software/icons/0d1fefba5305851af4f8106615196c8d093eb7b4-multipass.png'
+'/home/ubu02/./.cache/gnome-software/icons/cb19354b1cbae39b801c5963adcdd86a41ad54d6-easy-file-organizer-icon.png' -> '/home/join/./.cache/gnome-software/icons/cb19354b1cbae39b801c5963adcdd86a41ad54d6-easy-file-organizer-icon.png'
+'/home/ubu02/./.cache/gnome-software/icons/80dc159d94beb6382aabb190a1db4ddb008c340f-smart-file-renamer-icon-512.png' -> '/home/join/./.cache/gnome-software/icons/80dc159d94beb6382aabb190a1db4ddb008c340f-smart-file-renamer-icon-512.png'
+'/home/ubu02/./.cache/gnome-software/icons/e557dcc583960daf20d684341bab6f8c6bdd1e93-large-files-finder-icon-256.png' -> '/home/join/./.cache/gnome-software/icons/e557dcc583960daf20d684341bab6f8c6bdd1e93-large-files-finder-icon-256.png'
+'/home/ubu02/./.cache/gnome-software/icons/c8aef6476c95e2f699a4754681bb630c7154fd70-icon_sMKeoSb.png' -> '/home/join/./.cache/gnome-software/icons/c8aef6476c95e2f699a4754681bb630c7154fd70-icon_sMKeoSb.png'
+'/home/ubu02/./.cache/gnome-software/icons/cff505fc1b1c391fff1531ffedb1466239135485-icon_wLD6w79.png' -> '/home/join/./.cache/gnome-software/icons/cff505fc1b1c391fff1531ffedb1466239135485-icon_wLD6w79.png'
+'/home/ubu02/./.cache/gnome-software/icons/568baa1327b00e7f17003434538e419fd3f44126-PostIt-512x512.png_feSRmbZ.png' -> '/home/join/./.cache/gnome-software/icons/568baa1327b00e7f17003434538e419fd3f44126-PostIt-512x512.png_feSRmbZ.png'
+'/home/ubu02/./.cache/gnome-software/icons/de08e6232e32b20b950e45024d8bbd1c18c7cf86-icon_60sKxPN.png' -> '/home/join/./.cache/gnome-software/icons/de08e6232e32b20b950e45024d8bbd1c18c7cf86-icon_60sKxPN.png'
+'/home/ubu02/./.cache/gnome-software/icons/80e285a06518153157425239fe43c0904a31c6d7-cmd_logo_512x512.png' -> '/home/join/./.cache/gnome-software/icons/80e285a06518153157425239fe43c0904a31c6d7-cmd_logo_512x512.png'
+'/home/ubu02/./.cache/gnome-software/icons/ede3479e8f0464d1c8ad02c232a8a5dcac4682b7-terraform.png' -> '/home/join/./.cache/gnome-software/icons/ede3479e8f0464d1c8ad02c232a8a5dcac4682b7-terraform.png'
+'/home/ubu02/./.cache/gnome-software/icons/e8d4d3e7ba988227325f8602fcb981a59f9156ae-icon_RAABqxR.png' -> '/home/join/./.cache/gnome-software/icons/e8d4d3e7ba988227325f8602fcb981a59f9156ae-icon_RAABqxR.png'
+'/home/ubu02/./.cache/gnome-software/icons/89468e71ea45b3cfdce4b940992e7057703ec78b-icon_256_x_256.png' -> '/home/join/./.cache/gnome-software/icons/89468e71ea45b3cfdce4b940992e7057703ec78b-icon_256_x_256.png'
+'/home/ubu02/./.cache/gnome-software/icons/a5aa70090eae90809a5bba734234d5270567adf4-emacs_2c1XSzj.png' -> '/home/join/./.cache/gnome-software/icons/a5aa70090eae90809a5bba734234d5270567adf4-emacs_2c1XSzj.png'
+'/home/ubu02/./.cache/gnome-software/icons/3b6eecbeba2ce2c63d1bb577594f54372501deb1-Icon-512.png' -> '/home/join/./.cache/gnome-software/icons/3b6eecbeba2ce2c63d1bb577594f54372501deb1-Icon-512.png'
+'/home/ubu02/./.cache/gnome-software/icons/33aebf9a50ed79b45cc715feb9ee495793fd5427-square_registrac_app_PXOgCfi.png' -> '/home/join/./.cache/gnome-software/icons/33aebf9a50ed79b45cc715feb9ee495793fd5427-square_registrac_app_PXOgCfi.png'
+'/home/ubu02/./.cache/gnome-software/icons/7f77eedb18e3b8d5b249f5fb3ab3dfd8f18c188c-icon.svg_aQ4VnVL.png' -> '/home/join/./.cache/gnome-software/icons/7f77eedb18e3b8d5b249f5fb3ab3dfd8f18c188c-icon.svg_aQ4VnVL.png'
+'/home/ubu02/./.cache/gnome-software/icons/c3ef8bd453f9b5571cbc20871c2fa5720e1aa061-monkey-face-cartoon_256x256.png' -> '/home/join/./.cache/gnome-software/icons/c3ef8bd453f9b5571cbc20871c2fa5720e1aa061-monkey-face-cartoon_256x256.png'
+'/home/ubu02/./.cache/gnome-software/icons/c3223980e43de67275b097d98340263b0d7b68f0-icon.svg_JtFjzqW.png' -> '/home/join/./.cache/gnome-software/icons/c3223980e43de67275b097d98340263b0d7b68f0-icon.svg_JtFjzqW.png'
+'/home/ubu02/./.cache/gnome-software/icons/31d524fab4b39a1bdf83440625be724bfae7cad2-logo256.png' -> '/home/join/./.cache/gnome-software/icons/31d524fab4b39a1bdf83440625be724bfae7cad2-logo256.png'
+'/home/ubu02/./.cache/gnome-software/icons/3011445c512dd079ddae2e806dd1cfbb53ae950f-512x512_o5ENLN2.png' -> '/home/join/./.cache/gnome-software/icons/3011445c512dd079ddae2e806dd1cfbb53ae950f-512x512_o5ENLN2.png'
+'/home/ubu02/./.cache/gnome-software/icons/ed0f8e4705926f3b5cfddff002236f3de35af2c1-square.png' -> '/home/join/./.cache/gnome-software/icons/ed0f8e4705926f3b5cfddff002236f3de35af2c1-square.png'
+'/home/ubu02/./.cache/gnome-software/icons/eda1b31676f9e7e990463a70db00c880f3e2a951-Icon-192.png' -> '/home/join/./.cache/gnome-software/icons/eda1b31676f9e7e990463a70db00c880f3e2a951-Icon-192.png'
+'/home/ubu02/./.cache/gnome-software/icons/8c409c1f5dcdf083035122a12b8991a919dac696-icon.svg_7Eenexu.png' -> '/home/join/./.cache/gnome-software/icons/8c409c1f5dcdf083035122a12b8991a919dac696-icon.svg_7Eenexu.png'
+'/home/ubu02/./.cache/gnome-software/icons/e0369515e08bed41349b16275455e690999a594e-typeapp-logo_1.png' -> '/home/join/./.cache/gnome-software/icons/e0369515e08bed41349b16275455e690999a594e-typeapp-logo_1.png'
+'/home/ubu02/./.cache/gnome-software/icons/737bf6f826619dfdd2b43e6301662cac276e7e37-512x512_YhQtrYE.png' -> '/home/join/./.cache/gnome-software/icons/737bf6f826619dfdd2b43e6301662cac276e7e37-512x512_YhQtrYE.png'
+'/home/ubu02/./.cache/gnome-software/icons/cafa89d3130e39f93347a4652a8f13938150a2e2-icon_XbciHSr.png' -> '/home/join/./.cache/gnome-software/icons/cafa89d3130e39f93347a4652a8f13938150a2e2-icon_XbciHSr.png'
+'/home/ubu02/./.cache/gnome-software/icons/8d8d8a51f09cfdab4158a7ac522c0c14d519d535-android-chrome-512x512.png' -> '/home/join/./.cache/gnome-software/icons/8d8d8a51f09cfdab4158a7ac522c0c14d519d535-android-chrome-512x512.png'
+'/home/ubu02/./.cache/gnome-software/icons/6f6996e85b681a145d6ace7ebbcfe2d079814d58-icon_512x512.png' -> '/home/join/./.cache/gnome-software/icons/6f6996e85b681a145d6ace7ebbcfe2d079814d58-icon_512x512.png'
+'/home/ubu02/./.cache/gnome-software/icons/904ddaf5a6f3e849d89bfd42cb956fab2f85fcbe-14079885_1241390069214555_935150981832809187_n.png' -> '/home/join/./.cache/gnome-software/icons/904ddaf5a6f3e849d89bfd42cb956fab2f85fcbe-14079885_1241390069214555_935150981832809187_n.png'
+'/home/ubu02/./.cache/gnome-software/icons/52b12dbe5968cd5bcab32b76a281c702255ec179-heimer.png' -> '/home/join/./.cache/gnome-software/icons/52b12dbe5968cd5bcab32b76a281c702255ec179-heimer.png'
+'/home/ubu02/./.cache/gnome-software/icons/c498adf542c2865af0c5cac55e31110df2767f8a-icon_1HWg8RY.png' -> '/home/join/./.cache/gnome-software/icons/c498adf542c2865af0c5cac55e31110df2767f8a-icon_1HWg8RY.png'
+'/home/ubu02/./.cache/gnome-software/icons/46763532157b2360d0d6d9ae0800c35b67f3e8f5-apple-icon.png' -> '/home/join/./.cache/gnome-software/icons/46763532157b2360d0d6d9ae0800c35b67f3e8f5-apple-icon.png'
+'/home/ubu02/./.cache/gnome-software/icons/3df5e2801b80882e53b42fe374e462aea96b7b3f-JDownloader.png' -> '/home/join/./.cache/gnome-software/icons/3df5e2801b80882e53b42fe374e462aea96b7b3f-JDownloader.png'
+'/home/ubu02/./.cache/gnome-software/icons/f293bbbc8c9b7629401e1299cc00f0ef81986b00-PostIt.png.png' -> '/home/join/./.cache/gnome-software/icons/f293bbbc8c9b7629401e1299cc00f0ef81986b00-PostIt.png.png'
+'/home/ubu02/./.cache/gnome-software/icons/02ac947b65fe68dfc4e4917a08fed128768e5d2c-icon.svg_5bDGvFr.png' -> '/home/join/./.cache/gnome-software/icons/02ac947b65fe68dfc4e4917a08fed128768e5d2c-icon.svg_5bDGvFr.png'
+'/home/ubu02/./.cache/gnome-software/icons/5d73f9b56bdf20e9e065f71eb29d297027897a13-512x512.png' -> '/home/join/./.cache/gnome-software/icons/5d73f9b56bdf20e9e065f71eb29d297027897a13-512x512.png'
+'/home/ubu02/./.cache/gnome-software/icons/83ff617d98bfca7fe43beae0d560bad1633b5e77-512x512_rhN6KJx.png' -> '/home/join/./.cache/gnome-software/icons/83ff617d98bfca7fe43beae0d560bad1633b5e77-512x512_rhN6KJx.png'
+'/home/ubu02/./.cache/gnome-software/icons/344f88dc70e55a97e43edafb0cdb6a0b69321383-icon_qpecaxU.png' -> '/home/join/./.cache/gnome-software/icons/344f88dc70e55a97e43edafb0cdb6a0b69321383-icon_qpecaxU.png'
+'/home/ubu02/./.cache/gnome-software/icons/ceb3f99c9f662dfadccaa27661510e2c2a26509f-beaker_logo.png' -> '/home/join/./.cache/gnome-software/icons/ceb3f99c9f662dfadccaa27661510e2c2a26509f-beaker_logo.png'
+'/home/ubu02/./.cache/gnome-software/icons/830e941d0b2e4c2f9a9c062bbfd05a946926fa58-icon_pcRQ6cN.png' -> '/home/join/./.cache/gnome-software/icons/830e941d0b2e4c2f9a9c062bbfd05a946926fa58-icon_pcRQ6cN.png'
+'/home/ubu02/./.cache/gnome-software/icons/cfbec57ff56ce26ab1a70165f25b743e2a65573d-wire-desktop.png' -> '/home/join/./.cache/gnome-software/icons/cfbec57ff56ce26ab1a70165f25b743e2a65573d-wire-desktop.png'
+'/home/ubu02/./.cache/gnome-software/icons/97c8a18f9c96d6aef593714f43a8719d6fc64cd2-scrape_icon_512x512-01.png' -> '/home/join/./.cache/gnome-software/icons/97c8a18f9c96d6aef593714f43a8719d6fc64cd2-scrape_icon_512x512-01.png'
+'/home/ubu02/./.cache/gnome-software/icons/f914b4bc70d3f03fe7298003562d5adfb931eb31-logo_RaImPIp.png' -> '/home/join/./.cache/gnome-software/icons/f914b4bc70d3f03fe7298003562d5adfb931eb31-logo_RaImPIp.png'
+'/home/ubu02/./.cache/gnome-software/icons/9d4cf29fe8a485f16bc9051e8b93c0c93f441721-mu.png' -> '/home/join/./.cache/gnome-software/icons/9d4cf29fe8a485f16bc9051e8b93c0c93f441721-mu.png'
+'/home/ubu02/./.cache/gnome-software/icons/d0be7153dae00e4bcbc031b879d9a6f7fb0644e2-512x512_CDoyntf.png' -> '/home/join/./.cache/gnome-software/icons/d0be7153dae00e4bcbc031b879d9a6f7fb0644e2-512x512_CDoyntf.png'
+'/home/ubu02/./.cache/gnome-software/icons/487ca7f69e4eaeeb9a20b5faa29ceb30904e9ee5-logo512_DRpTK6n.png' -> '/home/join/./.cache/gnome-software/icons/487ca7f69e4eaeeb9a20b5faa29ceb30904e9ee5-logo512_DRpTK6n.png'
+'/home/ubu02/./.cache/gnome-software/icons/977ab452f2892f537ca911896c99dbda750fd97e-notes_icon_256x256x32.png' -> '/home/join/./.cache/gnome-software/icons/977ab452f2892f537ca911896c99dbda750fd97e-notes_icon_256x256x32.png'
+'/home/ubu02/./.cache/gnome-software/icons/4dd79b13087b35d7962b4b7060f3dd964001ee29-drive.png' -> '/home/join/./.cache/gnome-software/icons/4dd79b13087b35d7962b4b7060f3dd964001ee29-drive.png'
+'/home/ubu02/./.cache/gnome-software/icons/b9dc6bc825a9cc4b326b51d7c6e9393e6f45747f-icon_736yZqT.png' -> '/home/join/./.cache/gnome-software/icons/b9dc6bc825a9cc4b326b51d7c6e9393e6f45747f-icon_736yZqT.png'
+'/home/ubu02/./.cache/gnome-software/icons/c3181455dd586ffc1b87b0a59c9ccebf87dae45b-logo_300x300.png' -> '/home/join/./.cache/gnome-software/icons/c3181455dd586ffc1b87b0a59c9ccebf87dae45b-logo_300x300.png'
+'/home/ubu02/./.cache/gnome-software/icons/b853c9ebd5d7e8751756f70520b7c5c332e447f9-512x512.png' -> '/home/join/./.cache/gnome-software/icons/b853c9ebd5d7e8751756f70520b7c5c332e447f9-512x512.png'
+'/home/ubu02/./.cache/gnome-software/icons/c5425457fbfd924e0b9e3d600bfff33d1fdb9d6b-icon_Y093431.png' -> '/home/join/./.cache/gnome-software/icons/c5425457fbfd924e0b9e3d600bfff33d1fdb9d6b-icon_Y093431.png'
+'/home/ubu02/./.cache/gnome-software/icons/0739ad5213c5693404ebd0f1550b07a515969eec-1024snapcraft.png' -> '/home/join/./.cache/gnome-software/icons/0739ad5213c5693404ebd0f1550b07a515969eec-1024snapcraft.png'
+'/home/ubu02/./.cache/gnome-software/icons/79ab1968241ffc010e2c79d7abfc7ecbdf9f2f22-hamster-time-tracker.png' -> '/home/join/./.cache/gnome-software/icons/79ab1968241ffc010e2c79d7abfc7ecbdf9f2f22-hamster-time-tracker.png'
+'/home/ubu02/./.cache/gnome-software/icons/d6ae157aa0a0a9786c1419649e9b0a5275456bc7-icon_512x512_BZRm9uA.png' -> '/home/join/./.cache/gnome-software/icons/d6ae157aa0a0a9786c1419649e9b0a5275456bc7-icon_512x512_BZRm9uA.png'
+'/home/ubu02/./.cache/gnome-software/icons/829702b2ba2ba62bf5395695d3cfa963709eb131-icon_sq0v3RU.png' -> '/home/join/./.cache/gnome-software/icons/829702b2ba2ba62bf5395695d3cfa963709eb131-icon_sq0v3RU.png'
+'/home/ubu02/./.cache/gnome-software/icons/754ad5e87c497016f04419460703a8e7dbfee73e-bitcoin256_pshFiKg.png' -> '/home/join/./.cache/gnome-software/icons/754ad5e87c497016f04419460703a8e7dbfee73e-bitcoin256_pshFiKg.png'
+'/home/ubu02/./.cache/gnome-software/icons/c1bf1b69c25520ac42b8f05ceb5f9fbdecfdd351-icon_30.png' -> '/home/join/./.cache/gnome-software/icons/c1bf1b69c25520ac42b8f05ceb5f9fbdecfdd351-icon_30.png'
+'/home/ubu02/./.cache/gnome-software/icons/8af67c6b6f66b1ef71682800bfa123f6b9675a88-logo_-_256px.png' -> '/home/join/./.cache/gnome-software/icons/8af67c6b6f66b1ef71682800bfa123f6b9675a88-logo_-_256px.png'
+'/home/ubu02/./.cache/gnome-software/icons/de999cf5f3bfa7e110ddc292f9ce72c4b7efc29f-qalculate.png' -> '/home/join/./.cache/gnome-software/icons/de999cf5f3bfa7e110ddc292f9ce72c4b7efc29f-qalculate.png'
+'/home/ubu02/./.cache/gnome-software/icons/0f19306c15b56c6932e9a51acb56ecf63322f0b9-256x256_6ileytI.png' -> '/home/join/./.cache/gnome-software/icons/0f19306c15b56c6932e9a51acb56ecf63322f0b9-256x256_6ileytI.png'
+'/home/ubu02/./.cache/gnome-software/icons/6a08dfa946d9e7fa4200a9cb97b7ac116cccf8a2-icon.svg_uB08EBP.png' -> '/home/join/./.cache/gnome-software/icons/6a08dfa946d9e7fa4200a9cb97b7ac116cccf8a2-icon.svg_uB08EBP.png'
+'/home/ubu02/./.cache/gnome-software/icons/1672f032442e08898debddd459bb1d9bc6940e76-256x256_6u0RIUd.png' -> '/home/join/./.cache/gnome-software/icons/1672f032442e08898debddd459bb1d9bc6940e76-256x256_6u0RIUd.png'
+'/home/ubu02/./.cache/gnome-software/icons/87641bcc945147e68363c9e4730b6e8f82303f82-icon_9.png' -> '/home/join/./.cache/gnome-software/icons/87641bcc945147e68363c9e4730b6e8f82303f82-icon_9.png'
+'/home/ubu02/./.cache/gnome-software/icons/81d143aaa21e8bfd3157536d579528325b2665ef-icon.svg_z8cftF6.png' -> '/home/join/./.cache/gnome-software/icons/81d143aaa21e8bfd3157536d579528325b2665ef-icon.svg_z8cftF6.png'
+'/home/ubu02/./.cache/gnome-software/icons/891a1e7e827c2803ca262026dfe86a88c42ba2d6-vestin.png' -> '/home/join/./.cache/gnome-software/icons/891a1e7e827c2803ca262026dfe86a88c42ba2d6-vestin.png'
+'/home/ubu02/./.cache/gnome-software/icons/15b0c38ccb8183cec8603033ef52e561a716728d-lindacoin-wallet1.png' -> '/home/join/./.cache/gnome-software/icons/15b0c38ccb8183cec8603033ef52e561a716728d-lindacoin-wallet1.png'
+'/home/ubu02/./.cache/gnome-software/icons/86ecaa051811a0890573a6fce0324b2989d8e1ed-icon_8EiVfvl.png' -> '/home/join/./.cache/gnome-software/icons/86ecaa051811a0890573a6fce0324b2989d8e1ed-icon_8EiVfvl.png'
+'/home/ubu02/./.cache/gnome-software/icons/295c26f77a4490271b3eafd731d4143089844f7e-bittickerlogo.png' -> '/home/join/./.cache/gnome-software/icons/295c26f77a4490271b3eafd731d4143089844f7e-bittickerlogo.png'
+'/home/ubu02/./.cache/gnome-software/icons/870d9134fd44853e4711a3a224e289b7cbdc209b-reden_logo_transparent_256px.png' -> '/home/join/./.cache/gnome-software/icons/870d9134fd44853e4711a3a224e289b7cbdc209b-reden_logo_transparent_256px.png'
+'/home/ubu02/./.cache/gnome-software/icons/daf18640a635eb417f3b0395d4ee018843650531-256x256_S1sji6d.png' -> '/home/join/./.cache/gnome-software/icons/daf18640a635eb417f3b0395d4ee018843650531-256x256_S1sji6d.png'
+'/home/ubu02/./.cache/gnome-software/icons/e0b250bcdf4ae2411c2203f5973069b5f89e4382-256x256.png' -> '/home/join/./.cache/gnome-software/icons/e0b250bcdf4ae2411c2203f5973069b5f89e4382-256x256.png'
+'/home/ubu02/./.cache/gnome-software/icons/12f14b292de6f43f18915f65d83024fcc9414a2c-icon_pZH83e3.png' -> '/home/join/./.cache/gnome-software/icons/12f14b292de6f43f18915f65d83024fcc9414a2c-icon_pZH83e3.png'
+'/home/ubu02/./.cache/gnome-software/icons/246c80ec52f2b0a2bc3da4aedb383bfc487478d2-bisq_icon.png' -> '/home/join/./.cache/gnome-software/icons/246c80ec52f2b0a2bc3da4aedb383bfc487478d2-bisq_icon.png'
+'/home/ubu02/./.cache/gnome-software/icons/b16c6cbec2c84e851a7490821964dcbf5a0daafe-icon_256x256_6tATclo.png' -> '/home/join/./.cache/gnome-software/icons/b16c6cbec2c84e851a7490821964dcbf5a0daafe-icon_256x256_6tATclo.png'
+'/home/ubu02/./.cache/gnome-software/icons/edf1c348330b749e6b5b5de8f865c0211b00311d-logo_512x512.png' -> '/home/join/./.cache/gnome-software/icons/edf1c348330b749e6b5b5de8f865c0211b00311d-logo_512x512.png'
+'/home/ubu02/./.cache/gnome-software/icons/b8a9dd9b3dff88938eb07a807ad36c6b14c761ad-icon.ico_Xw0g7WS.png' -> '/home/join/./.cache/gnome-software/icons/b8a9dd9b3dff88938eb07a807ad36c6b14c761ad-icon.ico_Xw0g7WS.png'
+'/home/ubu02/./.cache/gnome-software/icons/883b9f9de79dd4d118e66219da379ebb8c424d91-logo128.png' -> '/home/join/./.cache/gnome-software/icons/883b9f9de79dd4d118e66219da379ebb8c424d91-logo128.png'
+'/home/ubu02/./.cache/gnome-software/icons/a885d53a30076108fb1bc0d7239b08847297f3c7-Square44x44Logo.altform-unplated_targetsize-256.png' -> '/home/join/./.cache/gnome-software/icons/a885d53a30076108fb1bc0d7239b08847297f3c7-Square44x44Logo.altform-unplated_targetsize-256.png'
+'/home/ubu02/./.cache/gnome-software/icons/070b513cbfe3c07f89a133f75fcce194f52222ae-icon_SJSWxTL.png' -> '/home/join/./.cache/gnome-software/icons/070b513cbfe3c07f89a133f75fcce194f52222ae-icon_SJSWxTL.png'
+'/home/ubu02/./.cache/gnome-software/icons/37387856f65e845d1979e64c86f684d4f33900b0-icon_UC0YpfT.png' -> '/home/join/./.cache/gnome-software/icons/37387856f65e845d1979e64c86f684d4f33900b0-icon_UC0YpfT.png'
+'/home/ubu02/./.cache/gnome-software/icons/2607efb336d0b11dd8f8e80a14a1986e8707b0a1-icon_0d4JVFI.png' -> '/home/join/./.cache/gnome-software/icons/2607efb336d0b11dd8f8e80a14a1986e8707b0a1-icon_0d4JVFI.png'
+'/home/ubu02/./.cache/gnome-software/icons/4b9d5083dd4470f2d002d8665a57dfcb302e5c94-icon-256x256.png' -> '/home/join/./.cache/gnome-software/icons/4b9d5083dd4470f2d002d8665a57dfcb302e5c94-icon-256x256.png'
+'/home/ubu02/./.cache/gnome-software/icons/3811f558710b2b8ca873b4a24da0faf702f95965-ZeroNet_Logo_256.png' -> '/home/join/./.cache/gnome-software/icons/3811f558710b2b8ca873b4a24da0faf702f95965-ZeroNet_Logo_256.png'
+'/home/ubu02/./.cache/gnome-software/icons/6316f56fad7e2f57f14b791b77fa2f3cd096bb27-syscoin.png' -> '/home/join/./.cache/gnome-software/icons/6316f56fad7e2f57f14b791b77fa2f3cd096bb27-syscoin.png'
+'/home/ubu02/./.cache/gnome-software/icons/30c1ee41aec102c374d146974c527e634bf4a2ba-rsz_app.png' -> '/home/join/./.cache/gnome-software/icons/30c1ee41aec102c374d146974c527e634bf4a2ba-rsz_app.png'
+'/home/ubu02/./.cache/gnome-software/icons/144a69b4879b2328b07f607e30656caf5ca78354-icon_logo.png' -> '/home/join/./.cache/gnome-software/icons/144a69b4879b2328b07f607e30656caf5ca78354-icon_logo.png'
+'/home/ubu02/./.cache/gnome-software/icons/f1dd64f7e7944831bca456b024d6027dbe6b3ec6-simplebudget.png' -> '/home/join/./.cache/gnome-software/icons/f1dd64f7e7944831bca456b024d6027dbe6b3ec6-simplebudget.png'
+'/home/ubu02/./.cache/gnome-software/icons/73843de4a0900ec32b54978dd1c457a0c0c2537f-restic_logo.png' -> '/home/join/./.cache/gnome-software/icons/73843de4a0900ec32b54978dd1c457a0c0c2537f-restic_logo.png'
+'/home/ubu02/./.cache/gnome-software/icons/466f15b75678dfe0d524cb7fb32601dbb8265378-pivx192.png' -> '/home/join/./.cache/gnome-software/icons/466f15b75678dfe0d524cb7fb32601dbb8265378-pivx192.png'
+'/home/ubu02/./.cache/gnome-software/icons/c5ae2bcb5f7f23553718d761a9be6918b5e09b3a-CSLogo_VZVHFdZ.png' -> '/home/join/./.cache/gnome-software/icons/c5ae2bcb5f7f23553718d761a9be6918b5e09b3a-CSLogo_VZVHFdZ.png'
+'/home/ubu02/./.cache/gnome-software/icons/dfb886a3ac04cc344baa86616ede3b5ad8bb4b3a-download.png' -> '/home/join/./.cache/gnome-software/icons/dfb886a3ac04cc344baa86616ede3b5ad8bb4b3a-download.png'
+'/home/ubu02/./.cache/gnome-software/icons/9368ba1143a6068876db83b0b216f600e10c8d3d-Bitcoin_256x256.png' -> '/home/join/./.cache/gnome-software/icons/9368ba1143a6068876db83b0b216f600e10c8d3d-Bitcoin_256x256.png'
+'/home/ubu02/./.cache/gnome-software/icons/a2c9bac3935e39b5fd06507362ebd46e3fa9dd2c-512x512.png' -> '/home/join/./.cache/gnome-software/icons/a2c9bac3935e39b5fd06507362ebd46e3fa9dd2c-512x512.png'
+'/home/ubu02/./.cache/gnome-software/icons/a7367839dfcc91accb0e948d3db138605c36a9f4-grs192.png' -> '/home/join/./.cache/gnome-software/icons/a7367839dfcc91accb0e948d3db138605c36a9f4-grs192.png'
+'/home/ubu02/./.cache/gnome-software/icons/7e936b49b21284d4e2dc424ece9554c146f58784-app-icon-1024.png' -> '/home/join/./.cache/gnome-software/icons/7e936b49b21284d4e2dc424ece9554c146f58784-app-icon-1024.png'
+'/home/ubu02/./.cache/gnome-software/icons/694fb0f4da1fb6054bd518b1dc92ad6bec937ccc-bitcoin256.png' -> '/home/join/./.cache/gnome-software/icons/694fb0f4da1fb6054bd518b1dc92ad6bec937ccc-bitcoin256.png'
+'/home/ubu02/./.cache/gnome-software/icons/4133e41225bdb251518f6a10a95ad1ea7255d024-logo200.png' -> '/home/join/./.cache/gnome-software/icons/4133e41225bdb251518f6a10a95ad1ea7255d024-logo200.png'
+'/home/ubu02/./.cache/gnome-software/icons/dc92df7399e3257f7d1dd6b917025e95baf34c1b-6c35e17950c30af1bd60f6aeb40e705f-calculator-stroke-school-icon-by-vexels.png' -> '/home/join/./.cache/gnome-software/icons/dc92df7399e3257f7d1dd6b917025e95baf34c1b-6c35e17950c30af1bd60f6aeb40e705f-calculator-stroke-school-icon-by-vexels.png'
+'/home/ubu02/./.cache/gnome-software/icons/cf62bdca127e4baaed926058902802164f65a1f4-ion256.png' -> '/home/join/./.cache/gnome-software/icons/cf62bdca127e4baaed926058902802164f65a1f4-ion256.png'
+'/home/ubu02/./.cache/gnome-software/icons/68b3fae501c081330965a99198808eb0f27ef34a-Snapcraft_logo_400_400.png' -> '/home/join/./.cache/gnome-software/icons/68b3fae501c081330965a99198808eb0f27ef34a-Snapcraft_logo_400_400.png'
+'/home/ubu02/./.cache/gnome-software/icons/445e387077f00a8adecb13b09236fb4d3b7be7fa-denarius-256.png' -> '/home/join/./.cache/gnome-software/icons/445e387077f00a8adecb13b09236fb4d3b7be7fa-denarius-256.png'
+'/home/ubu02/./.cache/gnome-software/icons/a67037e1f2cf79d4aba4c8e38d24f399548d7f80-ms-icon-310x310.png' -> '/home/join/./.cache/gnome-software/icons/a67037e1f2cf79d4aba4c8e38d24f399548d7f80-ms-icon-310x310.png'
+'/home/ubu02/./.cache/gnome-software/icons/44381c06227b9650711d6473cce879108eda71b7-innova_icon.png' -> '/home/join/./.cache/gnome-software/icons/44381c06227b9650711d6473cce879108eda71b7-innova_icon.png'
+'/home/ubu02/./.cache/gnome-software/icons/38127f1541c00a1b1f7dc474e87ef1c0b03b55f9-eqonomize-256.png' -> '/home/join/./.cache/gnome-software/icons/38127f1541c00a1b1f7dc474e87ef1c0b03b55f9-eqonomize-256.png'
+'/home/ubu02/./.cache/gnome-software/icons/e63965da1f5c7a8ac987e66f84b793f9dbf7fc1b-256x256.png' -> '/home/join/./.cache/gnome-software/icons/e63965da1f5c7a8ac987e66f84b793f9dbf7fc1b-256x256.png'
+'/home/ubu02/./.cache/gnome-software/icons/556bc32258e676ecfe98c411fb0764d7692a735c-supercalc-snap.png' -> '/home/join/./.cache/gnome-software/icons/556bc32258e676ecfe98c411fb0764d7692a735c-supercalc-snap.png'
+'/home/ubu02/./.cache/gnome-software/icons/acfb35fcb1cc6e9705898b5000897ba1f69ce164-512x512.png' -> '/home/join/./.cache/gnome-software/icons/acfb35fcb1cc6e9705898b5000897ba1f69ce164-512x512.png'
+'/home/ubu02/./.cache/gnome-software/icons/f600bf578e2e8a46435048c85c1ab2f8148f6e51-512x512_6WGvtPJ.png' -> '/home/join/./.cache/gnome-software/icons/f600bf578e2e8a46435048c85c1ab2f8148f6e51-512x512_6WGvtPJ.png'
+'/home/ubu02/./.cache/gnome-software/icons/09ca56dc5e60d0c7725065d1df0036cd72245897-Site_logo_opt_3-export-512w.png' -> '/home/join/./.cache/gnome-software/icons/09ca56dc5e60d0c7725065d1df0036cd72245897-Site_logo_opt_3-export-512w.png'
+'/home/ubu02/./.cache/gnome-software/icons/aeeea859890c4497c3878098c4b3bf6bae7aa6ca-tastyworks_512.png' -> '/home/join/./.cache/gnome-software/icons/aeeea859890c4497c3878098c4b3bf6bae7aa6ca-tastyworks_512.png'
+'/home/ubu02/./.cache/gnome-software/icons/301d9150d9c8cbabb580c49d39e18af58c12ff5d-city-icon.png' -> '/home/join/./.cache/gnome-software/icons/301d9150d9c8cbabb580c49d39e18af58c12ff5d-city-icon.png'
+'/home/ubu02/./.cache/gnome-software/icons/9fe4aa1eee3905c584463d4598a1efc65ccef063-icon_T1CwYIb.png' -> '/home/join/./.cache/gnome-software/icons/9fe4aa1eee3905c584463d4598a1efc65ccef063-icon_T1CwYIb.png'
+'/home/ubu02/./.cache/gnome-software/icons/40c3a25fc3cc331ade6fc6f9c5b585873c34c1e7-icon.svg_YjaXoUU_hfrJiNd.png' -> '/home/join/./.cache/gnome-software/icons/40c3a25fc3cc331ade6fc6f9c5b585873c34c1e7-icon.svg_YjaXoUU_hfrJiNd.png'
+'/home/ubu02/./.cache/gnome-software/icons/e257d83b3a65e1b2095ece9beacf6e1125c11296-icon-512_A6xFTsT.png' -> '/home/join/./.cache/gnome-software/icons/e257d83b3a65e1b2095ece9beacf6e1125c11296-icon-512_A6xFTsT.png'
+'/home/ubu02/./.cache/gnome-software/icons/c096df703e25a07321e21b0a5113c86cc688e3fb-g4876.png' -> '/home/join/./.cache/gnome-software/icons/c096df703e25a07321e21b0a5113c86cc688e3fb-g4876.png'
+'/home/ubu02/./.cache/gnome-software/icons/a0269017cf5dd649d79789ae50e1362862c0f6ae-logoyuan.png' -> '/home/join/./.cache/gnome-software/icons/a0269017cf5dd649d79789ae50e1362862c0f6ae-logoyuan.png'
+'/home/ubu02/./.cache/gnome-software/icons/37f79065f544373904f621640a69c0cd658b8920-bitcoin.png' -> '/home/join/./.cache/gnome-software/icons/37f79065f544373904f621640a69c0cd658b8920-bitcoin.png'
+'/home/ubu02/./.cache/gnome-software/icons/9bb221e0fc87b00404a00739288200ca5aa8f2c3-icon_DYNoRsO.png' -> '/home/join/./.cache/gnome-software/icons/9bb221e0fc87b00404a00739288200ca5aa8f2c3-icon_DYNoRsO.png'
+'/home/ubu02/./.cache/gnome-software/icons/ff563c275ec83de785380136a4f340ac8ed59a7c-clinicafx.png.png' -> '/home/join/./.cache/gnome-software/icons/ff563c275ec83de785380136a4f340ac8ed59a7c-clinicafx.png.png'
+'/home/ubu02/./.cache/gnome-software/icons/db64165bf6acc5f8e824ead23bb59b969c26d345-DeepOnion.png' -> '/home/join/./.cache/gnome-software/icons/db64165bf6acc5f8e824ead23bb59b969c26d345-DeepOnion.png'
+'/home/ubu02/./.cache/gnome-software/icons/8e9d246824d19b6cf37c516159f65ab93038de22-BitcoinConfidential.png' -> '/home/join/./.cache/gnome-software/icons/8e9d246824d19b6cf37c516159f65ab93038de22-BitcoinConfidential.png'
+'/home/ubu02/./.cache/gnome-software/icons/64c21cdd914360c5f7e2feaebdd2a4cfe95d1e8f-528860.png' -> '/home/join/./.cache/gnome-software/icons/64c21cdd914360c5f7e2feaebdd2a4cfe95d1e8f-528860.png'
+'/home/ubu02/./.cache/gnome-software/icons/ef06e2aac7893ef54d0611a0ff2c8e01daf4003e-sameboy.png' -> '/home/join/./.cache/gnome-software/icons/ef06e2aac7893ef54d0611a0ff2c8e01daf4003e-sameboy.png'
+'/home/ubu02/./.cache/gnome-software/icons/2fb658e0861cceff5981607bff0532d85a9b11d8-code_ozwVHSV.png' -> '/home/join/./.cache/gnome-software/icons/2fb658e0861cceff5981607bff0532d85a9b11d8-code_ozwVHSV.png'
+'/home/ubu02/./.cache/gnome-software/cssresource/9c20a5b19e23bbcde372312801683dfebc671c28-Blue-Rounded-512.png' -> '/home/join/./.cache/gnome-software/cssresource/9c20a5b19e23bbcde372312801683dfebc671c28-Blue-Rounded-512.png'
+'/home/ubu02/./.cache/gnome-software/cssresource/4e32ce1f7b7ae457cccfaee47950343badffe128-512x512.png' -> '/home/join/./.cache/gnome-software/cssresource/4e32ce1f7b7ae457cccfaee47950343badffe128-512x512.png'
+'/home/ubu02/./.cache/gstreamer-1.0/registry.x86_64.bin' -> '/home/join/./.cache/gstreamer-1.0/registry.x86_64.bin'
+'/home/ubu02/./.cache/wallpaper/0_5_800_600_792beab7550410d531e55f95b449f135' -> '/home/join/./.cache/wallpaper/0_5_800_600_792beab7550410d531e55f95b449f135'
+'/home/ubu02/./.cache/event-sound-cache.tdb.7516dd28b8d7450ba6ff55ec74de2bcd.x86_64-pc-linux-gnu' -> '/home/join/./.cache/event-sound-cache.tdb.7516dd28b8d7450ba6ff55ec74de2bcd.x86_64-pc-linux-gnu'
+'/home/ubu02/./.cache/update-manager-core/meta-release-lts' -> '/home/join/./.cache/update-manager-core/meta-release-lts'
+'/home/ubu02/./.cache/ubuntu-report' -> '/home/join/./.cache/ubuntu-report'
+'/home/ubu02/./.cache/ubuntu-report/ubuntu.18.04' -> '/home/join/./.cache/ubuntu-report/ubuntu.18.04'
+'/home/ubu02/./.local/share/xorg/Xorg.0.log.old' -> '/home/join/./.local/share/xorg/Xorg.0.log.old'
+'/home/ubu02/./.local/share/xorg/Xorg.0.log' -> '/home/join/./.local/share/xorg/Xorg.0.log'
+'/home/ubu02/./.local/share/keyrings/login.keyring' -> '/home/join/./.local/share/keyrings/login.keyring'
+'/home/ubu02/./.local/share/keyrings/user.keystore' -> '/home/join/./.local/share/keyrings/user.keystore'
+'/home/ubu02/./.local/share/session_migration-ubuntu' -> '/home/join/./.local/share/session_migration-ubuntu'
+'/home/ubu02/./.local/share/gnome-shell/application_state' -> '/home/join/./.local/share/gnome-shell/application_state'
+'/home/ubu02/./.local/share/evolution/addressbook/system/contacts.db' -> '/home/join/./.local/share/evolution/addressbook/system/contacts.db'
+'/home/ubu02/./.local/share/evolution/calendar/system/calendar.ics' -> '/home/join/./.local/share/evolution/calendar/system/calendar.ics'
+'/home/ubu02/./.local/share/gnome-settings-daemon/input-sources-converted' -> '/home/join/./.local/share/gnome-settings-daemon/input-sources-converted'
+'/home/ubu02/./.local/share/gvfs-metadata/home' -> '/home/join/./.local/share/gvfs-metadata/home'
+'/home/ubu02/./.local/share/gvfs-metadata/home-03d9fd68.log' -> '/home/join/./.local/share/gvfs-metadata/home-03d9fd68.log'
+'/home/ubu02/./.local/share/gvfs-metadata/root' -> '/home/join/./.local/share/gvfs-metadata/root'
+'/home/ubu02/./.local/share/gvfs-metadata/root-fa14fc0f.log' -> '/home/join/./.local/share/gvfs-metadata/root-fa14fc0f.log'
+'/home/ubu02/./.local/share/app-info/xmls/extensions-web.xml' -> '/home/join/./.local/share/app-info/xmls/extensions-web.xml'
+'/home/ubu02/./.local/share/gnome-software/ubuntu-reviews.db' -> '/home/join/./.local/share/gnome-software/ubuntu-reviews.db'
+'/home/ubu02/./.local/share/recently-used.xbel' -> '/home/join/./.local/share/recently-used.xbel'
+'/home/ubu02/./.ICEauthority' -> '/home/join/./.ICEauthority'
+'/home/ubu02/./.config/pulse/7516dd28b8d7450ba6ff55ec74de2bcd-device-volumes.tdb' -> '/home/join/./.config/pulse/7516dd28b8d7450ba6ff55ec74de2bcd-device-volumes.tdb'
+'/home/ubu02/./.config/pulse/7516dd28b8d7450ba6ff55ec74de2bcd-stream-volumes.tdb' -> '/home/join/./.config/pulse/7516dd28b8d7450ba6ff55ec74de2bcd-stream-volumes.tdb'
+'/home/ubu02/./.config/pulse/7516dd28b8d7450ba6ff55ec74de2bcd-card-database.tdb' -> '/home/join/./.config/pulse/7516dd28b8d7450ba6ff55ec74de2bcd-card-database.tdb'
+'/home/ubu02/./.config/pulse/cookie' -> '/home/join/./.config/pulse/cookie'
+'/home/ubu02/./.config/pulse/7516dd28b8d7450ba6ff55ec74de2bcd-default-sink' -> '/home/join/./.config/pulse/7516dd28b8d7450ba6ff55ec74de2bcd-default-sink'
+'/home/ubu02/./.config/pulse/7516dd28b8d7450ba6ff55ec74de2bcd-default-source' -> '/home/join/./.config/pulse/7516dd28b8d7450ba6ff55ec74de2bcd-default-source'
+'/home/ubu02/./.config/ibus/bus/7516dd28b8d7450ba6ff55ec74de2bcd-unix-0' -> '/home/join/./.config/ibus/bus/7516dd28b8d7450ba6ff55ec74de2bcd-unix-0'
+'/home/ubu02/./.config/dconf/user' -> '/home/join/./.config/dconf/user'
+'/home/ubu02/./.config/evolution/sources/system-proxy.source' -> '/home/join/./.config/evolution/sources/system-proxy.source'
+'/home/ubu02/./.config/evolution/sources/birthdays.source' -> '/home/join/./.config/evolution/sources/birthdays.source'
+'/home/ubu02/./.config/evolution/sources/system-calendar.source' -> '/home/join/./.config/evolution/sources/system-calendar.source'
+'/home/ubu02/./.config/user-dirs.dirs' -> '/home/join/./.config/user-dirs.dirs'
+'/home/ubu02/./.config/user-dirs.locale' -> '/home/join/./.config/user-dirs.locale'
+'/home/ubu02/./.config/gtk-3.0/bookmarks' -> '/home/join/./.config/gtk-3.0/bookmarks'
+'/home/ubu02/./.config/nautilus/desktop-metadata' -> '/home/join/./.config/nautilus/desktop-metadata'
+'/home/ubu02/./.config/gnome-initial-setup-done' -> '/home/join/./.config/gnome-initial-setup-done'
+'/home/ubu02/./.ssh' -> '/home/join/./.ssh'
+'/home/ubu02/./.sudo_as_admin_successful' -> '/home/join/./.sudo_as_admin_successful'
+'/home/ubu02/./.bash_history' -> '/home/join/./.bash_history'
+*** | *** | root@ubu02:~# cd /home/join/
+*** | *** | root@ubu02:/home/join# ls -ltra
+total 92
+-rw-r--r--  1 ubu02 ubu02 8980 Thg 7  6 20:15 examples.desktop
+-rw-r--r--  1 ubu02 ubu02 3771 Thg 7  6 20:15 .bashrc
+-rw-r--r--  1 ubu02 ubu02  807 Thg 7  6 20:15 .profile
+-rw-r--r--  1 ubu02 ubu02  220 Thg 7  6 20:15 .bash_logout
+drwx------  3 ubu02 ubu02 4096 Thg 7  6 21:28 .local
+drwxr-xr-x  2 ubu02 ubu02 4096 Thg 7  6 21:28 Videos
+drwxr-xr-x  2 ubu02 ubu02 4096 Thg 7  6 21:28 Templates
+drwxr-xr-x  2 ubu02 ubu02 4096 Thg 7  6 21:28 Public
+drwxr-xr-x  2 ubu02 ubu02 4096 Thg 7  6 21:28 Pictures
+drwxr-xr-x  2 ubu02 ubu02 4096 Thg 7  6 21:28 Music
+drwxr-xr-x  2 ubu02 ubu02 4096 Thg 7  6 21:28 Downloads
+drwxr-xr-x  2 ubu02 ubu02 4096 Thg 7  6 21:28 Documents
+drwxr-xr-x  2 ubu02 ubu02 4096 Thg 7  6 21:28 Desktop
+drwx------  2 ubu02 ubu02 4096 Thg 7  6 21:41 .ssh
+drwx------  3 ubu02 ubu02 4096 Thg 7  6 21:41 .gnupg
+drwx------ 14 ubu02 ubu02 4096 Thg 7  7 05:31 .cache
+drwx------ 11 ubu02 ubu02 4096 Thg 7  7 05:33 .config
+-rw-r--r--  1 ubu02 ubu02    0 Thg 7  7 05:34 .sudo_as_admin_successful
+-rw-------  1 ubu02 ubu02 1570 Thg 8  3 14:38 .ICEauthority
+drwxr-xr-x 15 ubu02 ubu02 4096 Thg 8  3 14:38 .
+drwxr-xr-x  5 root  root  4096 Thg 8  3 15:15 ..
+-rw-------  1 ubu02 ubu02  121 Thg 8  3 15:17 .bash_history
+*** | *** | root@ubu02:/home/join# cd .ssh
+*** | *** | root@ubu02:/home/join/.ssh# ls -ltra
+total 8
+drwx------  2 ubu02 ubu02 4096 Thg 7  6 21:41 .
+drwxr-xr-x 15 ubu02 ubu02 4096 Thg 8  3 14:38 ..
+*** | *** | root@ubu02:/home/join/.ssh# cd ../
+*** | *** | root@ubu02:/home/join# ls -ltra
+total 92
+-rw-r--r--  1 ubu02 ubu02 8980 Thg 7  6 20:15 examples.desktop
+-rw-r--r--  1 ubu02 ubu02 3771 Thg 7  6 20:15 .bashrc
+-rw-r--r--  1 ubu02 ubu02  807 Thg 7  6 20:15 .profile
+-rw-r--r--  1 ubu02 ubu02  220 Thg 7  6 20:15 .bash_logout
+drwx------  3 ubu02 ubu02 4096 Thg 7  6 21:28 .local
+drwxr-xr-x  2 ubu02 ubu02 4096 Thg 7  6 21:28 Videos
+drwxr-xr-x  2 ubu02 ubu02 4096 Thg 7  6 21:28 Templates
+drwxr-xr-x  2 ubu02 ubu02 4096 Thg 7  6 21:28 Public
+drwxr-xr-x  2 ubu02 ubu02 4096 Thg 7  6 21:28 Pictures
+drwxr-xr-x  2 ubu02 ubu02 4096 Thg 7  6 21:28 Music
+drwxr-xr-x  2 ubu02 ubu02 4096 Thg 7  6 21:28 Downloads
+drwxr-xr-x  2 ubu02 ubu02 4096 Thg 7  6 21:28 Documents
+drwxr-xr-x  2 ubu02 ubu02 4096 Thg 7  6 21:28 Desktop
+drwx------  2 ubu02 ubu02 4096 Thg 7  6 21:41 .ssh
+drwx------  3 ubu02 ubu02 4096 Thg 7  6 21:41 .gnupg
+drwx------ 14 ubu02 ubu02 4096 Thg 7  7 05:31 .cache
+drwx------ 11 ubu02 ubu02 4096 Thg 7  7 05:33 .config
+-rw-r--r--  1 ubu02 ubu02    0 Thg 7  7 05:34 .sudo_as_admin_successful
+-rw-------  1 ubu02 ubu02 1570 Thg 8  3 14:38 .ICEauthority
+drwxr-xr-x 15 ubu02 ubu02 4096 Thg 8  3 14:38 .
+drwxr-xr-x  5 root  root  4096 Thg 8  3 15:15 ..
+-rw-------  1 ubu02 ubu02  121 Thg 8  3 15:17 .bash_history
+
+*** | root@ubu02:/home/join# chown -R join:ubu02 .
+*** | root@ubu02:/home/join# ls -ltra
+total 92
+-rw-r--r--  1 join ubu02 8980 Thg 7  6 20:15 examples.desktop
+-rw-r--r--  1 join ubu02 3771 Thg 7  6 20:15 .bashrc
+-rw-r--r--  1 join ubu02  807 Thg 7  6 20:15 .profile
+-rw-r--r--  1 join ubu02  220 Thg 7  6 20:15 .bash_logout
+drwx------  3 join ubu02 4096 Thg 7  6 21:28 .local
+drwxr-xr-x  2 join ubu02 4096 Thg 7  6 21:28 Videos
+drwxr-xr-x  2 join ubu02 4096 Thg 7  6 21:28 Templates
+drwxr-xr-x  2 join ubu02 4096 Thg 7  6 21:28 Public
+drwxr-xr-x  2 join ubu02 4096 Thg 7  6 21:28 Pictures
+drwxr-xr-x  2 join ubu02 4096 Thg 7  6 21:28 Music
+drwxr-xr-x  2 join ubu02 4096 Thg 7  6 21:28 Downloads
+drwxr-xr-x  2 join ubu02 4096 Thg 7  6 21:28 Documents
+drwxr-xr-x  2 join ubu02 4096 Thg 7  6 21:28 Desktop
+drwx------  2 join ubu02 4096 Thg 7  6 21:41 .ssh
+drwx------  3 join ubu02 4096 Thg 7  6 21:41 .gnupg
+drwx------ 14 join ubu02 4096 Thg 7  7 05:31 .cache
+drwx------ 11 join ubu02 4096 Thg 7  7 05:33 .config
+-rw-r--r--  1 join ubu02    0 Thg 7  7 05:34 .sudo_as_admin_successful
+-rw-------  1 join ubu02 1570 Thg 8  3 14:38 .ICEauthority
+drwxr-xr-x 15 join ubu02 4096 Thg 8  3 14:38 .
+drwxr-xr-x  5 root root  4096 Thg 8  3 15:15 ..
+-rw-------  1 join ubu02  121 Thg 8  3 15:17 .bash_history
