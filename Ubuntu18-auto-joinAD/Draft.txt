@@ -15,10 +15,10 @@ Welcome to Ubuntu 18.04 LTS (GNU/Linux 4.15.0-112-generic x86_64)
 111 updates are security updates.
 
 Last login: Mon Aug  3 14:41:04 2020 from 172.16.4.112
-*** | *** | *** | root@ubu02:~#
-*** | *** | *** | root@ubu02:~#
-*** | *** | *** | root@ubu02:~#
-*** | *** | *** | root@ubu02:~# htop
+*** *** | root@ubu02:~#
+*** *** | root@ubu02:~#
+*** *** | root@ubu02:~#
+*** *** | root@ubu02:~# htop
 
 Command 'htop' not found, but can be installed with:
 
@@ -27,14 +27,14 @@ apt  install htop
 
 See 'snap info htop' for additional versions.
 
-*** | *** | *** | root@ubu02:~# nano /etc/resolv.conf
-*** | *** | *** | root@ubu02:~# service resolvconf restart
+*** *** | root@ubu02:~# nano /etc/resolv.conf
+*** *** | root@ubu02:~# service resolvconf restart
 Failed to restart resolvconf.service: Unit resolvconf.service not found.
-*** | *** | *** | root@ubu02:~# systemctl restart resolvconf
+*** *** | root@ubu02:~# systemctl restart resolvconf
 Failed to restart resolvconf.service: Unit resolvconf.service not found.
-*** | *** | *** | root@ubu02:~# apt-get install -y resolvconf
+*** *** | root@ubu02:~# apt-get install -y resolvconf
 resolvconf        resolvconf-admin
-*** | *** | *** | root@ubu02:~# apt-get install -y resolvconf
+*** *** | root@ubu02:~# apt-get install -y resolvconf
 Reading package lists... Done
 Building dependency tree
 Reading state information... Done
@@ -61,36 +61,36 @@ resolvconf-pull-resolved.service is a disabled or a static unit, not starting it
 Processing triggers for ureadahead (0.100.0-20) ...
 Processing triggers for systemd (237-3ubuntu10) ...
 Processing triggers for resolvconf (1.79ubuntu10.18.04.3) ...
-*** | *** | *** | root@ubu02:~# nano /etc/resolv
+*** *** | root@ubu02:~# nano /etc/resolv
 resolvconf/  resolv.conf
-*** | *** | *** | root@ubu02:~# nano /etc/resolvconf/
+*** *** | root@ubu02:~# nano /etc/resolvconf/
 interface-order  resolv.conf.d/   update.d/        update-libc.d/
-*** | *** | *** | root@ubu02:~# nano /etc/resolvconf/
+*** *** | root@ubu02:~# nano /etc/resolvconf/
 interface-order  resolv.conf.d/   update.d/        update-libc.d/
-*** | *** | *** | root@ubu02:~# nano /etc/resolvconf/resolv.conf.d/
+*** *** | root@ubu02:~# nano /etc/resolvconf/resolv.conf.d/
 base      head      original  tail
-*** | *** | *** | root@ubu02:~# nano /etc/resolvconf/resolv.conf.d/head
-*** | *** | *** | root@ubu02:~# service resolvconf
+*** *** | root@ubu02:~# nano /etc/resolvconf/resolv.conf.d/head
+*** *** | root@ubu02:~# service resolvconf
 Usage: /etc/init.d/resolvconf {start|stop|restart|reload|force-reload|enable-updates|disable-updates|status}
-*** | *** | *** | root@ubu02:~# service resolvconf restart
-*** | *** | *** | root@ubu02:~# systemctl enable resolvconf
+*** *** | root@ubu02:~# service resolvconf restart
+*** *** | root@ubu02:~# systemctl enable resolvconf
 Synchronizing state of resolvconf.service with SysV service script with /lib/systemd/systemd-sysv-install.
 Executing: /lib/systemd/systemd-sysv-install enable resolvconf
-*** | *** | *** | root@ubu02:~# dig -t SRV _ldap._tcp.ntq-solution.com.vn | grep -A2 "ANSWER SECTION"
+*** *** | root@ubu02:~# dig -t SRV _ldap._tcp.ntq-solution.com.vn | grep -A2 "ANSWER SECTION"
 ;; ANSWER SECTION:
 _ldap._tcp.ntq-solution.com.vn.	600 IN	SRV	0 100 389 DC-AD01.ntq-solution.com.vn.
 
-*** | *** | *** | root@ubu02:~# echo "nameserver 192.168.1.55 # Thuc te la 10.0.64.2 & 10.0.64.3"
+*** *** | root@ubu02:~# echo "nameserver 192.168.1.55 # Thuc te la 10.0.64.2 & 10.0.64.3"
 nameserver 192.168.1.55 # Thuc te la 10.0.64.2 & 10.0.64.3
-*** | *** | *** | root@ubu02:~# echo "NTQ-SOLUTION.COM.VN" | apt-get install -y krb5-
+*** *** | root@ubu02:~# echo "NTQ-SOLUTION.COM.VN" | apt-get install -y krb5-
 krb5-admin-server  krb5-doc           krb5-kdc           krb5-locales       krb5-pkinit        krb5-sync-tools
 krb5-auth-dialog   krb5-gss-samples   krb5-kdc-ldap      krb5-multidev      krb5-strength      krb5-user
 krb5-config        krb5-k5tls         krb5-kpropd        krb5-otp           krb5-sync-plugin
-*** | *** | *** | root@ubu02:~# echo "NTQ-SOLUTION.COM.VN" | apt-get install -y krb5-
+*** *** | root@ubu02:~# echo "NTQ-SOLUTION.COM.VN" | apt-get install -y krb5-
 krb5-admin-server  krb5-doc           krb5-kdc           krb5-locales       krb5-pkinit        krb5-sync-tools
 krb5-auth-dialog   krb5-gss-samples   krb5-kdc-ldap      krb5-multidev      krb5-strength      krb5-user
 krb5-config        krb5-k5tls         krb5-kpropd        krb5-otp           krb5-sync-plugin
-*** | *** | *** | root@ubu02:~# echo "NTQ-SOLUTION.COM.VN" | apt-get install -y krb5-user
+*** *** | root@ubu02:~# echo "NTQ-SOLUTION.COM.VN" | apt-get install -y krb5-user
 Reading package lists... Done
 Building dependency tree
 Reading state information... Done
@@ -139,7 +139,7 @@ Setting up libkadm5clnt-mit11:amd64 (1.16-2ubuntu0.1) ...
 Setting up krb5-config (2.6) ...
 Setting up krb5-user (1.16-2ubuntu0.1) ...
 Processing triggers for libc-bin (2.27-3ubuntu1.2) ...
-*** | *** | *** | root@ubu02:~# apt-get -y install realmd sssd sssd-tools samba-common krb5-user packagekit samba-common-bin samba-libs adcli ntp
+*** *** | root@ubu02:~# apt-get -y install realmd sssd sssd-tools samba-common krb5-user packagekit samba-common-bin samba-libs adcli ntp
 Reading package lists... Done
 Building dependency tree
 Reading state information... Done
@@ -462,16 +462,16 @@ Processing triggers for libc-bin (2.27-3ubuntu1.2) ...
 Processing triggers for dbus (1.12.2-1ubuntu1.2) ...
 Processing triggers for ureadahead (0.100.0-20) ...
 Processing triggers for systemd (237-3ubuntu10) ...
-*** | *** | *** | root@ubu02:~# nano /etc/ntp.conf
-*** | *** | *** | root@ubu02:~# nano /etc/ntp.conf
-*** | *** | *** | root@ubu02:~# echo "DC-AD01.ntq-solution.com.vn" > /etc/ntp.conf
-*** | *** | *** | root@ubu02:~# cat /etc/ntp.conf
+*** *** | root@ubu02:~# nano /etc/ntp.conf
+*** *** | root@ubu02:~# nano /etc/ntp.conf
+*** *** | root@ubu02:~# echo "DC-AD01.ntq-solution.com.vn" > /etc/ntp.conf
+*** *** | root@ubu02:~# c/ntp.conf
 DC-AD01.ntq-solution.com.vn
-*** | *** | *** | root@ubu02:~# apt-get install --reinstall ntp
+*** *** | root@ubu02:~# apt-get install --reinstall ntp
 ntp             ntpdate         ntp-doc         ntpsec          ntpsec-doc      ntpsec-ntpdate  ntpsec-ntpviz   ntpstat
-*** | *** | *** | root@ubu02:~# apt-get install --reinstall ntp
+*** *** | root@ubu02:~# apt-get install --reinstall ntp
 ntp             ntpdate         ntp-doc         ntpsec          ntpsec-doc      ntpsec-ntpdate  ntpsec-ntpviz   ntpstat
-*** | *** | *** | root@ubu02:~# apt-get install --reinstall ntp
+*** *** | root@ubu02:~# apt-get install --reinstall ntp
 Reading package lists... Done
 Building dependency tree
 Reading state information... Done
@@ -486,9 +486,9 @@ Setting up ntp (1:4.2.8p10+dfsg-5ubuntu7.1) ...
 ntp-systemd-netif.service is a disabled or a static unit not running, not starting it.
 Processing triggers for systemd (237-3ubuntu10) ...
 Processing triggers for man-db (2.8.3-2) ...
-*** | *** | *** | root@ubu02:~# cat /etc/ntp.conf
+*** *** | root@ubu02:~# resolv.c/ntp.conf
 DC-AD01.ntq-solution.com.vn
-*** | *** | *** | root@ubu02:~# apt-get -o Dpkg::Options::="--force-confmiss" install --reinstall ntp
+*** *** | root@ubu02:~# apt-get -o Dpkg::Options::="--force-confmiss" install --reinstall ntp
 Reading package lists... Done
 Building dependency tree
 Reading state information... Done
@@ -503,10 +503,10 @@ Setting up ntp (1:4.2.8p10+dfsg-5ubuntu7.1) ...
 ntp-systemd-netif.service is a disabled or a static unit not running, not starting it.
 Processing triggers for systemd (237-3ubuntu10) ...
 Processing triggers for man-db (2.8.3-2) ...
-*** | *** | *** | root@ubu02:~# cat /etc/ntp.conf
+*** *** | root@ubu02:~# cat /etc/ntp.conf
 DC-AD01.ntq-solution.com.vn
-*** | *** | *** | root@ubu02:~# rm /etc/ntp.conf
-*** | *** | *** | root@ubu02:~# apt-get -o Dpkg::Options::="--force-confmiss" install --reinstall ntp
+*** *** | root@ubu02:~# rm /etc/ntp.conf
+*** *** | root@ubu02:~# apt-get -o Dpkg::Options::="--force-confmiss" install --reinstall ntp
 Reading package lists... Done
 Building dependency tree
 Reading state information... Done
@@ -524,7 +524,7 @@ Installing new config file as you requested.
 ntp-systemd-netif.service is a disabled or a static unit not running, not starting it.
 Processing triggers for systemd (237-3ubuntu10) ...
 Processing triggers for man-db (2.8.3-2) ...
-*** | *** | *** | root@ubu02:~# cat /etc/ntp.conf
+*** *** | root@ubu02:~# cat /etc/ntp.conf
 # /etc/ntp.conf, configuration for ntpd; see ntp.conf(5) for help
 
 driftfile /var/lib/ntp/ntp.drift
@@ -594,8 +594,8 @@ restrict source notrap nomodify noquery
 
 #server 127.127.22.1                   # ATOM(PPS)
 #fudge 127.127.22.1 flag3 1            # enable PPS API
-*** | *** | *** | root@ubu02:~# echo "DC-AD01.ntq-solution.com.vn" >> /etc/ntp.conf
-*** | *** | *** | root@ubu02:~# cat /etc/ntp.conf
+*** *** | root@ubu02:~# echo "DC-AD01.ntq-solution.com.vn" >> /etc/ntp.conf
+*** *** | root@ubu02:~# cat /etc/ntp.conf
 # /etc/ntp.conf, configuration for ntpd; see ntp.conf(5) for help
 
 driftfile /var/lib/ntp/ntp.drift
@@ -666,8 +666,8 @@ restrict source notrap nomodify noquery
 #server 127.127.22.1                   # ATOM(PPS)
 #fudge 127.127.22.1 flag3 1            # enable PPS API
 DC-AD01.ntq-solution.com.vn
-*** | *** | *** | root@ubu02:~# echo "DC-AD02.ntq-solution.com.vn" >> /etc/ntp.conf
-*** | *** | *** | root@ubu02:~# cat /etc/ntp.conf
+*** *** | root@ubu02:~# echo "DC-AD02.ntq-solution.com.vn" >> /etc/ntp.conf
+*** *** | root@ubu02:~# cat /etc/ntp.conf
 # /etc/ntp.conf, configuration for ntpd; see ntp.conf(5) for help
 
 driftfile /var/lib/ntp/ntp.drift
@@ -739,12 +739,12 @@ restrict source notrap nomodify noquery
 #fudge 127.127.22.1 flag3 1            # enable PPS API
 DC-AD01.ntq-solution.com.vn
 DC-AD02.ntq-solution.com.vn
-*** | *** | *** | root@ubu02:~# service ntp restart
-*** | *** | *** | root@ubu02:~# lsb_release
+*** *** | root@ubu02:~# service ntp restart
+*** *** | root@ubu02:~# lsb_release
 No LSB modules are available.
-*** | *** | *** | root@ubu02:~# uname -a
+*** *** | root@ubu02:~# uname -a
 Linux ubu02 4.15.0-112-generic #113-Ubuntu SMP Thu Jul 9 23:41:39 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
-*** | *** | *** | root@ubu02:~# cat /etc/os-release
+*** *** | root@ubu02:~# cat /etc/os-release
 NAME="Ubuntu"
 VERSION="18.04 LTS (Bionic Beaver)"
 ID=ubuntu
@@ -757,19 +757,19 @@ BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
 PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
 VERSION_CODENAME=bionic
 UBUNTU_CODENAME=bionic
-*** | *** | *** | root@ubu02:~# real
+*** *** | root@ubu02:~# real
 realm     realpath
-*** | *** | *** | root@ubu02:~# apt-get install realmd
+*** *** | root@ubu02:~# apt-get install realmd
 Display all 67584 possibilities? (y or n)
-*** | *** | *** | root@ubu02:~# apt-get install realmd
+*** *** | root@ubu02:~# apt-get install realmd
 Reading package lists... Done
 Building dependency tree
 Reading state information... Done
 realmd is already the newest version (0.16.3-1).
 0 upgraded, 0 newly installed, 0 to remove and 392 not upgraded.
-*** | *** | *** | root@ubu02:~# nano /etc/realmd.conf
-*** | *** | *** | root@ubu02:~# nano /etc/realmd.conf
-*** | *** | *** | root@ubu02:~# cat /etc/realmd.conf
+*** *** | root@ubu02:~# nano /etc/realmd.conf
+*** *** | root@ubu02:~# nano /etc/realmd.conf
+*** *** | root@ubu02:~# cat /etc/realmd.conf
 [users]
 default-home = /home/%U
 default-shell = /bin/bash
@@ -787,13 +787,13 @@ fully-qualified-names = no
 automatic-id-mapping = yes
 user-principal = yes
 manage-system = no
-*** | *** | *** | root@ubu02:~# kinit join@NTQ-SOLUTION.COM.VN
+*** *** | root@ubu02:~# kinit join@NTQ-SOLUTION.COM.VN
 kinit: Client 'join@NTQ-SOLUTION.COM.VN' not found in Kerberos database while getting initial credentials
-*** | *** | *** | root@ubu02:~# kinit join@NTQ-SOLUTION.COM.VN
+*** *** | root@ubu02:~# kinit join@NTQ-SOLUTION.COM.VN
 Password for join@NTQ-SOLUTION.COM.VN:
-*** | *** | *** | root@ubu02:~#
-*** | *** | *** | root@ubu02:~#
-*** | *** | *** | root@ubu02:~# realm --verbose join ntq-solution.com.vn
+*** *** | root@ubu02:~#
+*** *** | root@ubu02:~#
+*** *** | root@ubu02:~# realm --verbose join ntq-solution.com.vn
  * Resolving: _ldap._tcp.ntq-solution.com.vn
  * Performing LDAP DSE lookup on: 192.168.1.55
  * Successfully discovered: ntq-solution.com.vn
@@ -839,17 +839,17 @@ Password for join@NTQ-SOLUTION.COM.VN:
  * /usr/sbin/update-rc.d sssd enable
  * /usr/sbin/service sssd restart
  * Successfully enrolled machine in realm
-*** | *** | *** | root@ubu02:~# realm --verbose join ntq-solution.com.vn --user-principal=$hostname/administrator@NTQ-SOLUTION.COM.VN --unattended
+*** *** | root@ubu02:~# realm --verbose join ntq-solution.com.vn --user-principal=$hostname/administrator@NTQ-SOLUTION.COM.VN --unattended
  * Resolving: _ldap._tcp.ntq-solution.com.vn
  * Performing LDAP DSE lookup on: 192.168.1.55
  * Successfully discovered: ntq-solution.com.vn
 realm: Already joined to this domain
-*** | *** | *** | root@ubu02:~# realm --verbose join ntq-solution.com.vn --user-principal=$hostname/join@NTQ-SOLUTION.COM.VN --unattended
+*** *** | root@ubu02:~# realm --verbose join ntq-solution.com.vn --user-principal=$hostname/join@NTQ-SOLUTION.COM.VN --unattended
  * Resolving: _ldap._tcp.ntq-solution.com.vn
  * Performing LDAP DSE lookup on: 192.168.1.55
  * Successfully discovered: ntq-solution.com.vn
 realm: Already joined to this domain
-*** | *** | *** | root@ubu02:~# ls -ltra
+*** *** | root@ubu02:~# ls -ltra
 total 28
 -rw-r--r--  1 root root  148 Thg 8 17  2015 .profile
 -rw-r--r--  1 root root 3106 Thg 4  9  2018 .bashrc
@@ -858,9 +858,9 @@ drwxr-xr-x 24 root root 4096 Thg 8  2 21:31 ..
 drwx------  3 root root 4096 Thg 8  3 14:41 .gnupg
 drwx------  5 root root 4096 Thg 8  3 14:41 .
 drwx------  2 root root 4096 Thg 8  3 14:41 .cache
-*** | *** | *** | root@ubu02:~# touch os.txt
-*** | *** | *** | root@ubu02:~# cat os.txt
-*** | *** | *** | root@ubu02:~# cat /etc/os-release
+*** *** | root@ubu02:~# touch os.txt
+*** *** | root@ubu02:~# cat os.txt
+*** *** | root@ubu02:~# cat /etc/os-release
 NAME="Ubuntu"
 VERSION="18.04 LTS (Bionic Beaver)"
 ID=ubuntu
@@ -873,19 +873,19 @@ BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
 PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
 VERSION_CODENAME=bionic
 UBUNTU_CODENAME=bionic
-*** | *** | *** | root@ubu02:~# ki
+*** *** | root@ubu02:~# ki
 kill      killall   killall5  kinit
-*** | *** | *** | root@ubu02:~# ki
+*** *** | root@ubu02:~# ki
 kill      killall   killall5  kinit
-*** | *** | *** | root@ubu02:~# kinit join
+*** *** | root@ubu02:~# kinit join
 Password for join@NTQ-SOLUTION.COM.VN:
 kinit: Password read interrupted while getting initial credentials
-*** | *** | *** | root@ubu02:~# id join
+*** *** | root@ubu02:~# id join
 uid=623402223(join) gid=623400513(domain users) groups=623400513(domain users),623400572(denied rodc password replication group),623400512(domain admins)
-*** | *** | *** | root@ubu02:~# cd /home/
+*** *** | root@ubu02:~# cd /home/
 lost+found/ ubu02/
-*** | *** | *** | root@ubu02:~# cd /home/ubu02/
-*** | *** | *** | root@ubu02:/home/ubu02# dlist
+*** *** | root@ubu02:~# cd /home/ubu02/
+*** | *** *** | root@ubu02:/home/ubu02# dlist
 
 Command 'dlist' not found, did you mean:
 
@@ -902,7 +902,7 @@ Command 'dlist' not found, did you mean:
 
 See 'snap info <snapname>' for additional versions.
 
-*** | *** | *** | root@ubu02:/home/ubu02# ls -ltra
+*** | *** *** | root@ubu02:/home/ubu02# ls -ltra
 total 92
 drwxr-xr-x  4 root  root  4096 Thg 7  6 20:15 ..
 -rw-r--r--  1 ubu02 ubu02 8980 Thg 7  6 20:15 examples.desktop
@@ -926,14 +926,14 @@ drwx------ 11 ubu02 ubu02 4096 Thg 7  7 05:33 .config
 -rw-------  1 ubu02 ubu02  106 Thg 7  7 05:45 .bash_history
 -rw-------  1 ubu02 ubu02 1570 Thg 8  3 14:38 .ICEauthority
 drwxr-xr-x 15 ubu02 ubu02 4096 Thg 8  3 14:38 .
-*** | *** | *** | root@ubu02:/home/ubu02# cd ../
-*** | *** | *** | root@ubu02:/home# ls -ltra
+*** | *** *** | root@ubu02:/home/ubu02# cd ../
+*** | *** *** | root@ubu02:/home# ls -ltra
 total 28
 drwx------  2 root  root  16384 Thg 7  6 20:08 lost+found
 drwxr-xr-x  4 root  root   4096 Thg 7  6 20:15 .
 drwxr-xr-x 24 root  root   4096 Thg 8  2 21:31 ..
 drwxr-xr-x 15 ubu02 ubu02  4096 Thg 8  3 14:38 ubu02
-*** | *** | *** | root@ubu02:/home# exit
+*** | *** *** | root@ubu02:/home# exit
 logout
 Connection to 192.168.1.45 closed.
 root@Blue3:~# ssh join@192.168.1.45
@@ -963,24 +963,24 @@ Welcome to Ubuntu 18.04 LTS (GNU/Linux 4.15.0-112-generic x86_64)
 109 updates are security updates.
 
 Last login: Mon Aug  3 14:42:14 2020 from 172.16.4.112
-*** | *** | *** | root@ubu02:~#
-*** | *** | *** | root@ubu02:~#
-*** | *** | *** | root@ubu02:~#
-*** | *** | *** | root@ubu02:~# nano /etc/sssd/
+*** *** | root@ubu02:~#
+*** *** | root@ubu02:~#
+*** *** | root@ubu02:~#
+*** *** | root@ubu02:~# nano /etc/sssd/
 conf.d/    sssd.conf
-*** | *** | *** | root@ubu02:~# nano /etc/sssd/sssd.conf
-*** | *** | *** | root@ubu02:~# cat $hostname
+*** *** | root@ubu02:~# nano /etc/sssd/sssd.conf
+*** *** | root@ubu02:~# cat $hostname
 ^C
-*** | *** | *** | root@ubu02:~# cat hostname$
+*** *** | root@ubu02:~# cat hostname$
 cat: 'hostname$': No such file or directory
-*** | *** | *** | root@ubu02:~# nano /etc/sssd/sssd.conf
-*** | *** | *** | root@ubu02:~# service sssd restart
-*** | *** | *** | root@ubu02:~# echo "session required pam_unix.so
+*** *** | root@ubu02:~# nano /etc/sssd/sssd.conf
+*** *** | root@ubu02:~# service sssd restart
+*** *** | root@ubu02:~# echo "session required pam_unix.so
 > session optional pam_winbind.so
 > session optional pam_sss.so
 > session optional pam_systemd.so
 > session required pam_mkhomedir.so skel=/etc/skel/ umask=0077" >> /etc/pam.d/common-session
-*** | *** | *** | root@ubu02:~# cat /etc/pam.d/common-session
+*** *** | root@ubu02:~# cat /etc/pam.d/common-session
 #
 # /etc/pam.d/common-session - session-related modules common to all services
 #
@@ -1018,9 +1018,9 @@ session optional pam_winbind.so
 session optional pam_sss.so
 session optional pam_systemd.so
 session required pam_mkhomedir.so skel=/etc/skel/ umask=0077
-*** | *** | *** | root@ubu02:~# id join
+*** *** | root@ubu02:~# id join
 uid=623402223(join) gid=623400513(domain users) groups=623400513(domain users),623400572(denied rodc password replication group),623400512(domain admins)
-*** | *** | *** | root@ubu02:~# cat /etc/group
+*** *** | root@ubu02:~# cat /etc/group
 root:x:0:
 daemon:x:1:
 bin:x:2:
@@ -1089,21 +1089,21 @@ ubu02:x:1000:
 sambashare:x:126:ubu02
 ntp:x:127:
 sssd:x:128:
-*** | *** | *** | root@ubu02:~# sudo usermod -aG adm join
-*** | *** | *** | root@ubu02:~# sudo usermod -aG sudo join
-*** | *** | *** | root@ubu02:~# sudo usermod -aG cdrom join
-*** | *** | *** | root@ubu02:~# sudo usermod -aG plugdev join
-*** | *** | *** | root@ubu02:~# sudo usermod -aG lpadmin join
-*** | *** | *** | root@ubu02:~# sudo usermod -aG sambashare join
-*** | *** | *** | root@ubu02:~# sudo usermod -aG dip join
-*** | *** | *** | root@ubu02:~# sudo usermod -aG hieu join
+*** *** | root@ubu02:~# sudo usermod -aG adm join
+*** *** | root@ubu02:~# sudo usermod -aG sudo join
+*** *** | root@ubu02:~# sudo usermod -aG cdrom join
+*** *** | root@ubu02:~# sudo usermod -aG plugdev join
+*** *** | root@ubu02:~# sudo usermod -aG lpadmin join
+*** *** | root@ubu02:~# sudo usermod -aG sambashare join
+*** *** | root@ubu02:~# sudo usermod -aG dip join
+*** *** | root@ubu02:~# sudo usermod -aG hieu join
 usermod: group 'hieu' does not exist
-*** | *** | *** | root@ubu02:~# cat /home/
+*** *** | root@ubu02:~# cat /home/
 join/       lost+found/ ubu02/
-*** | *** | *** | root@ubu02:~# cat /home/join/
+*** *** | root@ubu02:~# cat /home/join/
 .bash_logout      .bashrc           .cache/           examples.desktop  .local/           .profile
-*** | *** | *** | root@ubu02:~# cd /home/join/
-*** | *** | *** | root@ubu02:/home/join# ls -ltra
+*** *** | root@ubu02:~# cd /home/join/
+*** | *** *** | root@ubu02:/home/join# ls -ltra
 total 40
 drwxr-xr-x 5 root root         4096 Thg 8  3 15:15 ..
 -rw------- 1 join domain users 8980 Thg 8  3 15:15 examples.desktop
@@ -1113,11 +1113,11 @@ drwxr-xr-x 5 root root         4096 Thg 8  3 15:15 ..
 drwx------ 3 join domain users 4096 Thg 8  3 15:15 .local
 drwx------ 4 join domain users 4096 Thg 8  3 15:15 .
 drwx------ 5 join domain users 4096 Thg 8  3 15:15 .cache
-*** | *** | *** | root@ubu02:/home/join# cat /etc/sssd/
+*** | *** *** | root@ubu02:/home/join# cat /etc/sssd/
 conf.d/    sssd.conf
-*** | *** | *** | root@ubu02:/home/join# cat /etc/sssd/
+*** | *** *** | root@ubu02:/home/join# cat /etc/sssd/
 conf.d/    sssd.conf
-*** | *** | *** | root@ubu02:/home/join# cat /etc/sssd/sssd.conf
+*** | *** *** | root@ubu02:/home/join# cat /etc/sssd/sssd.conf
 
 [sssd]
 domains = ntq-solution.com.vn
@@ -1137,9 +1137,9 @@ use_fully_qualified_names = False
 fallback_homedir = /home/%u
 simple_allow_users = $
 access_provider = ad
-*** | *** | *** | root@ubu02:/home/join# nano /etc/sssd/sssd.conf
-*** | *** | *** | root@ubu02:/home/join# service sssd restart
-*** | *** | *** | root@ubu02:/home/join# Connection to 192.168.1.45 closed by remote host.
+*** | *** *** | root@ubu02:/home/join# nano /etc/sssd/sssd.conf
+*** | *** *** | root@ubu02:/home/join# service sssd restart
+*** | *** *** | root@ubu02:/home/join# Connection to 192.168.1.45 closed by remote host.
 Connection to 192.168.1.45 closed.
 root@Blue3:~# ssh root@192.168.1.45
 root@192.168.1.45's password:
@@ -1158,7 +1158,7 @@ Welcome to Ubuntu 18.04 LTS (GNU/Linux 4.15.0-112-generic x86_64)
 109 updates are security updates.
 
 Last login: Mon Aug  3 15:10:01 2020 from 172.16.4.112
-*** | *** | *** | root@ubu02:~# cat /etc/sssd/sssd.conf
+*** *** | root@ubu02:~# cat /etc/sssd/sssd.conf
 
 [sssd]
 domains = ntq-solution.com.vn
@@ -1179,9 +1179,9 @@ use_fully_qualified_names = False
 fallback_homedir = /home/%u
 simple_allow_users = $
 access_provider = ad
-*** | *** | *** | root@ubu02:~#
+*** *** | root@ubu02:~#
 
-*** | *** | root@ubu02:~# cp -a /home/ubu02/. /home/join -v
+*** *** | root@ubu02:~# cp -a /home/ubu02/. /home/join -v
 '/home/ubu02/./examples.desktop' -> '/home/join/./examples.desktop'
 '/home/ubu02/./.bashrc' -> '/home/join/./.bashrc'
 '/home/ubu02/./.bash_logout' -> '/home/join/./.bash_logout'
@@ -1489,8 +1489,8 @@ access_provider = ad
 '/home/ubu02/./.ssh' -> '/home/join/./.ssh'
 '/home/ubu02/./.sudo_as_admin_successful' -> '/home/join/./.sudo_as_admin_successful'
 '/home/ubu02/./.bash_history' -> '/home/join/./.bash_history'
-*** | *** | root@ubu02:~# cd /home/join/
-*** | *** | root@ubu02:/home/join# ls -ltra
+*** *** | root@ubu02:~# cd /home/join/
+*** *** | root@ubu02:/home/join# ls -ltra
 total 92
 -rw-r--r--  1 ubu02 ubu02 8980 Thg 7  6 20:15 examples.desktop
 -rw-r--r--  1 ubu02 ubu02 3771 Thg 7  6 20:15 .bashrc
@@ -1514,13 +1514,13 @@ drwx------ 11 ubu02 ubu02 4096 Thg 7  7 05:33 .config
 drwxr-xr-x 15 ubu02 ubu02 4096 Thg 8  3 14:38 .
 drwxr-xr-x  5 root  root  4096 Thg 8  3 15:15 ..
 -rw-------  1 ubu02 ubu02  121 Thg 8  3 15:17 .bash_history
-*** | *** | root@ubu02:/home/join# cd .ssh
-*** | *** | root@ubu02:/home/join/.ssh# ls -ltra
+*** *** | root@ubu02:/home/join# cd .ssh
+*** *** | root@ubu02:/home/join/.ssh# ls -ltra
 total 8
 drwx------  2 ubu02 ubu02 4096 Thg 7  6 21:41 .
 drwxr-xr-x 15 ubu02 ubu02 4096 Thg 8  3 14:38 ..
-*** | *** | root@ubu02:/home/join/.ssh# cd ../
-*** | *** | root@ubu02:/home/join# ls -ltra
+*** *** | root@ubu02:/home/join/.ssh# cd ../
+*** *** | root@ubu02:/home/join# ls -ltra
 total 92
 -rw-r--r--  1 ubu02 ubu02 8980 Thg 7  6 20:15 examples.desktop
 -rw-r--r--  1 ubu02 ubu02 3771 Thg 7  6 20:15 .bashrc
