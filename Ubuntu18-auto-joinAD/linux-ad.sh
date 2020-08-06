@@ -4,14 +4,44 @@
 echo "= = = = = = = = = = = = = = = = = = = = = = = =
 =              Begin Initializing             =
 = = = = = = = = = = = = = = = = = = = = = = = =
+= = = = = = = = = = = = = = = = = = = = = = = =
+=         Configure Resolvconf Service        =
+= = = = = = = = = = = = = = = = = = = = = = = ="
+apt-get -y install resolvconf dnsutils
+read -p "Nameserver1: " nameserver1
+read -p "Nameserver2: " nameserver2
+echo "Nameserver: $nameserver1 + $nameserver2"
+# Append /etc/resolv.conf
+echo "Configure /etc/resolv.conf :"
+echo "nameserver  $nameserver1
+nameserver  $nameserver2" >> /etc/resolv.conf
+cat /etc/resolv.conf
+echo "Create /etc/resolvconf/resolv.conf.d/head :"
+# Create /etc/resolvconf/resolv.conf.d/head
+echo "nameserver  $nameserver1
+nameserver  $nameserver2" >> /etc/resolvconf/resolv.conf.d/head
+cat /etc/resolvconf/resolv.conf.d/head
+echo "Restart and Enable resolvconf Service:"
+service resolvconf restart
+systemctl enable resolvconf.service
+echo "
+Done."
+sleep 2
+
+echo "
 ---Installing Kerberos..."
 cd /tmp
+apt-get install -y krb5-user
 apt-get -o Dpkg::Options::="--force-confmiss" install --reinstall krb5.conf
 krb5path=$(find /etc/ -name "krb5.conf" | grep krb5.conf)
 # Get the required domain name.
 domainname=$(grep -m 1 "default_realm" $krb5path | cut -d "=" -f2- | cut -d " " -f2-)
 domainnamecap=$(echo $domainname | tr [:lower:] [:upper:])
 joinname="join@$domainnamecap"
+hostname=$(cat /etc/hostname)
+echo "
+Done."
+sleep 2
 
 # Print all the Information collected.
 echo "
@@ -20,7 +50,8 @@ echo "
 = = = = = = = = = = = = = = = = = = = = = = = ="
 echo "Domain Name: $domainname
 CAP Domain Name: $domainnamecap
-Join Domain Name: $joinname"
+Join Domain Name: $joinname
+Hostname: $hostname"
 osname=$(grep "PRETTY_NAME" /etc/os-release | cut -d "=" -f2-)
 osnamereplace=$(echo os-name = ${osname:1:-1})
 osversion=$(grep -m 1 "VERSION" /etc/os-release | cut -d "=" -f2-)
@@ -29,37 +60,28 @@ ostype=$(uname -o)
 echo "$osnamereplace
 $osversionreplace
 OS-type: $ostype"
-nameserver1="10.0.64.2"
-nameserver2="10.0.64.3"
-echo "Nameserver: $nameserver1 + $nameserver2"
+echo "
+Done."
+sleep 2
 
 # Install all required package for all next steps.
 echo "
 = = = = = = = = = = = = = = = = = = = = = = = =
 =         Installing Required Packages        =
 = = = = = = = = = = = = = = = = = = = = = = = ="
-apt-get -y install resolvconf realmd sssd sssd-tools samba-common krb5-user packagekit samba-common-bin samba-libs adcli ntp dnsutils sed
+apt-get -y install samba samba-common packagekit samba-common-bin samba-libs adcli
+systemctl unmask samba-ad-dc
+service start smbd
+service start nmbd
+apt-get -y install ntp sed sssd sssd-tools realmd
+echo "
+Done."
+sleep 2
 
 # Begin configuring.
 echo "---Done Initializing...
 
 ---Begin Configuring Step...
-= = = = = = = = = = = = = = = = = = = = = = = =
-=         Configure Resolvconf Service        =
-= = = = = = = = = = = = = = = = = = = = = = = ="
-echo "Configure /etc/resolv.conf :"
-echo "nameserver  $nameserver1
-nameserver  $nameserver2" >> /etc/resolv.conf
-cat /etc/resolv.conf
-echo "Configure /etc/resolvconf/resolv.conf.d/head :"
-echo "nameserver  $nameserver1
-nameserver  $nameserver2" >> /etc/resolvconf/resolv.conf.d/head
-cat /etc/resolvconf/resolv.conf.d/head
-echo "Restart and Enable resolvconf Service:"
-service resolvconf restart
-systemctl enable resolvconf.service
-
-echo "
 = = = = = = = = = = = = = = = = = = = = = = = =
 =         Checking Domain Connections         =
 = = = = = = = = = = = = = = = = = = = = = = = ="
@@ -67,6 +89,9 @@ echo "nslookup:"
 echo $domainname | nslookup
 echo "Test Connection:"
 dig -t SRV _ldap._tcp.$domainname | grep -A2 "ANSWER SECTION"
+echo "
+Done."
+sleep 2
 
 echo "
 = = = = = = = = = = = = = = = = = = = = = = = =
@@ -80,6 +105,9 @@ echo "NTP configure:"
 cat /etc/ntp.conf
 service ntp restart
 systemctl enable ntp
+echo "
+Done."
+sleep 2
 
 echo "
 = = = = = = = = = = = = = = = = = = = = = = = =
@@ -104,25 +132,9 @@ user-principal = yes
 manage-system = no" > /etc/realmd.conf
 echo "Realmd config:"
 cat /etc/realmd.conf
-
 echo "
-= = = = = = = = = = = = = = = = = = = = = = = =
-=             Configure sssd.conf             =
-= = = = = = = = = = = = = = = = = = = = = = = ="
-sed -i "s/simple/ad/g" /etc/sssd/sssd.conf
-sed -i "s/use_fully_qualified_names = True/use_fully_qualified_names = False/g" /etc/sssd/sssd.conf
-echo "sssd config:"
-cat /etc/sssd/sssd.conf
-service sssd restart
-systemctl enable sssd
-
-echo "Adding session option to /etc/pam.d/common-session."
-echo "session required pam_unix.so
-> session optional pam_winbind.so
-> session optional pam_sss.so
-> session optional pam_systemd.so
-> session required pam_mkhomedir.so skel=/etc/skel/ umask=0077" >> /etc/pam.d/common-session
-echo "OK"
+Done."
+sleep 2
 
 # Begin joining Domain.
 echo "---Done Configuring...
@@ -131,8 +143,41 @@ echo "---Done Configuring...
 = = = = = = = = = = = = = = = = = = = = = = = =
 =                 Join Domain                 =
 = = = = = = = = = = = = = = = = = = = = = = = ="
-echo "12345a@" | kinit $joinname
+kinit $joinname
 realm --verbose join $domainname --user-principal=$hostname/$joinname --unattended
+
+echo "
+= = = = = = = = = = = = = = = = = = = = = = = =
+=             Configure sssd.conf             =
+= = = = = = = = = = = = = = = = = = = = = = = ="
+echo "[sssd]
+domains = ntq-solution.com.vn
+config_file_version = 2
+services = nss, pam
+
+[domain/ntq-solution.com.vn]
+ad_domain = ntq-solution.com.vn
+krb5_realm = NTQ-SOLUTION.COM.VN
+realmd_tags = joined-with-adcli
+cache_credentials = True
+id_provider = ad
+krb5_store_password_if_offline = True
+default_shell = /bin/bash
+ldap_sasl_authid = $hostname
+ldap_id_mapping = True
+use_fully_qualified_names = False
+fallback_homedir = /home/%u
+simple_allow_users = \$
+access_provider = ad" > /etc/sssd/sssd.conf
+chmod 600 /etc/sssd/sssd.conf
+#sed -i "s/simple/ad/g" /etc/sssd/sssd.conf
+#sed -i "s/use_fully_qualified_names = True/use_fully_qualified_names = False/g" /etc/sssd/sssd.conf
+#echo "sssd config:"
+cat /etc/sssd/sssd.conf
+service sssd restart
+echo "
+Done."
+sleep 2
 
 echo "
 ---Checking if user \"join\" is domain user or not..."
@@ -146,3 +191,13 @@ usermod -aG plugdev join
 usermod -aG lpadmin join
 usermod -aG sambashare join
 usermod -aG dip join
+
+echo "Adding session option to /etc/pam.d/common-session."
+echo "session required pam_unix.so
+> session optional pam_winbind.so
+> session optional pam_sss.so
+> session optional pam_systemd.so
+> session required pam_mkhomedir.so skel=/etc/skel/ umask=0077" >> /etc/pam.d/common-session
+sleep 1
+echo "OK"
+sleep 2
