@@ -35,7 +35,7 @@ apt-get install -y krb5-user
 apt-get -o Dpkg::Options::="--force-confmiss" install --reinstall krb5.conf
 krb5path=$(find /etc/ -name "krb5.conf" | grep krb5.conf)
 # Get the required domain name.
-domainname=$(grep -m 1 "default_realm" $krb5path | cut -d "=" -f2- | cut -d " " -f2-)
+domainname=$(grep -m 1 "default_realm" $krb5path | cut -d "=" -f2- | cut -d " " -f2- | tr [:upper:] [:lower:])
 domainnamecap=$(echo $domainname | tr [:lower:] [:upper:])
 joinname="join@$domainnamecap"
 hostname=$(cat /etc/hostname)
@@ -116,15 +116,12 @@ echo "
 echo "[users]
 default-home = /home/%U
 default-shell = /bin/bash
-
 [active-directory]
 default-client = sssd
 $osnamereplace
 $osversionreplace
-
 [service]
 automatic-install = no
-
 [$domainname]
 fully-qualified-names = no
 automatic-id-mapping = yes
@@ -151,13 +148,13 @@ echo "
 =             Configure sssd.conf             =
 = = = = = = = = = = = = = = = = = = = = = = = ="
 echo "[sssd]
-domains = ntq-solution.com.vn
+domains = $domainname
 config_file_version = 2
 services = nss, pam
 
 [domain/ntq-solution.com.vn]
-ad_domain = ntq-solution.com.vn
-krb5_realm = NTQ-SOLUTION.COM.VN
+ad_domain = $domainname
+krb5_realm = $domainnamecap
 realmd_tags = joined-with-adcli
 cache_credentials = True
 id_provider = ad
