@@ -132,9 +132,57 @@ user-principal = yes
 manage-system = no" > /etc/realmd.conf
 echo "Realmd config:"
 cat /etc/realmd.conf
+<<<<<<< HEAD
 echo "
 Done."
 sleep 2
+=======
+echo "
+Done."
+sleep 2
+
+echo "
+= = = = = = = = = = = = = = = = = = = = = = = =
+=             Configure sssd.conf             =
+= = = = = = = = = = = = = = = = = = = = = = = ="
+echo "[sssd]
+domains = ntq-solution.com.vn
+config_file_version = 2
+services = nss, pam
+
+[domain/ntq-solution.com.vn]
+ad_domain = ntq-solution.com.vn
+krb5_realm = NTQ-SOLUTION.COM.VN
+realmd_tags = joined-with-adcli
+cache_credentials = True
+id_provider = ad
+krb5_store_password_if_offline = True
+default_shell = /bin/bash
+ldap_sasl_authid = $hostname
+ldap_id_mapping = True
+use_fully_qualified_names = False
+fallback_homedir = /home/%u
+simple_allow_users = \$
+access_provider = ad" > /etc/sssd/sssd.conf
+chmod 600 /etc/sssd/sssd.conf
+#sed -i "s/simple/ad/g" /etc/sssd/sssd.conf
+#sed -i "s/use_fully_qualified_names = True/use_fully_qualified_names = False/g" /etc/sssd/sssd.conf
+#echo "sssd config:"
+cat /etc/sssd/sssd.conf
+echo "
+Done."
+sleep 2
+
+echo "Adding session option to /etc/pam.d/common-session."
+echo "session required pam_unix.so
+> session optional pam_winbind.so
+> session optional pam_sss.so
+> session optional pam_systemd.so
+> session required pam_mkhomedir.so skel=/etc/skel/ umask=0077" >> /etc/pam.d/common-session
+sleep 1
+echo "OK"
+sleep 2
+>>>>>>> f2591b9591cd9ffa9b49a556720a89647ee769fe
 
 # Begin joining Domain.
 echo "---Done Configuring...
@@ -145,6 +193,8 @@ echo "---Done Configuring...
 = = = = = = = = = = = = = = = = = = = = = = = ="
 kinit $joinname
 realm --verbose join $domainname --user-principal=$hostname/$joinname --unattended
+
+service sssd restart
 
 echo "
 = = = = = = = = = = = = = = = = = = = = = = = =
