@@ -71,8 +71,10 @@ echo "
 = = = = = = = = = = = = = = = = = = = = = = = ="
 apt-get -y install samba samba-common packagekit samba-common-bin samba-libs adcli
 systemctl unmask samba-ad-dc
-service start smbd
-service start nmbd
+systemctl start smbd
+systemctl enable smbd
+systemctl start nmbd
+systemctl enable nmbd
 apt-get -y install ntp sed sssd sssd-tools realmd
 echo "
 Done."
@@ -172,6 +174,7 @@ chmod 600 /etc/sssd/sssd.conf
 #echo "sssd config:"
 cat /etc/sssd/sssd.conf
 service sssd restart
+systemctl enable sssd
 echo "
 Done."
 sleep 2
@@ -197,4 +200,13 @@ echo "session required pam_unix.so
 > session required pam_mkhomedir.so skel=/etc/skel/ umask=0077" >> /etc/pam.d/common-session
 sleep 1
 echo "OK"
+echo "Restart smbd & nmbd service:"
+systemctl restart smbd
+systemctl restart nmbd
+echo "OK"
 sleep 2
+
+echo "
+= = = = = = = = = = = = = = = = = = = = = = = =
+=                     END                     =
+= = = = = = = = = = = = = = = = = = = = = = = ="
