@@ -1,10 +1,38 @@
-Tools
-├── Bash-dev-tcp
-├── PublicIP-API
-├── Tufin-Python
-├── Ubuntu18-auto-joinAD
-├── LICENSE
-├── README.md
-└── tree.txt
+- __Tools__
+   - __Bash\-dev\-tcp__
+     - [README.md](Bash-dev-tcp/README.md)
+     - [current\-time\-nist](Bash-dev-tcp/current-time-nist)
+     - [download\-file](Bash-dev-tcp/download-file)
+     - [download\-url](Bash-dev-tcp/download-url)
+     - [headers\-http](Bash-dev-tcp/headers-http)
+     - [lan\-scanner](Bash-dev-tcp/lan-scanner)
+     - [reverse\-shell](Bash-dev-tcp/reverse-shell)
+     - [reverse\-shell\-listener](Bash-dev-tcp/reverse-shell-listener)
+     - [send\-email](Bash-dev-tcp/send-email)
+     - [send\-file](Bash-dev-tcp/send-file)
+   - [LICENSE](LICENSE)
+   - __PublicIP\-API__
+     - [AtomPi\-PublicIP\-API.py](PublicIP-API/AtomPi-PublicIP-API.py)
+     - [INVENTORY\-Variable.txt](PublicIP-API/INVENTORY-Variable.txt)
+     - [INVENTORY.json](PublicIP-API/INVENTORY.json)
+     - [Inventory.csv](PublicIP-API/Inventory.csv)
+     - [Inventory.html](PublicIP-API/Inventory.html)
+     - [InventoryGen.py](PublicIP-API/InventoryGen.py)
+     - [License.csv](PublicIP-API/License.csv)
+     - [License.html](PublicIP-API/License.html)
+     - [PublicIP.sh](PublicIP-API/PublicIP.sh)
+     - [PublicIP.txt](PublicIP-API/PublicIP.txt)
+     - [test.py](PublicIP-API/test.py)
+   - [README.md](README.md)
+   - __Tufin\-Python__
+     - [Auto\-Enable\-Rule.py](Tufin-Python/Auto-Enable-Rule.py)
+     - [Check\-duplicate.py](Tufin-Python/Check-duplicate.py)
+     - [Juniper\-open\-log\-CLI\-list.py](Tufin-Python/Juniper-open-log-CLI-list.py)
+     - [Listing\-affected\-rules.py](Tufin-Python/Listing-affected-rules.py)
+     - [Text\-split.py](Tufin-Python/Text-split.py)
+     - [Tufin\-Rule\-rename.py](Tufin-Python/Tufin-Rule-rename.py)
+   - __Ubuntu18\-auto\-joinAD__
+     - [Draft.txt](Ubuntu18-auto-joinAD/Draft.txt)
+     - [linux\-ad.sh](Ubuntu18-auto-joinAD/linux-ad.sh)
+     - [log.txt](Ubuntu18-auto-joinAD/log.txt)
 
-4 directories, 3 files
