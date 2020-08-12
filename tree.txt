@@ -27,6 +27,9 @@ Tools
 │   ├── PublicIP.sh
 │   ├── PublicIP.txt
 │   └── test.py
+├── RedTeaming
+│   ├── hacker-pic.txt
+│   └── main.sh
 ├── Tufin-Python
 │   ├── Auto-Enable-Rule.py
 │   ├── Check-duplicate.py
@@ -43,4 +46,4 @@ Tools
 ├── README.md
 └── tree.txt
 
-5 directories, 38 files
+6 directories, 40 files
