@@ -1,5 +1,9 @@
 #/bin/bash
 
+# Fix Timezone error
+echo "Fix Timezone"
+hwclock --hctosys
+
 # Install Kerberos first. And input the required Domain for Kerberos.
 echo "= = = = = = = = = = = = = = = = = = = = = = = =
 =              Begin Initializing             =
@@ -7,15 +11,18 @@ echo "= = = = = = = = = = = = = = = = = = = = = = = =
 = = = = = = = = = = = = = = = = = = = = = = = =
 =         Configure Resolvconf Service        =
 = = = = = = = = = = = = = = = = = = = = = = = ="
+apt-get update
 apt-get -y install resolvconf dnsutils
+read -p "Nameserver1: " nameserver1
+#read -p "Nameserver2: " nameserver2
+#echo "Nameserver: $nameserver1 + $nameserver2"
 # Append /etc/resolv.conf
 echo "Configure /etc/resolv.conf :"
-echo "nameserver  10.0.64.2" >> /etc/resolv.conf
+echo "nameserver  $nameserver1" >> /etc/resolv.conf
 cat /etc/resolv.conf
 echo "Create /etc/resolvconf/resolv.conf.d/head :"
 # Create /etc/resolvconf/resolv.conf.d/head
-echo "nameserver  $nameserver1
-nameserver  $nameserver2" >> /etc/resolvconf/resolv.conf.d/head
+echo "nameserver  $nameserver1" >> /etc/resolvconf/resolv.conf.d/head
 cat /etc/resolvconf/resolv.conf.d/head
 echo "Restart and Enable resolvconf Service:"
 service resolvconf restart
@@ -28,7 +35,9 @@ echo "
 ---Installing Kerberos..."
 cd /tmp
 apt-get install -y krb5-user
-apt-get -o Dpkg::Options::="--force-confmiss" install --reinstall krb5.conf
+#apt-get -o Dpkg::Options::="--force-confmiss" install --reinstall krb5.conf
+# NTQ-SOLUTION.COM.VN
+# DC-AD01.NTQ-SOLUTION.COM.VN
 krb5path=$(find /etc/ -name "krb5.conf" | grep krb5.conf)
 # Get the required domain name.
 domainname=$(grep -m 1 "default_realm" $krb5path | cut -d "=" -f2- | cut -d " " -f2- | tr [:upper:] [:lower:])
@@ -138,7 +147,7 @@ echo "---Done Configuring...
 = = = = = = = = = = = = = = = = = = = = = = = =
 =                 Join Domain                 =
 = = = = = = = = = = = = = = = = = = = = = = = ="
-echo "123456a@" | kinit $joinname
+kinit $joinname
 realm --verbose join $domainname --user-principal=$hostname/$joinname --unattended
 
 echo "
@@ -179,6 +188,15 @@ echo "
 ---Checking if user \"join\" is domain user or not..."
 id join
 
+echo "Add user \"join\" to group: adm, sudo, cdrom, plugdev, lpadmin, sambashare, dip"
+usermod -aG adm join
+usermod -aG sudo join
+usermod -aG cdrom join
+usermod -aG plugdev join
+usermod -aG lpadmin join
+usermod -aG sambashare join
+usermod -aG dip join
+
 echo "Adding session option to /etc/pam.d/common-session."
 echo "session required pam_unix.so
 > session optional pam_winbind.so
@@ -197,3 +215,9 @@ echo "
 = = = = = = = = = = = = = = = = = = = = = = = =
 =                     END                     =
 = = = = = = = = = = = = = = = = = = = = = = = ="
+#mount -o remount,rw /
+#echo "blacklist i2c-piix4
+#blacklist intel_powerclamp" >> /etc/modprobe.d/blacklist.conf
+#update-initramfs -u
+#apt-get purge nvidia*
+#apt-get install xserver-xorg-video-intel -y

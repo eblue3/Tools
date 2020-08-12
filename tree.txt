@@ -10,6 +10,11 @@ Tools
 │   ├── reverse-shell-listener
 │   ├── send-email
 │   └── send-file
+├── md5hash
+│   ├── 10-million-password-list-top-1000000.txt
+│   ├── md5-1m-pass-result.txt
+│   ├── md5-num-hash.sh
+│   └── md5-password-hash.sh
 ├── PublicIP-API
 │   ├── AtomPi-PublicIP-API.py
 │   ├── Inventory.csv
@@ -32,9 +37,10 @@ Tools
 ├── Ubuntu18-auto-joinAD
 │   ├── Draft.txt
 │   ├── linux-ad.sh
-│   └── log.txt
+│   ├── log.txt
+│   └── test-linux-ad.sh
 ├── LICENSE
 ├── README.md
 └── tree.txt
 
-4 directories, 33 files
+5 directories, 38 files
