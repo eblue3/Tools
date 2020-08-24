@@ -199,10 +199,10 @@ usermod -aG dip join
 
 echo "Adding session option to /etc/pam.d/common-session."
 echo "session required pam_unix.so
-> session optional pam_winbind.so
-> session optional pam_sss.so
-> session optional pam_systemd.so
-> session required pam_mkhomedir.so skel=/etc/skel/ umask=0077" >> /etc/pam.d/common-session
+session optional pam_winbind.so
+session optional pam_sss.so
+session optional pam_systemd.so
+session required pam_mkhomedir.so skel=/etc/skel/ umask=0077" >> /etc/pam.d/common-session
 sleep 1
 echo "OK"
 echo "Restart smbd & nmbd service:"

@@ -14,8 +14,7 @@ echo "nameserver  10.0.64.2" >> /etc/resolv.conf
 cat /etc/resolv.conf
 echo "Create /etc/resolvconf/resolv.conf.d/head :"
 # Create /etc/resolvconf/resolv.conf.d/head
-echo "nameserver  $nameserver1
-nameserver  $nameserver2" >> /etc/resolvconf/resolv.conf.d/head
+echo "nameserver  10.0.64.2" >> /etc/resolvconf/resolv.conf.d/head
 cat /etc/resolvconf/resolv.conf.d/head
 echo "Restart and Enable resolvconf Service:"
 service resolvconf restart
@@ -28,7 +27,7 @@ echo "
 ---Installing Kerberos..."
 cd /tmp
 apt-get install -y krb5-user
-apt-get -o Dpkg::Options::="--force-confmiss" install --reinstall krb5.conf
+# apt-get -o Dpkg::Options::="--force-confmiss" install --reinstall krb5.conf
 krb5path=$(find /etc/ -name "krb5.conf" | grep krb5.conf)
 # Get the required domain name.
 domainname=$(grep -m 1 "default_realm" $krb5path | cut -d "=" -f2- | cut -d " " -f2- | tr [:upper:] [:lower:])
@@ -88,7 +87,8 @@ echo $domainname | nslookup
 echo "Test Connection:"
 dig -t SRV _ldap._tcp.$domainname | grep -A2 "ANSWER SECTION"
 echo "
-Done."
+Done."echo "nameserver  $nameserver1
+nameserver  $nameserver2"
 sleep 2
 
 echo "
@@ -181,10 +181,10 @@ id join
 
 echo "Adding session option to /etc/pam.d/common-session."
 echo "session required pam_unix.so
-> session optional pam_winbind.so
-> session optional pam_sss.so
-> session optional pam_systemd.so
-> session required pam_mkhomedir.so skel=/etc/skel/ umask=0077" >> /etc/pam.d/common-session
+session optional pam_winbind.so
+session optional pam_sss.so
+session optional pam_systemd.so
+session required pam_mkhomedir.so skel=/etc/skel/ umask=0077" >> /etc/pam.d/common-session
 sleep 1
 echo "OK"
 echo "Restart smbd & nmbd service:"
@@ -197,3 +197,11 @@ echo "
 = = = = = = = = = = = = = = = = = = = = = = = =
 =                     END                     =
 = = = = = = = = = = = = = = = = = = = = = = = ="
+echo "Rebooting in 30s."
+sleep 10
+echo "Rebooting in 20s."
+sleep 10
+echo "Rebooting in 10s."
+sleep 10
+echo "Reboot!"
+reboot
