@@ -1,8 +1,14 @@
 #/bin/bash
-
 # Fix Timezone error
 echo "Fix Timezone"
 hwclock --hctosys
+echo "Waiting for 5 mins for time post-update."
+sleep 300
+echo "Checking 192.168.1.55 connection ..."
+while ! ping -c6 192.168.1.55 &>/dev/null
+        do echo "Fail to connect. Please check your DNS configuration. Checking again..."
+done
+echo "OK"
 
 # Install Kerberos first. And input the required Domain for Kerberos.
 echo "= = = = = = = = = = = = = = = = = = = = = = = =
@@ -11,33 +17,28 @@ echo "= = = = = = = = = = = = = = = = = = = = = = = =
 = = = = = = = = = = = = = = = = = = = = = = = =
 =         Configure Resolvconf Service        =
 = = = = = = = = = = = = = = = = = = = = = = = ="
-apt-get update
-apt-get -y install resolvconf dnsutils
-read -p "Nameserver1: " nameserver1
-#read -p "Nameserver2: " nameserver2
-#echo "Nameserver: $nameserver1 + $nameserver2"
+sleep 1
+echo "Install packages: resolvconf, dnsutils"
+apt-get -y install resolvconf dnsutils &>/dev/null
 # Append /etc/resolv.conf
 echo "Configure /etc/resolv.conf :"
-echo "nameserver  $nameserver1" >> /etc/resolv.conf
+echo "nameserver  192.168.1.55" > /etc/resolv.conf
 cat /etc/resolv.conf
 echo "Create /etc/resolvconf/resolv.conf.d/head :"
 # Create /etc/resolvconf/resolv.conf.d/head
-echo "nameserver  $nameserver1" >> /etc/resolvconf/resolv.conf.d/head
+echo "nameserver  192.168.1.55" > /etc/resolvconf/resolv.conf.d/head
 cat /etc/resolvconf/resolv.conf.d/head
 echo "Restart and Enable resolvconf Service:"
 service resolvconf restart
 systemctl enable resolvconf.service
 echo "
 Done."
-sleep 2
 
 echo "
 ---Installing Kerberos..."
 cd /tmp
-apt-get install -y krb5-user
-#apt-get -o Dpkg::Options::="--force-confmiss" install --reinstall krb5.conf
-# NTQ-SOLUTION.COM.VN
-# DC-AD01.NTQ-SOLUTION.COM.VN
+apt-get install -y krb5-user &>/dev/null
+# apt-get -o Dpkg::Options::="--force-confmiss" install --reinstall krb5.conf
 krb5path=$(find /etc/ -name "krb5.conf" | grep krb5.conf)
 # Get the required domain name.
 domainname=$(grep -m 1 "default_realm" $krb5path | cut -d "=" -f2- | cut -d " " -f2- | tr [:upper:] [:lower:])
@@ -46,13 +47,13 @@ joinname="join@$domainnamecap"
 hostname=$(cat /etc/hostname)
 echo "
 Done."
-sleep 2
 
 # Print all the Information collected.
 echo "
 = = = = = = = = = = = = = = = = = = = = = = = =
 =                 INFORMATION                 =
 = = = = = = = = = = = = = = = = = = = = = = = ="
+sleep 2
 echo "Domain Name: $domainname
 CAP Domain Name: $domainnamecap
 Join Domain Name: $joinname
@@ -67,23 +68,24 @@ $osversionreplace
 OS-type: $ostype"
 echo "
 Done."
-sleep 2
 
 # Install all required package for all next steps.
 echo "
 = = = = = = = = = = = = = = = = = = = = = = = =
 =         Installing Required Packages        =
 = = = = = = = = = = = = = = = = = = = = = = = ="
-apt-get -y install samba samba-common packagekit samba-common-bin samba-libs adcli
+sleep 1
+echo "Install packages: samba, samba-common, packagekit, samba-common-bin, samba-libs, adcli"
+apt-get -y install samba samba-common packagekit samba-common-bin samba-libs adcli &>/dev/null
 systemctl unmask samba-ad-dc
 systemctl start smbd
 systemctl enable smbd
 systemctl start nmbd
 systemctl enable nmbd
-apt-get -y install ntp sed sssd sssd-tools realmd
 echo "
-Done."
-sleep 2
+Install packages: ntp, sed, sssd, sssd-tools, realmd"
+apt-get -y install ntp sed sssd sssd-tools realmd
+echo "Done."
 
 # Begin configuring.
 echo "---Done Initializing...
@@ -92,34 +94,38 @@ echo "---Done Initializing...
 = = = = = = = = = = = = = = = = = = = = = = = =
 =         Checking Domain Connections         =
 = = = = = = = = = = = = = = = = = = = = = = = ="
-echo "nslookup:"
+sleep 1
+echo "Lookup with new DNS:"
 echo $domainname | nslookup
-echo "Test Connection:"
-dig -t SRV _ldap._tcp.$domainname | grep -A2 "ANSWER SECTION"
+sleep 1
 echo "
-Done."
-sleep 2
+Test Connection:"
+dig -t SRV _ldap._tcp.$domainname | grep -A2 "ANSWER SECTION"
+echo "Done."
 
 echo "
 = = = = = = = = = = = = = = = = = = = = = = = =
 =            Configure NTP Service            =
 = = = = = = = = = = = = = = = = = = = = = = = ="
+sleep 1
 sed -i "s/#pool/pool/g" /etc/ntp.conf
 sed -i "s/pool/#pool/g" /etc/ntp.conf
 echo "DC-AD01.ntq-solution.com.vn
 DC-AD02.ntq-solution.com.vn" >> /etc/ntp.conf
-echo "NTP configure:"
+sleep 1
+echo "
+NTP configure:"
 cat /etc/ntp.conf
 service ntp restart
 systemctl enable ntp
 echo "
 Done."
-sleep 2
 
 echo "
 = = = = = = = = = = = = = = = = = = = = = = = =
 =            Configure Realmd.conf            =
 = = = = = = = = = = = = = = = = = = = = = = = ="
+sleep 1
 echo "[users]
 default-home = /home/%U
 default-shell = /bin/bash
@@ -134,11 +140,12 @@ fully-qualified-names = no
 automatic-id-mapping = yes
 user-principal = yes
 manage-system = no" > /etc/realmd.conf
-echo "Realmd config:"
+sleep 1
+echo "
+Realmd config:"
 cat /etc/realmd.conf
 echo "
 Done."
-sleep 2
 
 # Begin joining Domain.
 echo "---Done Configuring...
@@ -147,13 +154,15 @@ echo "---Done Configuring...
 = = = = = = = = = = = = = = = = = = = = = = = =
 =                 Join Domain                 =
 = = = = = = = = = = = = = = = = = = = = = = = ="
-kinit $joinname
+sleep 1
+echo "123456a@" | kinit $joinname
 realm --verbose join $domainname --user-principal=$hostname/$joinname --unattended
 
 echo "
 = = = = = = = = = = = = = = = = = = = = = = = =
 =             Configure sssd.conf             =
 = = = = = = = = = = = = = = = = = = = = = = = ="
+sleep 1
 echo "[sssd]
 domains = $domainname
 config_file_version = 2
@@ -182,20 +191,10 @@ service sssd restart
 systemctl enable sssd
 echo "
 Done."
-sleep 2
 
 echo "
----Checking if user \"join\" is domain user or not..."
+---Checking if user join is domain user or not..."
 id join
-
-echo "Add user \"join\" to group: adm, sudo, cdrom, plugdev, lpadmin, sambashare, dip"
-usermod -aG adm join
-usermod -aG sudo join
-usermod -aG cdrom join
-usermod -aG plugdev join
-usermod -aG lpadmin join
-usermod -aG sambashare join
-usermod -aG dip join
 
 echo "Adding session option to /etc/pam.d/common-session."
 echo "session required pam_unix.so
@@ -213,11 +212,65 @@ sleep 2
 
 echo "
 = = = = = = = = = = = = = = = = = = = = = = = =
+=               Config New User               =
+= = = = = = = = = = = = = = = = = = = = = = = ="
+sleep 1
+# List all user inside /home directory
+echo "Listing all user in /home:"
+cat /etc/passwd | grep "/home/" | cut -d ":" -f1 > userlist.txt
+declare -i x=1
+cat userlist.txt | while read lines
+do
+  echo "User [$x]: $lines"
+  x=x+1
+done
+
+echo "Input CAREFULLY your Current-Username and your New-Username.
+The Tool will copies Current User Home to New User Home"
+read -p "Your Current User: " olduser
+olduserhome="/home/"+$olduser
+newuserhome="/home/"+$newuser
+read -p "New Username: " newuser
+
+# Create new user home directory
+echo "Create newuser home directory"
+echo exit | su - $newuser
+
+# Add New User to new Group
+echo "Add Newuser to Current User Groups"
+oldgroup=$(groups $olduser | cut -d ":" -f2 | tr " " ",")
+oldgroup=${oldgroup#?}
+usermod -aG $oldgroup $newuser
+
+# Check
+echo "Check if New User is on Current User's groups:"
+groups /etc/group | grep $olduser
+echo "Check User informations:
+Current User: $olduser
+Current User Home Directory: $olduserhome
+`cd $olduserhome`
+New User: $newuser
+New User Home Directory: $newuserhome
+`cd $newuserhome`"
+
+# Copy
+echo "Copy Current User data to New User Data:
+Please standby ..."
+cp -R -a $olduserhome/.* $newuserhome
+echo "Done."
+
+echo "
+= = = = = = = = = = = = = = = = = = = = = = = =
 =                     END                     =
 = = = = = = = = = = = = = = = = = = = = = = = ="
-#mount -o remount,rw /
-#echo "blacklist i2c-piix4
-#blacklist intel_powerclamp" >> /etc/modprobe.d/blacklist.conf
-#update-initramfs -u
-#apt-get purge nvidia*
-#apt-get install xserver-xorg-video-intel -y
+echo "Rebooting in 30s."
+sleep 10
+echo "Rebooting in 20s."
+sleep 10
+echo "Rebooting in 10s."
+sleep 5
+echo "Rebooting in 5s."
+sleep 5
+echo "Reboot!"
+sleep 1
+reboot
