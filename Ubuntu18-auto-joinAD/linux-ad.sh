@@ -1,5 +1,4 @@
-#/bin/bash
-timedatectl set-timezone Asia/Ho_Chi_Minh
+#!/bin/bash
 echo "Checking 10.0.64.2 connection ..."
 while ! ping -c6 10.0.64.2 &>/dev/null
         do echo "Fail to connect. Please check your DNS configuration. Checking again..."
@@ -223,6 +222,9 @@ do
   echo "User [$x]: $lines"
   x=x+1
 done
+
+echo "Configure Timezone to Asia/Ho_Chi_Minh:"
+timedatectl set-timezone Asia/Ho_Chi_Minh
 
 echo "Input CAREFULLY your Current-Username and your New-Username.
 The Tool will copies Current User Home to New User Home"
