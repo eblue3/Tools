@@ -1,5 +1,5 @@
 #/bin/bash
-
+timedatectl set-timezone Asia/Ho_Chi_Minh
 echo "Checking 10.0.64.2 connection ..."
 while ! ping -c6 10.0.64.2 &>/dev/null
         do echo "Fail to connect. Please check your DNS configuration. Checking again..."
@@ -14,7 +14,8 @@ echo "= = = = = = = = = = = = = = = = = = = = = = = =
 =         Configure Resolvconf Service        =
 = = = = = = = = = = = = = = = = = = = = = = = ="
 sleep 1
-echo "Install packages: resolvconf, dnsutils"
+echo "Install packages: resolvconf, dnsutils
+..."
 apt-get -y install resolvconf dnsutils &>/dev/null
 # Append /etc/resolv.conf
 echo "Configure /etc/resolv.conf :"
@@ -33,7 +34,7 @@ Done."
 echo "
 ---Installing Kerberos..."
 cd /tmp
-apt-get install -y krb5-user &>/dev/null
+apt-get install -y krb5-user
 # apt-get -o Dpkg::Options::="--force-confmiss" install --reinstall krb5.conf
 krb5path=$(find /etc/ -name "krb5.conf" | grep krb5.conf)
 # Get the required domain name.
@@ -71,7 +72,8 @@ echo "
 =         Installing Required Packages        =
 = = = = = = = = = = = = = = = = = = = = = = = ="
 sleep 1
-echo "Install packages: samba, samba-common, packagekit, samba-common-bin, samba-libs, adcli"
+echo "Install packages: samba, samba-common, packagekit, samba-common-bin, samba-libs, adcli
+..."
 apt-get -y install samba samba-common packagekit samba-common-bin samba-libs adcli &>/dev/null
 systemctl unmask samba-ad-dc
 systemctl start smbd
@@ -79,8 +81,9 @@ systemctl enable smbd
 systemctl start nmbd
 systemctl enable nmbd
 echo "
-Install packages: ntp, sed, sssd, sssd-tools, realmd"
-apt-get -y install ntp sed sssd sssd-tools realmd
+Install packages: ntp, sed, sssd, sssd-tools, realmd
+..."
+apt-get -y install ntp sed sssd sssd-tools realmd &>/dev/null
 echo "Done."
 
 # Begin configuring.
@@ -224,9 +227,9 @@ done
 echo "Input CAREFULLY your Current-Username and your New-Username.
 The Tool will copies Current User Home to New User Home"
 read -p "Your Current User: " olduser
-olduserhome="/home/"+$olduser
-newuserhome="/home/"+$newuser
+olduserhome="/home/"$olduser
 read -p "New Username: " newuser
+newuserhome="/home/"$newuser
 
 # Create new user home directory
 echo "Create newuser home directory"
@@ -240,7 +243,7 @@ usermod -aG $oldgroup $newuser
 
 # Check
 echo "Check if New User is on Current User's groups:"
-groups /etc/group | grep $olduser
+cat /etc/group | grep $olduser
 echo "Check User informations:
 Current User: $olduser
 Current User Home Directory: $olduserhome
@@ -250,9 +253,15 @@ New User Home Directory: $newuserhome
 `cd $newuserhome`"
 
 # Copy
+# Change older user path:
+olduserhome=$olduserhome/.
 echo "Copy Current User data to New User Data:
 Please standby ..."
-cp -R -a $olduserhome/.* $newuserhome
+cp -R -a $olduserhome $newuserhome
+echo "Change owner of files on New User Home Directory"
+groupadd $newuser
+usermod -aG $newuser $newuser
+chown -R $newuser:$newuser $newuserhome
 echo "Done."
 
 echo "

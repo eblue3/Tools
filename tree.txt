@@ -28,7 +28,8 @@ Tools
 │   ├── PublicIP.txt
 │   └── test.py
 ├── RedTeaming
-│   └── header.sh
+│   ├── header.sh
+│   └── msfheader.sh
 ├── Tufin-Python
 │   ├── Auto-Enable-Rule.py
 │   ├── Check-duplicate.py
@@ -37,12 +38,10 @@ Tools
 │   ├── Text-split.py
 │   └── Tufin-Rule-rename.py
 ├── Ubuntu18-auto-joinAD
-│   ├── Draft.txt
 │   ├── linux-ad.sh
-│   ├── log.txt
 │   └── test-linux-ad.sh
 ├── LICENSE
 ├── README.md
 └── tree.txt
 
-6 directories, 39 files
+6 directories, 38 files
