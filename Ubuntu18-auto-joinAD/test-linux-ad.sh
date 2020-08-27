@@ -262,6 +262,7 @@ New User: $newuser
 New User Home Directory: $newuserhome
 `cd $newuserhome`"
 
+cd $scriptpath
 echo "#!/bin/bash
 newuser=$newuser
 olduser=$olduser
