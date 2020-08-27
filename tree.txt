@@ -38,10 +38,13 @@ Tools
 │   ├── Text-split.py
 │   └── Tufin-Rule-rename.py
 ├── Ubuntu18-auto-joinAD
+│   ├── checkdisk.sh
+│   ├── copydata.sh
 │   ├── linux-ad.sh
+│   ├── run.sh
 │   └── test-linux-ad.sh
 ├── LICENSE
 ├── README.md
 └── tree.txt
 
-6 directories, 38 files
+6 directories, 41 files

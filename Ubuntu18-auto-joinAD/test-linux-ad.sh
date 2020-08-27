@@ -1,8 +1,6 @@
 #!/bin/bash
-# Fix Timezone error
-# => hwclock --hctosys
 echo "Checking 192.168.1.55 connection ..."
-while ! ping -c6 192.168.1.55 &>/dev/null
+while ! ping -c4 192.168.1.55 &>/dev/null
         do echo "Fail to connect. Please check your DNS configuration. Checking again..."
 done
 echo "OK"
@@ -15,9 +13,9 @@ echo "= = = = = = = = = = = = = = = = = = = = = = = =
 =         Configure Resolvconf Service        =
 = = = = = = = = = = = = = = = = = = = = = = = ="
 sleep 1
-echo "Installing packages: resolvconf, dnsutils
+echo "Install packages: resolvconf, dnsutils
 ..."
-apt-get -y install resolvconf dnsutils &>/dev/null
+apt-get -y install resolvconf dnsutils tee &>/dev/null
 # Append /etc/resolv.conf
 echo "Configure /etc/resolv.conf :"
 echo "nameserver  192.168.1.55" > /etc/resolv.conf
@@ -82,7 +80,8 @@ systemctl enable smbd
 systemctl start nmbd
 systemctl enable nmbd
 echo "
-Install packages: ntp, sed, sssd, sssd-tools, realmd"
+Install packages: ntp, sed, sssd, sssd-tools, realmd
+..."
 apt-get -y install ntp sed sssd sssd-tools realmd &>/dev/null
 echo "Done."
 
@@ -193,7 +192,14 @@ Done."
 
 echo "
 ---Checking if user join is domain user or not..."
-id join
+if id join >/dev/null 2>&1; then
+        echo "Join Domain Successfully!"
+        id join
+else
+        echo "Join Domain: Failed.
+Exiting..."
+        exit
+fi
 
 echo "Adding session option to /etc/pam.d/common-session."
 echo "session required pam_unix.so
@@ -255,30 +261,17 @@ New User: $newuser
 New User Home Directory: $newuserhome
 `cd $newuserhome`"
 
-# Copy
-# Change older user path:
-olduserhome=$olduserhome/.
-echo "Copy Current User data to New User Data:
-Please standby ..."
-cp -R -a $olduserhome $newuserhome
-echo "Change owner of files on New User Home Directory"
-groupadd $newuser
-usermod -aG $newuser $newuser
-chown -R $newuser:$newuser $newuserhome
-echo "Done."
-
+echo "#!/bin/bash
+newuser=$newuser
+olduser=$olduser
+olduserhome=$olduserhome
+newuserhome=$newuserhome
+" > copydata.sh
+wget https://raw.githubusercontent.com/eblue3/Tools/master/Ubuntu18-auto-joinAD/copydata.sh -O ->> copydata.sh
+chmod +x copydata.sh
+echo "copydata.sh is downloaded in current folder. Please proceed to moving data from $olduser to $newuser by running ./copydata.sh"
 echo "
+
 = = = = = = = = = = = = = = = = = = = = = = = =
 =                     END                     =
 = = = = = = = = = = = = = = = = = = = = = = = ="
-echo "Rebooting in 30s."
-sleep 10
-echo "Rebooting in 20s."
-sleep 10
-echo "Rebooting in 10s."
-sleep 5
-echo "Rebooting in 5s."
-sleep 5
-echo "Reboot!"
-sleep 1
-reboot
