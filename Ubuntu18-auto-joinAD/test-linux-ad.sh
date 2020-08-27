@@ -195,6 +195,7 @@ echo "
 if id join >/dev/null 2>&1; then
         echo "Join Domain Successfully!"
         id join
+        sleep 5
 else
         echo "Join Domain: Failed.
 Exiting..."
@@ -267,7 +268,7 @@ olduser=$olduser
 olduserhome=$olduserhome
 newuserhome=$newuserhome
 " > copydata.sh
-wget https://raw.githubusercontent.com/eblue3/Tools/master/Ubuntu18-auto-joinAD/copydata.sh -O ->> copydata.sh
+wget https://raw.githubusercontent.com/eblue3/Tools/master/Ubuntu18-auto-joinAD/copydata.sh -O ->> ./copydata.sh  &>/dev/null
 chmod +x copydata.sh
 echo "copydata.sh is downloaded in current folder. Please proceed to moving data from $olduser to $newuser by running ./copydata.sh"
 echo "
