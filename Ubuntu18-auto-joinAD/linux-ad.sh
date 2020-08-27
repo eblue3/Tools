@@ -268,7 +268,7 @@ newuser=$newuser
 olduser=$olduser
 olduserhome=$olduserhome
 newuserhome=$newuserhome
-" > /copydata.sh
+" > ./copydata.sh
 echo "Download script to move profile."
 wget https://raw.githubusercontent.com/eblue3/Tools/master/Ubuntu18-auto-joinAD/copydata.sh -O copy.sh &>/dev/null
 cat copy.sh &>/dev/null | tee -a ./copydata.sh
