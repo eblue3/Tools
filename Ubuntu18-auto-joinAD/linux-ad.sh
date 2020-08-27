@@ -263,16 +263,14 @@ New User Home Directory: $newuserhome
 `cd $newuserhome`"
 
 cd $scriptpath
+echo "Download script to move profile."
+wget https://raw.githubusercontent.com/eblue3/Tools/master/Ubuntu18-auto-joinAD/copydata.sh -O copy.sh &>/dev/null
 echo "#!/bin/bash
 newuser=$newuser
 olduser=$olduser
 olduserhome=$olduserhome
 newuserhome=$newuserhome
-" > ./copydata.sh
-echo "Download script to move profile."
-wget https://raw.githubusercontent.com/eblue3/Tools/master/Ubuntu18-auto-joinAD/copydata.sh -O copy.sh &>/dev/null
-datacopy=$(cat copy.sh)
-echo $datacopy >> ./copydata.sh
+$(cat copy.sh)" > ./copydata.sh
 chmod +x ./copydata.sh
 rm copy.sh
 echo "copydata.sh is downloaded in current folder. Please proceed to moving data from $olduser to $newuser by running ./copydata.sh"
