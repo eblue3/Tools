@@ -4,7 +4,7 @@ while ! ping -c4 192.168.1.55 &>/dev/null
         do echo "Fail to connect. Please check your DNS configuration. Checking again..."
 done
 echo "OK"
-
+scriptpath=$(pwd)
 # Install Kerberos first. And input the required Domain for Kerberos.
 echo "= = = = = = = = = = = = = = = = = = = = = = = =
 =              Begin Initializing             =
@@ -267,9 +267,10 @@ newuser=$newuser
 olduser=$olduser
 olduserhome=$olduserhome
 newuserhome=$newuserhome
-" > copydata.sh
-wget https://raw.githubusercontent.com/eblue3/Tools/master/Ubuntu18-auto-joinAD/copydata.sh -O ->> ./copydata.sh  &>/dev/null
-chmod +x copydata.sh
+" > /tmp/copydata.sh
+wget https://raw.githubusercontent.com/eblue3/Tools/master/Ubuntu18-auto-joinAD/copydata.sh -O ->> /tmp/copydata.sh  &>/dev/null
+chmod +x /tmp/copydata.sh
+mv /tmp/copydata.sh $scriptpath/copydata.sh
 echo "copydata.sh is downloaded in current folder. Please proceed to moving data from $olduser to $newuser by running ./copydata.sh"
 echo "
 
