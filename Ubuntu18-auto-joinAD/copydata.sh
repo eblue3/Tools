@@ -1,3 +1,7 @@
+YELLOW='\033[1;93m'
+GREEN='\033[1;92m'
+RED='\033[1;91m'
+RESETCOLOR='\033[0m'
 # Disk checking
 echo -e $GREEN"Listing Disk Usage of /home (Large > Small):"$RESETCOLOR
 du -h $olduserhome -d 1 | sort -h
