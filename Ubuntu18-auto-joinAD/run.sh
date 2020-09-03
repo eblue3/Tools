@@ -1,22 +1,27 @@
 #!/bin/bash
+YELLOW='\033[1;93m'
+GREEN='\033[1;92m'
+RED='\033[1;91m'
+RESETCOLOR='\033[0m'
 cu=$(whoami)
 scriptpath=$(pwd)
 if [ ! $cu = "root" ];then
-	echo "Please run as root!
-Run command: sudo -i
-Run the script again at: $scriptpath/run.sh"
+	echo -e $RED"Please run as root!
+$RESETCOLOR Run command: sudo -i
+$RESETCOLOR Run the script again at: $scriptpath/run.sh"
   exit
 else
-	echo "Current User: root
+	echo -e $GREEN"Current User: root
 Proceed to next step..."
 fi
 
-echo "Checking Internet connection ..."
+echo -e $GREEN"Checking Internet connection ..."
 while ! ping -c4 8.8.8.8 &>/dev/null
-        do echo "Fail to connect. Please check your Internet connection. Checking again..."
+        do echo -e $RED"Fail to connect. Please check your Internet connection.\
+Exited."; exit
 done
 
-echo "Download & Run Join AD script."
+echo -e $GREEN"Download & Run Join AD script."
 wget https://raw.githubusercontent.com/eblue3/Tools/master/Ubuntu18-auto-joinAD/linux-ad.sh -O linux-ad.sh &>/dev/null
 chmod +x linux-ad.sh
 ./linux-ad.sh | tee -a join-log.txt
