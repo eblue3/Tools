@@ -12,16 +12,16 @@ $RESETCOLOR Run the script again at: $scriptpath/run.sh"
   exit
 else
 	echo -e $GREEN"Current User: root
-Proceed to next step..."
+Proceed to next step..."$RESETCOLOR
 fi
 
-echo -e $GREEN"Checking Internet connection ..."
+echo -e $GREEN"Checking Internet connection ..."$RESETCOLOR
 while ! ping -c4 8.8.8.8 &>/dev/null
         do echo -e $RED"Fail to connect. Please check your Internet connection.\
-Exited."; exit
+Exited."$RESETCOLOR; exit
 done
 
-echo -e $GREEN"Download & Run Join AD script."
+echo -e $GREEN"Download & Run Join AD script."$RESETCOLOR
 wget https://raw.githubusercontent.com/eblue3/Tools/master/Ubuntu18-auto-joinAD/linux-ad.sh -O linux-ad.sh &>/dev/null
 chmod +x linux-ad.sh
 ./linux-ad.sh | tee -a join-log.txt
