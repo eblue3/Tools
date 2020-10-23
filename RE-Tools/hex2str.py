@@ -135,7 +135,7 @@ Hex\tBinary\t\tASCII
 Press Enter to exit
 Correct Hex input: 0x001122..eeff or 001122...eeff""")
 while True:
-    myinp = input("Input your Hex: ")
+    myinp = input("---\nInput your Hex: ")
     if myinp:
         myinp = myinp.replace("0x","",1)
         try:
