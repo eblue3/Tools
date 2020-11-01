@@ -20,8 +20,8 @@ echo -e " ______________________________________________________________________
 |                                                                              |
 |                 Username:           [    $GREEN $fix5c $RESETCOLOR   ]                        |
 |                                                                              |
-|                 Password:           [  $YELLOW DontHackMe $RESETCOLOR ]                        |
+|                 Password:           [   DontHackMe  ]                        |
 |                                                                              |
-|                                   [ OK ]                                     |
+|                                   [$YELLOW OK $RESETCOLOR]                                     |
 |______________________________________________________________________________|"
 fortune 25% debian 25% debian-hints 50% computers -s -n 200 | cowthink -f tux -W 80
