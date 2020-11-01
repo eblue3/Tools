@@ -142,7 +142,7 @@ while True:
             res = str(bytes.fromhex(myinp).decode('utf-8'))
         except(ValueError):
             print(Style.BRIGHT+Fore.RED+"Wrong Hex Input!"+Style.RESET_ALL)
-            print("Correct input: "+Style.BRIGHT+Fore.GREEN+"0x001122..eeff"+Style.RESET_ALL+" or "+Style.BRIGHT+Fore.GREEN+"001122...eeff"+Style.RESET_ALL)
+            print("Correct input: "+Style.BRIGHT+Fore.GREEN+"0x001122..7e7f"+Style.RESET_ALL+" or "+Style.BRIGHT+Fore.GREEN+"001122...7e7f"+Style.RESET_ALL)
         else:
             print("Input Hex  : "+Style.BRIGHT+Fore.YELLOW+myinp+Style.RESET_ALL)
             print("Ascii      : "+Style.BRIGHT+Fore.GREEN+res+Style.RESET_ALL)
