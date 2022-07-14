@@ -1,0 +1,56 @@
+[01;34mTools[00m
+├── [01;34mBash-dev-tcp[00m
+│   ├── [01;32mcurrent-time-nist[00m
+│   ├── [01;32mdownload-file[00m
+│   ├── [01;32mdownload-url[00m
+│   ├── [01;32mheaders-http[00m
+│   ├── [01;32mlan-scanner[00m
+│   ├── README.md
+│   ├── [01;32mreverse-shell[00m
+│   ├── [01;32mreverse-shell-listener[00m
+│   ├── [01;32msend-email[00m
+│   └── [01;32msend-file[00m
+├── [01;34mCWBF[00m
+│   ├── brute-force.py
+│   └── README.md
+├── [01;34mmd5hash[00m
+│   ├── 10-million-password-list-top-1000000.txt
+│   ├── md5-1m-pass-result.txt
+│   ├── [01;32mmd5-num-hash.sh[00m
+│   └── [01;32mmd5-password-hash.sh[00m
+├── [01;34mPublicIP-API[00m
+│   ├── AtomPi-PublicIP-API.py
+│   ├── Inventory.csv
+│   ├── InventoryGen.py
+│   ├── Inventory.html
+│   ├── INVENTORY.json
+│   ├── INVENTORY-Variable.txt
+│   ├── License.csv
+│   ├── License.html
+│   ├── PublicIP.sh
+│   ├── PublicIP.txt
+│   └── test.py
+├── [01;34mRedTeaming[00m
+│   ├── [01;32mheader.sh[00m
+│   ├── msfheader.py
+│   └── msfheader.sh
+├── [01;34mRE-Tools[00m
+│   └── [01;32mhex2str.py[00m
+├── [01;34mTufin-Python[00m
+│   ├── Auto-Enable-Rule.py
+│   ├── Check-duplicate.py
+│   ├── Juniper-open-log-CLI-list.py
+│   ├── Listing-affected-rules.py
+│   ├── Text-split.py
+│   └── Tufin-Rule-rename.py
+├── [01;34mUbuntu18-auto-joinAD[00m
+│   ├── [01;32mcopydata.sh[00m
+│   ├── [01;32mlinux-ad.sh[00m
+│   ├── [01;32mmovedata.sh[00m
+│   ├── [01;32mrun.sh[00m
+│   └── [01;32mtest-linux-ad.sh[00m
+├── LICENSE
+├── README.md
+└── tree.txt
+
+8 directories, 45 files

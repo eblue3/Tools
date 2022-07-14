@@ -1,0 +1,10 @@
+SELECT [AlertObjectID], [AlertNote], [EntityCaption] FROM dbo.AlertObjects WHERE AlertObjectID = 6081 UPDATE AlertObjects SET AlertNote='MD: Chap dien' WHERE AlertObjectId=6081
+SELECT EventType, timestamp, accountid, AlertObjectid FROM dbo.AlertHistory WHERE AlertObjectID = 6081 INSERT INTO [AlertHistory] (EventType, timestamp, AccountID, AlertObjectID, Message, AlertActiveID) OUTPUT inserted.AlertHistoryID VALUES(3,Dateadd(SECOND, -25200, Getdate()),'admin',6081,'MD: Chap dien',66806)
+SELECT [AlertObjectID], [AlertNote], [EntityCaption] FROM dbo.AlertObjects WHERE AlertObjectID = 6081 UPDATE AlertObjects SET AlertNote='New note for testing' WHERE AlertObjectId=6081
+SELECT EventType, timestamp, accountid, AlertObjectid FROM dbo.AlertHistory WHERE AlertObjectID = 6081 INSERT INTO [AlertHistory] (EventType, timestamp, AccountID, AlertObjectID, Message, AlertActiveID) OUTPUT inserted.AlertHistoryID VALUES(3,Dateadd(SECOND, -25200, Getdate()),'admin',6081,'New note for testing',66806)
+SELECT [AlertObjectID], [AlertNote], [EntityCaption] FROM dbo.AlertObjects WHERE AlertObjectID = 6081 UPDATE AlertObjects SET AlertNote='MD: Chap dien' WHERE AlertObjectId=6081
+SELECT EventType, timestamp, accountid, AlertObjectid FROM dbo.AlertHistory WHERE AlertObjectID = 6081 INSERT INTO [AlertHistory] (EventType, timestamp, AccountID, AlertObjectID, Message, AlertActiveID) OUTPUT inserted.AlertHistoryID VALUES(3,Dateadd(SECOND, -25200, Getdate()),'admin',6081,'MD: Chap dien',66806)
+SELECT [AlertObjectID], [AlertNote], [EntityCaption] FROM dbo.AlertObjects WHERE AlertObjectID = 6081 UPDATE AlertObjects SET AlertNote='New note for testing' WHERE AlertObjectId=6081
+SELECT EventType, timestamp, accountid, AlertObjectid FROM dbo.AlertHistory WHERE AlertObjectID = 6081 INSERT INTO [AlertHistory] (EventType, timestamp, AccountID, AlertObjectID, Message, AlertActiveID) OUTPUT inserted.AlertHistoryID VALUES(3,Dateadd(SECOND, -25200, Getdate()),'admin',6081,'New note for testing',66806)
+[[6081], "MD: Chap dien"]
+[[6081], "New note for testing"]
