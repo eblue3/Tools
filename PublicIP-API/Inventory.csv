@@ -1,3 +1,0 @@
-No.,Name,Type,OS,Status,Location,Parent Host,Local IP,Access: Web,Access: API,Access: SSH,Access: Remote
-1,ATOM132,VM,Ubuntu 18.04,Running,HiPT,ESXi 70.135,172.16.70.132,www.hipt.vn:3592,www.hipt.vn:3592/api/,,
-2,AtomPi3,Raspberry Pi 3 Model B+,Raspian,Running,Home,,192.168.1.35 & 192.168.1.20,,http://PublicIP:8080/api/,Public IP: 22,VNCViewer: Public IP.5900
